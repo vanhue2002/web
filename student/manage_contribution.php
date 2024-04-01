@@ -24,12 +24,61 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Contributions</title>
+    <style>
+         body{
+  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg'); /* Thay đổi 'background_image.jpg' thành đường dẫn tới hình ảnh nền của bạn */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Pontano Sans', sans-serif;
+  font-size: calc(0.65em + .05vw);
+}
+        main {
+    margin: 20px auto; /* Căn giữa nội dung */
+    max-width: 800px; /* Đặt chiều rộng tối đa của phần chính */
+    padding: 20px; /* Thêm padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Thêm box shadow */
+
+    background-color: #fff;
+}
+
+table {
+    width: 100%; /* Đặt chiều rộng của bảng là 100% */
+    border-collapse: collapse; /* Loại bỏ khoảng cách giữa các ô */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Thêm box shadow */
+}
+
+table th,
+table td {
+    padding: 10px; /* Thêm padding cho ô */
+    border: 1px solid #ccc; /* Đặt viền cho ô */
+    text-align: left; /* Căn lề văn bản sang trái */
+}
+
+table th {
+    background-color: #f0f0f0; /* Đặt màu nền cho hàng tiêu đề */
+}
+
+table td img {
+    max-width: 100px; /* Đặt chiều rộng tối đa cho hình ảnh */
+    max-height: 100px; /* Đặt chiều cao tối đa cho hình ảnh */
+}
+
+footer {
+  position: fixed; /* Đặt vị trí của footer */
+  bottom: 0; /* Đặt ở dưới cùng */
+  width: 100%; /* Chiều rộng tương đương với phần nội dung */
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+}
+
+
+    </style>
     <!-- Add your CSS links here -->
 </head>
 <body>
-    <header>
-        <h1>Manage Your Contributions</h1>
-    </header>
+  
     <main>
         <?php
         if (mysqli_num_rows($result) > 0) {
@@ -60,6 +109,12 @@ $result = mysqli_query($conn, $sql);
         }
         ?>
     </main>
+    <footer>
+      <p>&copy; 2024 Website Template</p>
+      <p>Địa chỉ: 123 Đường ABC, Thành phố XYZ</p>
+      <p>Email: contact@example.com</p>
+      <p>Điện thoại: 0123-456-789</p>
+    </footer>
 </body>
 </html>
 

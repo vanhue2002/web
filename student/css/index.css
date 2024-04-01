@@ -31,11 +31,11 @@ body {
     color: #fff;
     font-size: 60px;
   }
-
   footer {
+    position: fixed; /* Đặt vị trí của footer */
+    bottom: 0; /* Đặt ở dưới cùng */
+    width: 100%; /* Chiều rộng tương đương với phần nội dung */
     background-color: #343a40;
     color: #fff;
     text-align: center;
-    padding: 20px;
-    margin-top: 20px;
   }

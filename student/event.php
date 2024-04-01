@@ -57,6 +57,14 @@ main ul li {
     list-style: none;
     background-color: red;
 }
+footer {
+  position: fixed; /* Đặt vị trí của footer */
+  bottom: 0; /* Đặt ở dưới cùng */
+  width: 100%; /* Chiều rộng tương đương với phần nội dung */
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+}
     </style>
 </head>
 <body>
@@ -77,6 +85,12 @@ main ul li {
             ?>
         </ul>
     </main>
+    <footer>
+      <p>&copy; 2024 Website Template</p>
+      <p>Địa chỉ: 123 Đường ABC, Thành phố XYZ</p>
+      <p>Email: contact@example.com</p>
+      <p>Điện thoại: 0123-456-789</p>
+    </footer>
 </body>
 </html>
 

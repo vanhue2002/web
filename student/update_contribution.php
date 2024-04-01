@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once('../config.php');
+require_once('../login/header.php');
+
 
 // Kiểm tra người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
@@ -102,6 +104,69 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật đóng góp</title>
+    <style>
+           body {
+  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Pontano Sans', sans-serif;
+  font-size: calc(0.65em + .05vw);
+}
+
+form {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.9); /* Thêm màu nền với độ trong suốt */
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="file"],
+textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+}
+    </style>
 </head>
 <body>
     <h2>Cập nhật đóng góp</h2>
@@ -114,5 +179,11 @@ mysqli_close($conn);
         <input type="file" id="file" name="file" accept="image/*"><br><br>
         <button type="submit">Cập nhật</button>
     </form>
+    <footer>
+        <p>&copy; 2024 Website Template</p>
+        <p>Địa chỉ: 123 Đường ABC, Thành phố XYZ</p>
+        <p>Email: contact@example.com</p>
+        <p>Điện thoại: 0123-456-789</p>
+        </footer>
 </body>
 </html>
