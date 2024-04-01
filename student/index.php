@@ -25,11 +25,8 @@ require_once('../login/header.php');
       </div>
     </div>
     <footer>
-      <p>&copy; 2024 Website Template</p>
-      <p>Địa chỉ: 123 Đường ABC, Thành phố XYZ</p>
-      <p>Email: contact@example.com</p>
-      <p>Điện thoại: 0123-456-789</p>
-    </footer>
+    <p>&copy; <?php echo date("Y"); ?> ASM4 Team</p>
+  </footer>
 
 </body>
 </html>
