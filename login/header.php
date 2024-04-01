@@ -32,7 +32,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <div class="user-info">
             <?php if(isset($_SESSION['username'])): ?>
                 <p>Welcome, <?php echo $_SESSION['username']; ?>!</p>
-                <a href="../login/index.php">Logout</a>
+                <a href="../login/logout.php">Logout</a>
             <?php endif; ?>
         </div>
     </header>
