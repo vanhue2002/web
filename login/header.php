@@ -17,6 +17,7 @@ if (session_status() == PHP_SESSION_NONE) {
             align-items: center;
             padding: 10px 20px;
             background-color: #f0f0f0;
+            margin-bottom:60px
         }
         .user-info {
             text-align: right;
@@ -36,4 +37,5 @@ if (session_status() == PHP_SESSION_NONE) {
             <?php endif; ?>
         </div>
     </header>
-    <!-- Other content of your website -->
+    <!-- Other content of your website --> 
+</body>

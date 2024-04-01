@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Website Title</title>
+    <!-- Add your CSS links here -->
+    <style>
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f0f0f0;
+      }
+      .user-info {
+        text-align: right;
+      }
+      .user-info a {
+        margin-left: 10px;
+      }
+      nav {
+        display: flex;
+        justify-content: center; /* Căn giữa nội dung trong phần nav */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        margin-top: 10px; /* Thêm khoảng cách phía trên */
+      }
+
+      nav a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng cho liên kết */
+        font-size: 18px; /* Tăng kích thước chữ */
+        margin: 0 10px; /* Khoảng cách giữa các mục menu */
+      }
+
+      nav a:hover {
+        background-color: #0056b3;
+      }
+      .content {
+        display: flex;
+        justify-content: center; /* căn giữa nội dung */
+        align-items: center; /* căn giữa nội dung theo chiều dọc */
+        flex-direction: column; /* hiển thị mỗi hàng là một nội dung */
+        margin-bottom: 20px;
+      }
+      .content div {
+        width: 60%;
+        padding: 20px;
+        border-radius: 50px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        text-align: center;
+        background-color: #007bff;
+      }
+      .content div a {
+        text-decoration: none;
+        color: #fff;
+        display: block; /* Chuyển thành block để căn giữa */
+      }
+      footer {
+        background-color: #343a40;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Your Website Header</h1>
+      <div class="user-info">
+        <?php if(isset($_SESSION['username'])): ?>
+        <p>
+          Welcome,
+          <?php echo $_SESSION['username']; ?>!
+        </p>
+        <a href="../login/index.php">Logout</a>
+        <?php endif; ?>
+      </div>
+      <nav>
+        <a href="event.php">Event</a>
+        <a href="manage_contribution.php">Manage Contribution</a>
+      </nav>
+    </header>
+    <!-- Other content of your website -->
+    <div class="content">
+      <div>
+        <a href="event.php">Events</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <div>
+        <a href="manage_contribution.php">Contributions</a>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2024 Website Template</p>
+      <p>Địa chỉ: 123 Đường ABC, Thành phố XYZ</p>
+      <p>Email: contact@example.com</p>
+      <p>Điện thoại: 0123-456-789</p>
+    </footer>
+  </body>
+</html>
