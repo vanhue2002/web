@@ -1,5 +1,4 @@
 
-
 <?php require_once('../login/header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,6 +76,7 @@
 <main>
     <div class="container">
      
+
 <h1>Welcome Marketing Coordinator</h1>
 <div><a href="coordinator_manage_contribution.php">Student contributions</a></div>
 <br>
