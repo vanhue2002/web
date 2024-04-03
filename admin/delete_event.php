@@ -10,7 +10,8 @@ if (isset($_GET['event_id'])) {
     $query = "DELETE FROM events WHERE event_id = $event_id";
 
     if (mysqli_query($conn, $query)) {
-        echo "Sự kiện đã được xóa thành công!";
+        echo "<script type='text/javascript'>alert('Sự kiện đã được xóa thành công!'); window.location.href='./manage_event.php';</script>";
+
     } else {
         echo "Đã xảy ra lỗi khi xóa sự kiện: " . mysqli_error($conn);
     }

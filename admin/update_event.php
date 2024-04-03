@@ -1,4 +1,71 @@
 <?php
+require_once('authentication.php');
+require_once('../login/header.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Event</title>
+    <style>
+       
+/* Thêm CSS mới */
+body {
+  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Pontano Sans', sans-serif;
+  font-size: calc(0.65em + .05vw);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  margin-bottom:60px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    padding: 25px;
+    border: 1px solid #ccc;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.2);
+    width: 60%;
+    background: white;
+}
+
+form input[type="text"], form input[type="date"], form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+form input[type="submit"] {
+    background-color: #7986CB;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+</style>
+    </style>
+</head>
+<body>
+<?php
 // Kết nối database
 require_once('../config.php');
 
@@ -18,7 +85,7 @@ if (isset($_GET['event_id'])) {
         $query = "UPDATE events SET event_name = '$event_name', submission_start_date = '$submission_start_date', submission_end_date = '$submission_end_date', faculty_name = '$faculty_name' WHERE event_id = $event_id";
 
         if (mysqli_query($conn, $query)) {
-            echo "Sự kiện đã được cập nhật thành công!";
+            echo "<script type='text/javascript'>alert('Sự kiện đã được cập nhật thành công!'); window.location.href='./manage_event.php';</script>";
         } else {
             echo "Đã xảy ra lỗi khi cập nhật sự kiện: " . mysqli_error($conn);
         }
@@ -32,16 +99,10 @@ if (isset($_GET['event_id'])) {
     if (mysqli_num_rows($event_result) == 1) {
         $row = mysqli_fetch_assoc($event_result);
 ?>
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Cập Nhật Sự Kiện</title>
-        </head>
-        <body>
+        
             <h2>Cập Nhật Sự Kiện</h2>
-            <form method="post">
+           <div class="container">
+           <form method="post">
                 <label for="event_name">Tên Sự Kiện:</label><br>
                 <input type="text" id="event_name" name="event_name" value="<?php echo $row['event_name']; ?>"><br>
                 <label for="submission_start_date">Ngày Bắt Đầu:</label><br>
@@ -65,8 +126,8 @@ if (isset($_GET['event_id'])) {
                 </select><br><br>
                 <input type="submit" value="Cập Nhật">
             </form>
-        </body>
-        </html>
+           </div>
+                        
 <?php
     } else {
         echo "Sự kiện không tồn tại.";
@@ -78,3 +139,6 @@ if (isset($_GET['event_id'])) {
 // Đóng kết nối database
 mysqli_close($conn);
 ?>
+
+</body>
+</html>
