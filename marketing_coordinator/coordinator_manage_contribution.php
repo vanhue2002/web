@@ -1,7 +1,88 @@
 <?php
 session_start(); // Bắt đầu hoặc khởi tạo phiên
-require_once('../config.php');
+
 require_once('../login/header.php');
+require_once('../config.php');
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+           body {
+  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Pontano Sans', sans-serif;
+  font-size: calc(0.65em + .05vw);
+}
+header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            margin-bottom:60px
+        }
+        main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.container h2 {
+  margin-bottom: 10px;
+}
+
+.container p {
+  margin-bottom: 20px;
+}
+
+.container a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 25px;
+}
+
+.container a:hover {
+  background-color: #0056b3;
+}
+
+    footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+}
+    </style>
+</head>
+<body>
+<main>
+<div class="container">
+     
+
+<?php
+
+
 
 if (isset($_SESSION['faculty_name'])) {
     $faculty_name = $_SESSION['faculty_name'];
@@ -29,9 +110,9 @@ if (isset($_SESSION['faculty_name'])) {
         // Duyệt qua từng hàng kết quả
         while ($row = mysqli_fetch_assoc($result)) {
             // Hiển thị thông tin của mỗi đóng góp và sinh viên
-            echo "Contribution ID: " . $row['contribution_id'] . "<br>";
-            echo "Title: " . $row['title'] . "<br>";
-            echo "Content: " . $row['content'] . "<br>";
+            echo "<strong>Contribution ID:</strong> " . $row['contribution_id'] . "<br>";
+            echo "<strong>Title:</strong> " . $row['title'] . "<br>";
+            echo "<strong>Content:</strong> " . $row['content'] . "<br>";
             // Kiểm tra loại tệp tin
             $file_path = $row['file_path'];
             if (pathinfo($file_path, PATHINFO_EXTENSION) === 'zip') {
@@ -39,15 +120,15 @@ if (isset($_SESSION['faculty_name'])) {
                 echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";
             } else {
                 // Nếu là hình ảnh, hiển thị hình ảnh
-                echo "Image: <img src='../student/" . $row['file_path'] . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
+                echo "<strong>Image:</strong> <img src='../student/" . $row['file_path'] . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
             }
-            echo "Status: " . $row['status'] . "<br>";
-            echo "Created At: " . $row['created_at'] . "<br>";
-            echo "Updated At: " . $row['updated_at'] . "<br>";
-            echo "User ID: " . $row['user_id'] . "<br>";
-            echo "Username: " . $row['username'] . "<br>";
-            echo "Email: " . $row['email'] . "<br>";
-            echo "Faculty: " . $row['faculty_name'] . "<br>";
+            echo "<strong>Status:</strong> " . $row['status'] . "<br>";
+            echo "<strong>Created At:</strong> " . $row['created_at'] . "<br>";
+            echo "<strong>Updated At:</strong> " . $row['updated_at'] . "<br>";
+            echo "<strong>User ID:</strong> " . $row['user_id'] . "<br>";
+            echo "<strong>Username: </strong>" . $row['username'] . "<br>";
+            echo "<strong>Email:</strong> " . $row['email'] . "<br>";
+            echo "<strong>Faculty:</strong>" . $row['faculty_name'] . "<br>";
 
             // Hiển thị form để thêm hoặc cập nhật bình luận
             echo "<form method='post' action='add_update_comment.php'>";
@@ -109,3 +190,11 @@ if (isset($_SESSION['faculty_name'])) {
 // Đóng kết nối
 mysqli_close($conn);
 ?>
+  </main>
+  <footer>
+    <p>&copy; <?php echo date("Y"); ?> ASM4 Team</p>
+  </footer>
+
+
+</body>
+</html>

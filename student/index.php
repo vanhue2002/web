@@ -26,7 +26,7 @@ require_once('authentication.php');
   margin-bottom: 20px; /* Khoảng cách giữa các phần tử */
   background-color: #fff;
 }
-
+ 
     </style>
 </head>
 <body>

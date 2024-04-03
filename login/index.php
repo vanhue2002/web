@@ -71,9 +71,7 @@ require_once('../login/header.php');
   </style>
 </head>
 <body>
-  <header>
-    <h1>ASM4 - Annual School Magazine</h1>
-  </header>
+
   <main>
     <div class="container">
       <h2>Welcome!</h2>
