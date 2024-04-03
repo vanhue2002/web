@@ -1,4 +1,26 @@
 <?php
+require_once('authentication.php');
+require_once('../login/header.php');
+?>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+}
+    </style>
+</head>
+<body>
+<?php
 // Kết nối database
 require_once('../config.php');
 
@@ -32,3 +54,8 @@ if (isset($_GET['event_id'])) {
 // Đóng kết nối database
 mysqli_close($conn);
 ?>
+ <footer>
+    <p>&copy; <?php echo date("Y"); ?> ASM4 Team</p>
+  </footer>
+</body>
+</html>

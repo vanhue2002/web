@@ -1,4 +1,8 @@
 <?php
+require_once('authentication.php');
+require_once('../login/header.php');
+?>
+<?php
 // Kết nối database
 require_once('../config.php');
 
@@ -15,7 +19,8 @@ if (isset($_GET['faculty_id'])) {
         $query = "UPDATE faculties SET faculty_name = '$faculty_name' WHERE faculty_id = $faculty_id";
 
         if (mysqli_query($conn, $query)) {
-            echo "Khoa đã được cập nhật thành công!";
+            echo "<script type='text/javascript'>alert('Khoa đã được cập nhật thành công!'); window.location.href='./manage_faculty.php';</script>";
+         
         } else {
             echo "Đã xảy ra lỗi khi cập nhật khoa: " . mysqli_error($conn);
         }
@@ -35,14 +40,67 @@ if (isset($_GET['faculty_id'])) {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Cập Nhật Khoa</title>
+            <style>
+                body {
+  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Pontano Sans', sans-serif;
+  font-size: calc(0.65em + .05vw);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  margin-bottom:60px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    padding: 25px;
+    border: 1px solid #ccc;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.2);
+    width: 60%;
+    background: white;
+}
+
+form input[type="text"], form input[type="date"], form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+form input[type="submit"] {
+    background-color: #7986CB;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+            </style>
         </head>
         <body>
             <h2>Cập Nhật Khoa</h2>
+            <div class="container">
             <form method="post">
                 <label for="faculty_name">Tên Khoa:</label><br>
                 <input type="text" id="faculty_name" name="faculty_name" value="<?php echo $row['faculty_name']; ?>"><br><br>
                 <input type="submit" value="Cập Nhật">
             </form>
+            </div>
         </body>
         </html>
 <?php

@@ -15,15 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mysqli_num_rows($result) > 0) {
             // Nếu tên khoa đã tồn tại, hiển thị thông báo lỗi
-            echo "Tên khoa đã tồn tại. Vui lòng chọn tên khoa khác.";
+            echo "<script type='text/javascript'>alert('Tên khoa đã tồn tại. Vui lòng chọn tên khoa khác.'); window.location.href='./create_faculty.php';</script>";
+
+         
         } else {
             // Nếu tên khoa chưa tồn tại, thêm thông tin về khoa vào cơ sở dữ liệu
             $sql = "INSERT INTO faculties (faculty_name) VALUES ('$faculty_name')";
 
             // Thực thi truy vấn
             if (mysqli_query($conn, $sql)) {
-                echo "Khoa đã được tạo thành công!";
-                echo "<a href='../'>Trở lại trang chủ</a>";
+                echo "<script type='text/javascript'>alert('Khoa đã được tạo thành công!'); window.location.href='./manage_faculty.php';</script>";
+
             } else {
                 echo "Đã xảy ra lỗi khi tạo khoa: " . mysqli_error($conn);
             }

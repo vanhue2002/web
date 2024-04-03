@@ -17,8 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Thực thi truy vấn
         if (mysqli_query($conn, $sql)) {
-            echo "Sự kiện đã được tạo thành công!";
-            echo "<a href='../'>Trở lại trang chủ</a>";
+            echo "<script type='text/javascript'>alert('Sự kiện đã được tạo thành công!'); window.location.href='./manage_event.php';</script>";
+
         } else {
             echo "Đã xảy ra lỗi khi tạo sự kiện: " . mysqli_error($conn);
         }

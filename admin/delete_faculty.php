@@ -10,7 +10,9 @@ if (isset($_GET['faculty_id'])) {
     $query = "DELETE FROM faculties WHERE faculty_id = $faculty_id";
 
     if (mysqli_query($conn, $query)) {
-        echo "Khoa đã được xóa thành công!";
+        echo "<script type='text/javascript'>alert('Khoa đã được xóa thành công!'); window.location.href='./manage_faculty.php';</script>";
+
+      
     } else {
         echo "Đã xảy ra lỗi khi xóa khoa: " . mysqli_error($conn);
     }
