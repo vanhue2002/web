@@ -32,13 +32,17 @@ $result = mysqli_query($conn, $sql);
     <!-- Add your CSS links here -->
     <style>
 
-body{
-  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg'); /* Thay đổi 'background_image.jpg' thành đường dẫn tới hình ảnh nền của bạn */
+body {
+  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
+  min-height: 100vh; /* new */
+  display: flex; /* new */
+  flex-direction: column; /* new */
 }
 main {
     padding: 20px;

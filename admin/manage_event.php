@@ -14,10 +14,13 @@ require_once('../login/header.php');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
+  min-height: 100vh; /* new */
+  display: flex; /* new */
+  flex-direction: column; /* new */
 }
-
 header {
   display: flex;
   justify-content: space-between;
@@ -27,6 +30,7 @@ header {
   margin-bottom:60px;
 }
 main {
+  flex: 1;
     padding: 20px;
     background-color: #fff;
     
@@ -63,6 +67,23 @@ footer {
   color: #fff;
   text-align: center;
 }
+@media screen and (max-width: 800px) {
+            main {
+                margin: 0;
+                padding: 10px; /* Giảm padding cho mobile */
+            }
+            table {
+                width: 100%; /* Đảm bảo bảng nằm gọn trong khung hiển thị */
+                font-size: 0.9em; /* Giảm kích thước chữ để dễ đọc hơn trên thiết bị di động */
+            }
+            table th,
+            table td {
+                padding: 10px; /* Giảm padding */
+            }
+            table td:nth-last-child(1) {
+                font-size: 0.8em; /* Làm nhỏ các liên kết hành động */
+            }
+        }
     </style>
 
 </head>

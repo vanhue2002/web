@@ -23,17 +23,22 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
+  min-height: 100vh; /* new */
+  display: flex; /* new */
+  flex-direction: column; /* new */
 }
 
 form {
+  flex:1;
   max-width: 80%;
   margin: 0 auto;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: rgba(255, 255, 255, 0.9); /* Thêm màu nền với độ trong suốt */
+  background-color: #fff; /* Thêm màu nền với độ trong suốt */
 }
 
 h2 {

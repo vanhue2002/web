@@ -9,15 +9,18 @@ require_once('../login/header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Khoa</title>
     <style>
-          body {
+            body {
   background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
+  min-height: 100vh; /* new */
+  display: flex; /* new */
+  flex-direction: column; /* new */
 }
-
 header {
   display: flex;
   justify-content: space-between;
@@ -27,6 +30,7 @@ header {
   margin-bottom:60px;
 }
 main {
+  flex:1;
     padding: 20px;
     background-color: #fff;
     
@@ -63,6 +67,11 @@ footer {
   color: #fff;
   text-align: center;
 }
+@media screen and (max-width: 800px) {
+            main {
+              margin: 0 4%; /* Căn giữa với padding 20% ở cả hai bên */
+            }
+           
     </style>
 </head>
 <body>

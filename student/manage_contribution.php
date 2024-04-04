@@ -73,7 +73,36 @@ footer {
   text-align: center;
 }
 
-
+@media screen and (max-width: 800px) {
+    body {
+  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Pontano Sans', sans-serif;
+  font-size: calc(0.65em + .05vw);
+  min-height: 100vh; /* new */
+  display: flex; /* new */
+  flex-direction: column; /* new */
+}
+            main {
+              flex:1;
+              padding: 10px; 
+            }
+           
+        }
+        table {
+            font-size: .8em; /* giảm kích thước chữ trong bảng */
+        }
+        table th,
+        table td {
+            padding: 5px; /* giảm padding trong ô */
+        }
+        table td img {
+            max-width: 50px; /* giảm kích thước hình ảnh */
+            max-height: 50px;
+        }
     </style>
     <!-- Add your CSS links here -->
 </head>

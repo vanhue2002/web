@@ -14,8 +14,12 @@ require_once('../login/header.php');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
+  min-height: 100vh; /* new */
+  display: flex; /* new */
+  flex-direction: column; /* new */
 }
 
 header {
@@ -58,6 +62,14 @@ form input[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
 }
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+}
     </style>
 </head>
 <body>
@@ -90,5 +102,8 @@ form input[type="submit"] {
         <input type="submit" value="Tạo Sự Kiện">
     </form>
     </div>
+    <footer>
+    <p>&copy; <?php echo date("Y"); ?> ASM4 Team</p>
+  </footer>
 </body>
 </html>

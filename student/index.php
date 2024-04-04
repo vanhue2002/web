@@ -12,13 +12,17 @@ require_once('authentication.php');
     <title>Student</title>
     <link rel="stylesheet" href="./css/index.css">
     <style>
-       body {
+   body {
   background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
+  min-height: 100vh; /* new */
+  display: flex; /* new */
+  flex-direction: column; /* new */
 }
 .content {
   padding: 20px;
@@ -26,7 +30,14 @@ require_once('authentication.php');
   margin-bottom: 20px; /* Khoảng cách giữa các phần tử */
   background-color: #fff;
 }
- 
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: #fff;
+  text-align: center;
+}
     </style>
 </head>
 <body>
@@ -47,6 +58,5 @@ require_once('authentication.php');
     <footer>
     <p>&copy; <?php echo date("Y"); ?> ASM4 Team</p>
   </footer>
-
 </body>
 </html>

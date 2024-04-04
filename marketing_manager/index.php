@@ -9,13 +9,17 @@ require_once('authentication.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketing Manager</title>
     <style>
-       body {
+    body {
   background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
+  min-height: 100vh; /* new */
+  display: flex; /* new */
+  flex-direction: column; /* new */
 }
 .content {
   padding: 20px;
