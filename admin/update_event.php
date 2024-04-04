@@ -100,9 +100,11 @@ if (isset($_GET['event_id'])) {
         $row = mysqli_fetch_assoc($event_result);
 ?>
         
-            <h2>Cập Nhật Sự Kiện</h2>
+          
            <div class="container">
+    
            <form method="post">
+           <h2>Cập Nhật Sự Kiện</h2>
                 <label for="event_name">Tên Sự Kiện:</label><br>
                 <input type="text" id="event_name" name="event_name" value="<?php echo $row['event_name']; ?>"><br>
                 <label for="submission_start_date">Ngày Bắt Đầu:</label><br>

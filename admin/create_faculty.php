@@ -70,9 +70,10 @@ footer {
 
 </head>
 <body>
-    <h2>Tạo Khoa Mới</h2>
+
     <div class="container">
     <form action="create_faculty_process.php" method="POST">
+    <h2>Tạo Khoa Mới</h2>
         <label for="faculty_name">Tên Khoa:</label><br>
         <input type="text" id="faculty_name" name="faculty_name" required><br><br>
 

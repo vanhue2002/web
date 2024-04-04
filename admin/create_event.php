@@ -61,9 +61,10 @@ form input[type="submit"] {
     </style>
 </head>
 <body>
-    <h2>Tạo Sự Kiện Mới</h2>
     <div class="container">
     <form action="create_event_process.php" method="POST">
+    <h2>Tạo Sự Kiện Mới</h2>
+
         <label for="event_name">Tên Sự Kiện:</label><br>
         <input type="text" id="event_name" name="event_name" required ><br><br>
 

@@ -89,7 +89,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $update_sql .= ", updated_at = NOW() WHERE contribution_id = '$contribution_id'";
     if (mysqli_query($conn, $update_sql)) {
-        echo "Cập nhật đóng góp thành công.";
+      echo "<script type='text/javascript'>alert('Contribution cập nhật thành công!'); window.location.href='./manage_contribution.php';</script>";
+
     } else {
         echo "Lỗi: " . $update_sql . "<br>" . mysqli_error($conn);
     }

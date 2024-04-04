@@ -104,7 +104,7 @@ footer {
     <br><br>
             <!-- Sử dụng biến faculty_id đã được kiểm tra -->
             <input type="hidden" name="faculty_id" value="<?php echo $faculty_id; ?>">
-            <button type="submit" onclick="showNotification()">Nộp đóng góp</button>
+            <button type="submit">Nộp đóng góp</button>
         </form>
         <footer>
     <p>&copy; <?php echo date("Y"); ?> ASM4 Team</p>

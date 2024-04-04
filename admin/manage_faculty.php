@@ -26,6 +26,13 @@ header {
   background-color: #f0f0f0;
   margin-bottom:60px;
 }
+main {
+    padding: 20px;
+    background-color: #fff;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm box-shadow */
+    margin: 0 20%; /* Căn giữa với padding 20% ở cả hai bên */
+}
 
 table {
   border-collapse: collapse;
@@ -59,7 +66,8 @@ footer {
     </style>
 </head>
 <body>
-    <h2>Quản Lý Khoa</h2>
+   <main>
+   <h2>Quản Lý Khoa</h2>
     <table border="1">
         <tr>
             <th>ID</th>
@@ -87,6 +95,7 @@ footer {
         mysqli_close($conn);
         ?>
     </table>
+   </main>
     <footer>
     <p>&copy; <?php echo date("Y"); ?> ASM4 Team</p>
   </footer>

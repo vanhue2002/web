@@ -80,6 +80,7 @@ footer {
 <body>
   
     <main>
+        <h2>Quản lý contribution</h2>
         <?php
         if (mysqli_num_rows($result) > 0) {
             echo "<table>";

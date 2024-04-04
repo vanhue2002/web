@@ -41,7 +41,8 @@ if ($_SESSION['user_id'] != $row['user_id']) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $delete_sql = "DELETE FROM contributions WHERE contribution_id = '$contribution_id'";
     if (mysqli_query($conn, $delete_sql)) {
-        echo "Xóa đóng góp thành công.";
+        echo "<script type='text/javascript'>alert('Xóa thành công!'); window.location.href='./manage_contribution.php';</script>";
+
     } else {
         echo "Lỗi: " . $delete_sql . "<br>" . mysqli_error($conn);
     }
