@@ -63,7 +63,9 @@ if (isset($_SESSION['user_id'])) {
                             VALUES ('$event_id', '$user_id', '$title', '$contribution', '$target_file', 'submitted', NOW(), NOW())";
 
                     if (mysqli_query($conn, $sql)) {
-                        echo "Ghi đóng góp vào cơ sở dữ liệu thành công.";
+                        // echo "Ghi đóng góp vào cơ sở dữ liệu thành công.";
+      echo "<script type='text/javascript'>alert('Ghi đóng góp vào cơ sở dữ liệu thành công.'); window.location.href='./manage_contribution.php';</script>";
+
 
                         
 

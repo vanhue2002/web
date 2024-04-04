@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 // Truy vấn để lấy các đóng góp của sinh viên
-$sql = "SELECT * FROM contributions WHERE user_id = '$user_id'";
+$sql = "SELECT * FROM contributions WHERE user_id = '$user_id'ORDER BY created_at DESC";    
 $result = mysqli_query($conn, $sql);
 ?>
 

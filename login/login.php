@@ -31,12 +31,16 @@ require_once('../login/header.php');
           <button type="submit">Login</button>
         </form>
    </div>
-        <h1>The Handmaid's Tale</h1>
-  <div class="rating">
-    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-  </div>
+      
     </div>
    
   </div>
+  <h1>The Handmaid's Tale</h1>
+  <div class="rating">
+    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+  </div>
+  <footer>
+    <p>&copy; <?php echo date("Y"); ?> ASM4 Team</p>
+  </footer>
 </body>
 </html>

@@ -29,40 +29,42 @@ header {
             margin-bottom:60px
         }
         main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 4px;
+}
+/* style cho tiêu đề */
+.contribution strong {
+    font-size: 1.4em;
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
 }
 
-.container {
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background-color: #fff;
-  text-align: center;
+/* style cho nội dung */
+.contribution {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    background: #f9f9f9;
 }
 
-.container h2 {
-  margin-bottom: 10px;
+/* Khung phân trang */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
 
-.container p {
-  margin-bottom: 20px;
-}
-
-.container a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  width: 100px;
-  height: 25px;
-}
-
-.container a:hover {
-  background-color: #0056b3;
+/* Liên kết phân trang */
+.pagination a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
 }
 
     footer {
@@ -109,6 +111,7 @@ if (isset($_SESSION['faculty_name'])) {
     if (mysqli_num_rows($result) > 0) {
         // Duyệt qua từng hàng kết quả
         while ($row = mysqli_fetch_assoc($result)) {
+          echo "<div class='contribution'>";
             // Hiển thị thông tin của mỗi đóng góp và sinh viên
             echo "<strong>Contribution ID:</strong> " . $row['contribution_id'] . "<br>";
             echo "<strong>Title:</strong> " . $row['title'] . "<br>";
@@ -160,7 +163,7 @@ if (isset($_SESSION['faculty_name'])) {
             echo "<input type='hidden' name='contribution_id' value='" . $row['contribution_id'] . "'>";
             echo "<button type='submit' name='publish_contribution'>Xuất bản</button>";
             echo "</form>";
-
+            echo "</div>";
             echo "<hr>"; // Tạo đường kẻ ngang để phân biệt giữa các đóng góp
         }
         
