@@ -7,7 +7,7 @@ require_once('../login/header.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tạo Sự Kiện</title>
+    <title>Create Event</title>
     <style>
         body {
   background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
@@ -75,18 +75,18 @@ footer {
 <body>
     <div class="container">
     <form action="create_event_process.php" method="POST">
-    <h2>Tạo Sự Kiện Mới</h2>
+    <h2>Create New Event</h2>
 
-        <label for="event_name">Tên Sự Kiện:</label><br>
+        <label for="event_name">Event Name:</label><br>
         <input type="text" id="event_name" name="event_name" required ><br><br>
 
-        <label for="start_date">Ngày Bắt Đầu:</label><br>
+        <label for="start_date">Start Date:</label><br>
         <input type="date" id="start_date" name="start_date"required ><br><br>
 
-        <label for="end_date">Ngày Kết Thúc:</label><br>
+        <label for="end_date">Deadline:</label><br>
         <input type="date" id="end_date" name="end_date" required><br><br>
 
-        <label for="faculty_name">Khoa:</label><br>
+        <label for="faculty_name">Faculty:</label><br>
         <select id="faculty_name" name="faculty_name" required>
             <?php
                 require_once('../config.php');
@@ -99,7 +99,7 @@ footer {
             ?>
         </select><br><br>
 
-        <input type="submit" value="Tạo Sự Kiện">
+        <input type="submit" value="Create">
     </form>
     </div>
     <footer>

@@ -62,7 +62,7 @@ require_once('../login/header.php');
 
     <div class="content">
       <div>
-      <a href="create_faculty.php">Create Facultys</a>
+      <a href="create_faculty.php">Create Faculties</a>
       </div>
     </div>
     <div class="content">
@@ -72,7 +72,7 @@ require_once('../login/header.php');
     </div>
     <div class="content">
       <div>
-      <a href="manage_faculty.php">Manage Faculty</a>
+      <a href="manage_faculty.php">Manage Faculties</a>
 
       </div>
     </div>

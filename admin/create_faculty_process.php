@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mysqli_num_rows($result) > 0) {
             // Nếu tên khoa đã tồn tại, hiển thị thông báo lỗi
-            echo "<script type='text/javascript'>alert('Tên khoa đã tồn tại. Vui lòng chọn tên khoa khác.'); window.location.href='./create_faculty.php';</script>";
+            echo "<script type='text/javascript'>alert('Faculty name already exist. Please choose another name.'); window.location.href='./create_faculty.php';</script>";
 
          
         } else {
@@ -27,12 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<script type='text/javascript'>alert('Khoa đã được tạo thành công!'); window.location.href='./manage_faculty.php';</script>";
 
             } else {
-                echo "Đã xảy ra lỗi khi tạo khoa: " . mysqli_error($conn);
+                echo "Error occurred while creating Faculty: " . mysqli_error($conn);
             }
         }
     } else {
         // Nếu thiếu trường thông tin cần thiết, hiển thị thông báo lỗi
-        echo "Vui lòng điền tên khoa để tạo khoa mới.";
+        echo "Please enter a faculty name!";
     }
 } else {
     // Nếu không phải là phương thức POST, chuyển hướng người dùng đến trang tạo khoa

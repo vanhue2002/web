@@ -69,15 +69,15 @@ if (isset($_GET['event_id'])) {
         // Hiển thị thông tin của sự kiện
         $row = mysqli_fetch_assoc($result);
         echo "ID: " . $row['event_id'] . "<br>";
-        echo "Tên Sự Kiện: " . $row['event_name'] . "<br>";
-        echo "Ngày Bắt Đầu: " . $row['submission_start_date'] . "<br>";
-        echo "Ngày Kết Thúc: " . $row['submission_end_date'] . "<br>";
-        echo "Khoa: " . $row['faculty_name'] . "<br>";
+        echo "Event Name: " . $row['event_name'] . "<br>";
+        echo "Start Date: " . $row['submission_start_date'] . "<br>";
+        echo "Deadline: " . $row['submission_end_date'] . "<br>";
+        echo "Faculty: " . $row['faculty_name'] . "<br>";
     } else {
-        echo "Sự kiện không tồn tại.";
+        echo "Event doesn't exist.";
     }
 } else {
-    echo "ID sự kiện không được cung cấp.";
+    echo "Event ID not provided.";
 }
 
 // Đóng kết nối database

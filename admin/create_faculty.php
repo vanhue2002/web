@@ -7,7 +7,7 @@ require_once('../login/header.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tạo Khoa Mới</title>
+    <title>Create Faculty</title>
     <style>
          body {
   background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
@@ -78,11 +78,11 @@ footer {
 
     <div class="container">
     <form action="create_faculty_process.php" method="POST">
-    <h2>Tạo Khoa Mới</h2>
-        <label for="faculty_name">Tên Khoa:</label><br>
+    <h2>Create New Faculty</h2>
+        <label for="faculty_name">Faculty Name:</label><br>
         <input type="text" id="faculty_name" name="faculty_name" required><br><br>
 
-        <input type="submit" value="Tạo Khoa">
+        <input type="submit" value="Create">
     </form></div>
     <footer>
     <p>&copy; <?php echo date("Y"); ?> ASM4 Team</p>

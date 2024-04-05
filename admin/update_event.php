@@ -85,9 +85,9 @@ if (isset($_GET['event_id'])) {
         $query = "UPDATE events SET event_name = '$event_name', submission_start_date = '$submission_start_date', submission_end_date = '$submission_end_date', faculty_name = '$faculty_name' WHERE event_id = $event_id";
 
         if (mysqli_query($conn, $query)) {
-            echo "<script type='text/javascript'>alert('Sự kiện đã được cập nhật thành công!'); window.location.href='./manage_event.php';</script>";
+            echo "<script type='text/javascript'>alert('Event edited successfully!'); window.location.href='./manage_event.php';</script>";
         } else {
-            echo "Đã xảy ra lỗi khi cập nhật sự kiện: " . mysqli_error($conn);
+            echo "Error occurred while updating event: " . mysqli_error($conn);
         }
     }
 
@@ -104,14 +104,14 @@ if (isset($_GET['event_id'])) {
            <div class="container">
     
            <form method="post">
-           <h2>Cập Nhật Sự Kiện</h2>
-                <label for="event_name">Tên Sự Kiện:</label><br>
+           <h2>Edit Event</h2>
+                <label for="event_name">Event Name:</label><br>
                 <input type="text" id="event_name" name="event_name" value="<?php echo $row['event_name']; ?>"><br>
-                <label for="submission_start_date">Ngày Bắt Đầu:</label><br>
+                <label for="submission_start_date">Start Date:</label><br>
                 <input type="date" id="submission_start_date" name="submission_start_date" value="<?php echo $row['submission_start_date']; ?>"><br>
-                <label for="submission_end_date">Ngày Kết Thúc:</label><br>
+                <label for="submission_end_date">Deadline:</label><br>
                 <input type="date" id="submission_end_date" name="submission_end_date" value="<?php echo $row['submission_end_date']; ?>"><br>
-                <label for="faculty_name">Khoa:</label><br>
+                <label for="faculty_name">Faculty:</label><br>
                 <!-- Đây là một ví dụ đơn giản, bạn có thể sử dụng các phương thức khác để lấy danh sách khoa từ cơ sở dữ liệu -->
                 <select id="faculty_name" name="faculty_name">
                     <?php
@@ -126,16 +126,16 @@ if (isset($_GET['event_id'])) {
                         }
                     ?>
                 </select><br><br>
-                <input type="submit" value="Cập Nhật">
+                <input type="submit" value="Edit">
             </form>
            </div>
                         
 <?php
     } else {
-        echo "Sự kiện không tồn tại.";
+        echo "Event doesn't exist.";
     }
 } else {
-    echo "ID sự kiện không được cung cấp.";
+    echo "Event ID is not provided.";
 }
 
 // Đóng kết nối database

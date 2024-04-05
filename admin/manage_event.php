@@ -7,7 +7,7 @@ require_once('../login/header.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Sự Kiện</title>
+    <title>Event Management</title>
     <style>
         body {
   background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
@@ -89,15 +89,15 @@ footer {
 </head>
 <body>
    <main>
-   <h2>Quản Lý Sự Kiện</h2>
+   <h2>Event Management</h2>
     <table border="1">
         <tr>
             <th>ID</th>
-            <th>Tên Sự Kiện</th>
-            <th>Ngày Bắt Đầu</th>
-            <th>Ngày Kết Thúc</th>
-            <th>Khoa</th>
-            <th>Hành Động</th>
+            <th>Event Name</th>
+            <th>Start Date</th>
+            <th>Deadline</th>
+            <th>Faculty</th>
+            <th>Action</th>
         </tr>
         <?php
         // Kết nối database
@@ -115,7 +115,7 @@ footer {
             echo "<td>" . $row['submission_start_date'] . "</td>";
             echo "<td>" . $row['submission_end_date'] . "</td>";
             echo "<td>" . $row['faculty_name'] . "</td>";
-            echo "<td><a href='view_event.php?event_id=" . $row['event_id'] . "'>Xem</a> | <a href='delete_event.php?event_id=" . $row['event_id'] . "'>Xóa</a> | <a href='update_event.php?event_id=" . $row['event_id'] . "'>Cập Nhật</a></td>";
+            echo "<td><a href='view_event.php?event_id=" . $row['event_id'] . "'>View</a> | <a href='delete_event.php?event_id=" . $row['event_id'] . "'>Delete</a> | <a href='update_event.php?event_id=" . $row['event_id'] . "'>Update</a></td>";
             echo "</tr>";
         }
 

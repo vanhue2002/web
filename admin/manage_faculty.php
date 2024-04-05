@@ -7,7 +7,7 @@ require_once('../login/header.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Khoa</title>
+    <title>Faculty Management</title>
     <style>
             body {
   background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
@@ -76,12 +76,12 @@ footer {
 </head>
 <body>
    <main>
-   <h2>Quản Lý Khoa</h2>
+   <h2>Faculty Management</h2>
     <table border="1">
         <tr>
             <th>ID</th>
-            <th>Tên Khoa</th>
-            <th>Hành Động</th>
+            <th>Faculty Name</th>
+            <th>Action</th>
         </tr>
         <?php
         // Kết nối database
@@ -96,7 +96,7 @@ footer {
             echo "<tr>";
             echo "<td>" . $row['faculty_id'] . "</td>";
             echo "<td>" . $row['faculty_name'] . "</td>";
-            echo "<td><a href='view_faculty.php?faculty_id=" . $row['faculty_id'] . "'>Xem</a> | <a href='delete_faculty.php?faculty_id=" . $row['faculty_id'] . "'>Xóa</a> | <a href='update_faculty.php?faculty_id=" . $row['faculty_id'] . "'>Cập Nhật</a></td>";
+            echo "<td><a href='view_faculty.php?faculty_id=" . $row['faculty_id'] . "'>View</a> | <a href='delete_faculty.php?faculty_id=" . $row['faculty_id'] . "'>Delete</a> | <a href='update_faculty.php?faculty_id=" . $row['faculty_id'] . "'>Update</a></td>";
             echo "</tr>";
         }
 

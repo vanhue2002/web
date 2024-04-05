@@ -10,14 +10,14 @@ if (isset($_GET['faculty_id'])) {
     $query = "DELETE FROM faculties WHERE faculty_id = $faculty_id";
 
     if (mysqli_query($conn, $query)) {
-        echo "<script type='text/javascript'>alert('Khoa đã được xóa thành công!'); window.location.href='./manage_faculty.php';</script>";
+        echo "<script type='text/javascript'>alert('Faculty deleted successfully!'); window.location.href='./manage_faculty.php';</script>";
 
       
     } else {
-        echo "Đã xảy ra lỗi khi xóa khoa: " . mysqli_error($conn);
+        echo "Error occurred while deleting faculty: " . mysqli_error($conn);
     }
 } else {
-    echo "ID khoa không được cung cấp.";
+    echo "Faculty ID not provided.";
 }
 
 // Đóng kết nối database

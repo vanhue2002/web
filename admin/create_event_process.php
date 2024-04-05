@@ -17,14 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Thực thi truy vấn
         if (mysqli_query($conn, $sql)) {
-            echo "<script type='text/javascript'>alert('Sự kiện đã được tạo thành công!'); window.location.href='./manage_event.php';</script>";
+            echo "<script type='text/javascript'>alert('Event created successfully'); window.location.href='./manage_event.php';</script>";
 
         } else {
-            echo "Đã xảy ra lỗi khi tạo sự kiện: " . mysqli_error($conn);
+            echo "Error occured while creating event: " . mysqli_error($conn);
         }
     } else {
         // Nếu thiếu trường thông tin cần thiết, hiển thị thông báo lỗi
-        echo "Vui lòng điền đầy đủ thông tin để tạo sự kiện.";
+        echo "Please fill in all required namespace!.";
     }
 } else {
     // Nếu không phải là phương thức POST, chuyển hướng người dùng đến trang tạo sự kiện

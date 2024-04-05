@@ -65,12 +65,12 @@ if (isset($_GET['faculty_id'])) {
         // Hiển thị thông tin của khoa
         $row = mysqli_fetch_assoc($result);
         echo "ID: " . $row['faculty_id'] . "<br>";
-        echo "Tên Khoa: " . $row['faculty_name'] . "<br>";
+        echo "Faculty Name: " . $row['faculty_name'] . "<br>";
     } else {
-        echo "Khoa không tồn tại.";
+        echo "Faculty doesn't exist.";
     }
 } else {
-    echo "ID khoa không được cung cấp.";
+    echo "Faculty ID not provided.";
 }
 
 // Đóng kết nối database

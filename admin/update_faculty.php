@@ -19,10 +19,10 @@ if (isset($_GET['faculty_id'])) {
         $query = "UPDATE faculties SET faculty_name = '$faculty_name' WHERE faculty_id = $faculty_id";
 
         if (mysqli_query($conn, $query)) {
-            echo "<script type='text/javascript'>alert('Khoa đã được cập nhật thành công!'); window.location.href='./manage_faculty.php';</script>";
+            echo "<script type='text/javascript'>alert('Faculty edited successfully!'); window.location.href='./manage_faculty.php';</script>";
          
         } else {
-            echo "Đã xảy ra lỗi khi cập nhật khoa: " . mysqli_error($conn);
+            echo "Error occurred while updating faculty: " . mysqli_error($conn);
         }
     }
 
@@ -39,7 +39,7 @@ if (isset($_GET['faculty_id'])) {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Cập Nhật Khoa</title>
+            <title>Edit Faculty</title>
             <style>
                 body {
   background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
@@ -93,7 +93,7 @@ form input[type="submit"] {
             </style>
         </head>
         <body>
-            <h2>Cập Nhật Khoa</h2>
+            <h2>Edit Faculty</h2>
             <div class="container">
             <form method="post">
                 <label for="faculty_name">Tên Khoa:</label><br>

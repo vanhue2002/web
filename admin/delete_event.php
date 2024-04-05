@@ -10,13 +10,13 @@ if (isset($_GET['event_id'])) {
     $query = "DELETE FROM events WHERE event_id = $event_id";
 
     if (mysqli_query($conn, $query)) {
-        echo "<script type='text/javascript'>alert('Sự kiện đã được xóa thành công!'); window.location.href='./manage_event.php';</script>";
+        echo "<script type='text/javascript'>alert('Event deleted successfully'); window.location.href='./manage_event.php';</script>";
 
     } else {
-        echo "Đã xảy ra lỗi khi xóa sự kiện: " . mysqli_error($conn);
+        echo "Error occurred while deleting event: " . mysqli_error($conn);
     }
 } else {
-    echo "ID sự kiện không được cung cấp.";
+    echo "Event ID not provided";
 }
 
 // Đóng kết nối database
