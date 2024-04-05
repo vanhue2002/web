@@ -20,14 +20,14 @@ require_once('authentication.php');
   background-attachment: fixed;
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
-  min-height: 100vh; /* new */
-  display: flex; /* new */
-  flex-direction: column; /* new */
+  min-height: 100vh; 
+  display: flex; 
+  flex-direction: column;
 }
 .content {
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm box shadow */
-  margin-bottom: 20px; /* Khoảng cách giữa các phần tử */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 20px; 
   background-color: #fff;
 }
 footer {

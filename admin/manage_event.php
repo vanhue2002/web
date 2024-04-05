@@ -70,18 +70,18 @@ footer {
 @media screen and (max-width: 800px) {
             main {
                 margin: 0;
-                padding: 10px; /* Giảm padding cho mobile */
+                padding: 10px;
             }
             table {
-                width: 100%; /* Đảm bảo bảng nằm gọn trong khung hiển thị */
-                font-size: 0.9em; /* Giảm kích thước chữ để dễ đọc hơn trên thiết bị di động */
+                width: 100%; 
+                font-size: 0.9em; 
             }
             table th,
             table td {
-                padding: 10px; /* Giảm padding */
+                padding: 10px; 
             }
             table td:nth-last-child(1) {
-                font-size: 0.8em; /* Làm nhỏ các liên kết hành động */
+                font-size: 0.8em; 
             }
         }
     </style>
@@ -100,14 +100,11 @@ footer {
             <th>Action</th>
         </tr>
         <?php
-        // Kết nối database
         require_once('../config.php');
 
-        // Truy vấn để lấy danh sách các sự kiện và tên khoa
         $query = "SELECT events.*, faculties.faculty_name FROM events LEFT JOIN faculties ON events.faculty_name = faculties.faculty_name";
         $result = mysqli_query($conn, $query);
 
-        // Hiển thị các sự kiện trong bảng
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td>" . $row['event_id'] . "</td>";
@@ -119,7 +116,6 @@ footer {
             echo "</tr>";
         }
 
-        // Đóng kết nối database
         mysqli_close($conn);
         ?>
     </table>

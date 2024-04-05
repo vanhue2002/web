@@ -1,7 +1,6 @@
 <?php
 require_once('../login/header.php');
 ?>
-<!-- register_admin.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +10,7 @@ require_once('../login/header.php');
     <link rel="stylesheet" href="../../login/css/login.css">
 
 <style>
-    /*Hover to reveal a description of the book */
-
-/* Source code:
-https://github.com/robole/artifice
-*/
+   
 
 @import url('https://fonts.googleapis.com/css2?family=Pontano+Sans&family=Stint+Ultra+Expanded&display=swap');
 
@@ -195,9 +190,9 @@ button[type="submit"]:hover {
   color: red;
 }
 footer {
-    position: fixed; /* Đặt vị trí của footer */
-    bottom: 0; /* Đặt ở dưới cùng */
-    width: 100%; /* Chiều rộng tương đương với phần nội dung */
+    position: fixed; 
+    bottom: 0; 
+    width: 100%;
     background-color: #343a40;
     color: #fff;
     text-align: center;

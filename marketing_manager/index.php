@@ -17,14 +17,14 @@ require_once('authentication.php');
   background-attachment: fixed;
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
-  min-height: 100vh; /* new */
-  display: flex; /* new */
-  flex-direction: column; /* new */
+  min-height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
 }
 .content {
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm box shadow */
-  margin-bottom: 20px; /* Khoảng cách giữa các phần tử */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 20px; 
   background-color: #fff;
 }body {
   font-family: Arial, sans-serif;
@@ -35,9 +35,9 @@ require_once('authentication.php');
 
   .content {
     display: flex;
-    justify-content: center; /* căn giữa nội dung */
-    align-items: center; /* căn giữa nội dung theo chiều dọc */
-    flex-direction: column; /* hiển thị mỗi hàng là một nội dung */
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding-bottom: 50px;
@@ -60,9 +60,9 @@ require_once('authentication.php');
     font-size: 60px;
   }
   footer {
-    position: fixed; /* Đặt vị trí của footer */
-    bottom: 0; /* Đặt ở dưới cùng */
-    width: 100%; /* Chiều rộng tương đương với phần nội dung */
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
     background-color: #343a40;
     color: #fff;
     text-align: center;

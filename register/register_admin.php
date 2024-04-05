@@ -195,9 +195,9 @@ button[type="submit"]:hover {
   color: red;
 }
 footer {
-    position: fixed; /* Đặt vị trí của footer */
-    bottom: 0; /* Đặt ở dưới cùng */
-    width: 100%; /* Chiều rộng tương đương với phần nội dung */
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
     background-color: #343a40;
     color: #fff;
     text-align: center;
@@ -229,19 +229,15 @@ footer {
         <label for="faculty_name">Chọn khoa:</label>
     <select name="faculty_name" id="faculty_name">
         <?php
-        // Kết nối database
         require_once('../config.php');
 
-        // Truy vấn để lấy danh sách các khoa
         $query = "SELECT * FROM faculties";
         $result = mysqli_query($conn, $query);
 
-        // Hiển thị các tùy chọn cho khoa
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<option value='" . $row['faculty_name'] . "'>" . $row['faculty_name'] . "</option>";
         }
 
-        // Đóng kết nối database
         mysqli_close($conn);
         ?>
     </select><br><br>

@@ -3,34 +3,26 @@ require_once('authentication.php');
 require_once('../login/header.php');
 ?>
 <?php
-// Kết nối database
 require_once('../config.php');
 
-// Kiểm tra xem có tham số faculty_id được truyền vào không
 if (isset($_GET['faculty_id'])) {
     $faculty_id = $_GET['faculty_id'];
 
-    // Kiểm tra xem có dữ liệu được gửi từ biểu mẫu hay không
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Lấy dữ liệu từ biểu mẫu và làm sạch dữ liệu
         $faculty_name = mysqli_real_escape_string($conn, $_POST['faculty_name']);
 
-        // Truy vấn SQL để cập nhật thông tin khoa
         $query = "UPDATE faculties SET faculty_name = '$faculty_name' WHERE faculty_id = $faculty_id";
 
         if (mysqli_query($conn, $query)) {
-            echo "<script type='text/javascript'>alert('Faculty edited successfully!'); window.location.href='./manage_faculty.php';</script>";
          
         } else {
             echo "Error occurred while updating faculty: " . mysqli_error($conn);
         }
     }
 
-    // Truy vấn để lấy thông tin của khoa dựa trên faculty_id
     $faculty_query = "SELECT * FROM faculties WHERE faculty_id = $faculty_id";
     $faculty_result = mysqli_query($conn, $faculty_query);
 
-    // Hiển thị biểu mẫu để cập nhật thông tin khoa
     if (mysqli_num_rows($faculty_result) == 1) {
         $row = mysqli_fetch_assoc($faculty_result);
 ?>
@@ -111,6 +103,5 @@ form input[type="submit"] {
     echo "ID khoa không được cung cấp.";
 }
 
-// Đóng kết nối database
 mysqli_close($conn);
 ?>

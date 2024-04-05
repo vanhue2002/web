@@ -18,7 +18,6 @@ require_once('../login/header.php');
       <h1>Login</h1>
    <div>
    <?php
-          // Show any error messages if login fails
           if (isset($_GET['error'])) {
             echo "<p class='error'>Invalid username or password.</p>";
           }

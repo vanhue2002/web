@@ -47,7 +47,6 @@ $result = mysqli_query($conn, $sql);
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
 }   
-/* style cho container chính */
 main {
     margin: 20px auto;
     max-width: 800px;
@@ -57,7 +56,6 @@ main {
     border-radius: 4px;
 }
 
-/* style cho tiêu đề */
 .contribution strong {
     font-size: 1.4em;
     display: block;
@@ -65,7 +63,6 @@ main {
     color: #333;
 }
 
-/* style cho nội dung */
 .contribution {
     padding: 20px;
     margin-bottom: 20px;
@@ -74,27 +71,24 @@ main {
     background: #f9f9f9;
 }
 
-/* Khung phân trang */
 .pagination {
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
 
-/* Liên kết phân trang */
 .pagination a {
     margin: 0 10px;
     text-decoration: none;
     color: #333;
 }
 
-/* style cho footer */
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 60px; /* Chỉ định chiều cao cho footer */
-  line-height: 60px; /* Đặt height cho text, đảm bảo rằng nó ở giữa footer */
+  height: 60px; 
+  line-height: 60px; 
   background-color: #343a40;
   color: #fff;
   text-align: center;
@@ -107,15 +101,12 @@ footer {
         <?php
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-// All your contribution details here...
 echo "<div class='contribution'>";
 
-                // Hiển thị thông tin của mỗi đóng góp
                 echo "<strong>Title:</strong> " . $row['title'] . "<br>";
 echo "<strong>Student ID:</strong> " . $row['user_id'] . "<br>";
 
                 echo "<strong>Content:</strong> " . $row['content'] . "<br>";
-                // Kiểm tra loại tệp tin
                
                 echo "<strong>Status:</strong> " . $row['status'] . "<br>";
                 echo "<strong>Created At:</strong> " . $row['created_at'] . "<br>";
@@ -123,20 +114,17 @@ echo "<strong>Student ID:</strong> " . $row['user_id'] . "<br>";
 
                 $file_path = $row['file_path'];
                 if (pathinfo($file_path, PATHINFO_EXTENSION) === 'zip') {
-                    // Nếu là file zip, hiển thị tên file và tạo liên kết tải xuống
                     echo "<strong>File:</strong> <a href='$file_path' download>" . basename($file_path) . "</a><br>";
                 } else if (!empty($file_path)) {
-                    // Nếu là hình ảnh, hiển thị hình ảnh
                     echo "<strong>Image:</strong> <img src='../student/" . $row['file_path'] . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
                 }
                 echo "</div>";
-                echo "<hr>"; // Tạo đường kẻ ngang để phân biệt giữa các đóng góp
+                echo "<hr>";
             }
         } else {
             echo "<p>No contributions found.</p>";
         }
         ?>
-        <!-- Hiển thị các liên kết đến các trang kế tiếp -->
         <?php
         $sql_count = "SELECT COUNT(*) AS total_contributions FROM contributions";
         $result_count = mysqli_query($conn, $sql_count);

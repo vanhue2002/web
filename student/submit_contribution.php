@@ -2,10 +2,8 @@
     require_once('../login/header.php');
     require_once('../config.php');
 
-    // Kiểm tra xem biến session đã tồn tại và có giá trị không
     $faculty_id = isset($_SESSION['selected_faculty_id']) ? $_SESSION['selected_faculty_id'] : '';
 
-    // Lấy event_id từ query string nếu có
     if(isset($_GET['event_id'])) {
         $_SESSION['selected_event_id'] = $_GET['event_id'];
     }
@@ -26,9 +24,9 @@
   background-attachment: fixed;
   font-family: 'Pontano Sans', sans-serif;
   font-size: calc(0.65em + .05vw);
-  min-height: 100vh; /* new */
-  display: flex; /* new */
-  flex-direction: column; /* new */
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
 }
 
 form {
@@ -38,8 +36,7 @@ form {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: #fff; /* Thêm màu nền với độ trong suốt */
-}
+  background-color: #fff; }
 
 h2 {
   text-align: center;
@@ -88,7 +85,6 @@ footer {
 
         </style>
         <script>
-            // Hàm hiển thị thông báo
             function showNotification() {
                 alert("Email đã được gửi đi thành công!");
             }
@@ -107,7 +103,6 @@ footer {
             <label for="agree">Tôi đồng ý với <a href="#">Điều khoản và Điều kiện</a>:     
                 <input type="checkbox" id="agree" name="agree" required></label>
     <br><br>
-            <!-- Sử dụng biến faculty_id đã được kiểm tra -->
             <input type="hidden" name="faculty_id" value="<?php echo $faculty_id; ?>">
             <button type="submit">Nộp đóng góp</button>
         </form>

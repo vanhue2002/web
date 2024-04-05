@@ -69,7 +69,7 @@ footer {
 }
 @media screen and (max-width: 800px) {
             main {
-              margin: 0 4%; /* Căn giữa với padding 20% ở cả hai bên */
+              margin: 0 4%;
             }
            
     </style>
@@ -77,21 +77,17 @@ footer {
 <body>
    <main>
    <h2>Faculty Management</h2>
-    <table border="1">
         <tr>
             <th>ID</th>
             <th>Faculty Name</th>
             <th>Action</th>
         </tr>
         <?php
-        // Kết nối database
         require_once('../config.php');
 
-        // Truy vấn để lấy danh sách các khoa
         $query = "SELECT * FROM faculties";
         $result = mysqli_query($conn, $query);
 
-        // Hiển thị các khoa trong bảng
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td>" . $row['faculty_id'] . "</td>";
@@ -100,7 +96,6 @@ footer {
             echo "</tr>";
         }
 
-        // Đóng kết nối database
         mysqli_close($conn);
         ?>
     </table>
