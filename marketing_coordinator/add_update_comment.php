@@ -1,6 +1,8 @@
 <?php
 session_start(); // Bắt đầu hoặc khởi tạo phiên
 require_once('../config.php');
+require_once('authentication.php');
+require_once('../login/header.php');
 
 if (isset($_POST['submit_comment'])) {
     $contribution_id = $_POST['contribution_id'];

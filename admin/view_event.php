@@ -1,6 +1,8 @@
 <?php
 // Kết nối database
 require_once('../config.php');
+require_once('authentication.php');
+require_once('../login/header.php');
 
 // Kiểm tra xem có tham số event_id được truyền vào không
 if (isset($_GET['event_id'])) {

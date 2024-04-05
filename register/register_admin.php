@@ -1,4 +1,18 @@
 <!-- register_admin.php -->
+<?php
+// Kết nối database
+require_once('../config.php');
+require_once('authentication.php');
+
+// Truy vấn SQL để lấy danh sách các role
+$query_roles = "SELECT DISTINCT role FROM users WHERE role <> 'admin'";
+$result_roles = mysqli_query($conn, $query_roles);
+
+// Truy vấn để lấy danh sách các khoa
+$query = "SELECT * FROM faculties";
+$result = mysqli_query($conn, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,28 +33,27 @@
         <input type="email" id="email" name="email" required><br><br>
         <label for="role">Vai trò:</label>
         <select name="role" id="role">
-            <option value="student">Student</option>
-            <option value="Marketing Coordinator">Marketing Coordinator</option>       
+            <?php
+            // Đổ dữ liệu từ kết quả truy vấn vào danh sách dropdown
+            while ($row = mysqli_fetch_assoc($result_roles)) {
+                echo "<option value='" . $row['role'] . "'>" . $row['role'] . "</option>";
+            }
+            ?>
         </select><br><br>
         <label for="faculty_name">Chọn khoa:</label>
-    <select name="faculty_name" id="faculty_name">
-        <?php
-        // Kết nối database
-        require_once('../config.php');
+        <select name="faculty_name" id="faculty_name">
+            <?php
+            
 
-        // Truy vấn để lấy danh sách các khoa
-        $query = "SELECT * FROM faculties";
-        $result = mysqli_query($conn, $query);
+            // Hiển thị các tùy chọn cho khoa
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<option value='" . $row['faculty_name'] . "'>" . $row['faculty_name'] . "</option>";
+            }
 
-        // Hiển thị các tùy chọn cho khoa
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<option value='" . $row['faculty_name'] . "'>" . $row['faculty_name'] . "</option>";
-        }
-
-        // Đóng kết nối database
-        mysqli_close($conn);
-        ?>
-    </select><br><br>
+            // Đóng kết nối database
+            mysqli_close($conn);
+            ?>
+        </select><br><br>
         <button type="submit">Đăng ký</button>
     </form>
 </body>

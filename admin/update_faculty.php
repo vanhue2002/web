@@ -1,6 +1,8 @@
 <?php
 // Kết nối database
 require_once('../config.php');
+require_once('authentication.php');
+require_once('../login/header.php');
 
 // Kiểm tra xem có tham số faculty_id được truyền vào không
 if (isset($_GET['faculty_id'])) {
@@ -11,12 +13,28 @@ if (isset($_GET['faculty_id'])) {
         // Lấy dữ liệu từ biểu mẫu và làm sạch dữ liệu
         $faculty_name = mysqli_real_escape_string($conn, $_POST['faculty_name']);
 
+        // Bắt đầu một giao dịch
+        mysqli_begin_transaction($conn);
+
         // Truy vấn SQL để cập nhật thông tin khoa
         $query = "UPDATE faculties SET faculty_name = '$faculty_name' WHERE faculty_id = $faculty_id";
 
+        // Thực thi câu lệnh cập nhật trong bảng faculties
         if (mysqli_query($conn, $query)) {
+            // Cập nhật trường faculty_name trong bảng events
+            $update_events_query = "UPDATE events SET faculty_name = '$faculty_name' WHERE faculty_name = (SELECT faculty_name FROM faculties WHERE faculty_id = $faculty_id)";
+            mysqli_query($conn, $update_events_query);
+
+            // Cập nhật trường faculty_name trong bảng users
+            $update_users_query = "UPDATE users SET faculty_name = '$faculty_name' WHERE faculty_name = (SELECT faculty_name FROM faculties WHERE faculty_id = $faculty_id)";
+            mysqli_query($conn, $update_users_query);
+
+            // Nếu tất cả các câu lệnh đều thành công, hoàn tất giao dịch
+            mysqli_commit($conn);
             echo "Khoa đã được cập nhật thành công!";
         } else {
+            // Nếu câu lệnh cập nhật trong bảng faculties thất bại, hủy bỏ giao dịch
+            mysqli_rollback($conn);
             echo "Đã xảy ra lỗi khi cập nhật khoa: " . mysqli_error($conn);
         }
     }

@@ -1,7 +1,11 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    // Nếu chưa, bắt đầu một phiên session mới
+    session_start();
+}
 require_once('../config.php');
 require_once('../login/header.php');
+require_once('authentication.php');
 
 // Kiểm tra xem người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
@@ -40,14 +44,17 @@ $result = mysqli_query($conn, $sql);
                 echo "<td>{$row['title']}</td>";
                 echo "<td>{$row['content']}</td>";
                 echo "<td>";
-                // Kiểm tra loại tệp tin
-                $file_path = $row['file_path'];
-                if (pathinfo($file_path, PATHINFO_EXTENSION) === 'zip') {
-                    // Nếu là file zip, hiển thị tên file và tạo liên kết tải xuống
-                    echo "<a href='$file_path' download>" . basename($file_path) . "</a>";
-                } else {
-                    // Nếu là hình ảnh, hiển thị hình ảnh
-                    echo "<img src='$file_path' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'>";
+                // Hiển thị tất cả các tệp tải lên
+                $file_paths = explode(',', $row['file_path']);
+                foreach ($file_paths as $file_path) {
+                    // Kiểm tra loại tệp tin
+                    if (pathinfo($file_path, PATHINFO_EXTENSION) === 'zip') {
+                        // Nếu là file zip, hiển thị tên file và tạo liên kết tải xuống
+                        echo "<a href='$file_path' download>" . basename($file_path) . "</a><br>";
+                    } else {
+                        // Nếu là hình ảnh, hiển thị hình ảnh
+                        echo "<img src='$file_path' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
+                    }
                 }
                 echo "</td>";
                 echo "<td>{$row['status']}</td>";

@@ -1,6 +1,10 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    // Nếu chưa, bắt đầu một phiên session mới
+    session_start();
+}
 require_once('../config.php');
+require_once('authentication.php');
 
 // Kiểm tra người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
@@ -39,9 +43,16 @@ if ($_SESSION['user_id'] != $row['user_id']) {
 
 // Xác nhận xóa đóng góp
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Kiểm tra xem có các bản ghi liên quan từ các bảng khác trỏ đến đóng góp này không
+    // Nếu có, bạn cần xử lý trước khi xóa đóng góp
+    // Ví dụ: Xóa các bản ghi liên quan từ các bảng khác
+
+    // Sau đó, tiến hành xóa đóng góp
     $delete_sql = "DELETE FROM contributions WHERE contribution_id = '$contribution_id'";
     if (mysqli_query($conn, $delete_sql)) {
-        echo "Xóa đóng góp thành công.";
+        header("Location: manage_contribution.php");
+        exit();
+
     } else {
         echo "Lỗi: " . $delete_sql . "<br>" . mysqli_error($conn);
     }

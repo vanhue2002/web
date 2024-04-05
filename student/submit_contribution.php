@@ -1,6 +1,7 @@
 <?php
 require_once('../login/header.php');
 require_once('../config.php');
+require_once('authentication.php');
 
 // Kiểm tra xem biến session đã tồn tại và có giá trị không
 $faculty_id = isset($_SESSION['selected_faculty_id']) ? $_SESSION['selected_faculty_id'] : '';
@@ -17,12 +18,6 @@ if(isset($_GET['event_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nộp đóng góp</title>
-    <script>
-        // Hàm hiển thị thông báo
-        function showNotification() {
-            alert("Email đã được gửi đi thành công!");
-        }
-    </script>
 </head>
 <body>
     <h2>Nộp đóng góp</h2>
@@ -32,7 +27,7 @@ if(isset($_GET['event_id'])) {
         <label for="contribution">Đóng góp:</label><br>
         <textarea id="contribution" name="contribution" rows="4" cols="50" required></textarea><br><br>
         <label for="file">Hình ảnh hoặc tệp đính kèm:</label><br>
-        <input type="file" id="file" name="file" accept="image/*,.zip" ><br><br>
+        <input type="file" id="file" name="file[]" accept="image/*,.zip" multiple><br><br>
         <label for="agree">Tôi đồng ý với <a href="#">Điều khoản và Điều kiện</a>:</label>
         <input type="checkbox" id="agree" name="agree" required><br><br>
         <!-- Sử dụng biến faculty_id đã được kiểm tra -->

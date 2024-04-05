@@ -1,5 +1,6 @@
 <?php
 require_once('../config.php');
+require_once('authentication.php');
 
 // Kiểm tra xem đã nhận được dữ liệu từ form chưa
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,13 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $role = $_POST['role'];
         $faculty_name = $_POST['faculty_name'];
 
-        // Kiểm tra xem tên người dùng đã tồn tại trong cơ sở dữ liệu chưa
-        $query_check_username = "SELECT * FROM users WHERE username = '$username'";
-        $result_check_username = mysqli_query($conn, $query_check_username);
+        // Kiểm tra xem đã có Marketing Coordinator trong khoa được chỉ định hay chưa
+        $query_check_existing_role = "SELECT * FROM users WHERE role = 'Marketing Coordinator' AND faculty_name = '$faculty_name'";
+        $result_check_existing_role = mysqli_query($conn, $query_check_existing_role); 
 
-        if (mysqli_num_rows($result_check_username) > 0) {
-            // Nếu tên người dùng đã tồn tại, hiển thị thông báo lỗi
-            echo "Tên người dùng đã tồn tại. Vui lòng chọn một tên người dùng khác.";
+        if ($role == "Marketing Coordinator" && mysqli_num_rows($result_check_existing_role) > 0) {
+            // Nếu đã có Marketing Coordinator trong khoa, hiển thị thông báo lỗi
+            echo "<script>alert('Đã có một Marketing Coordinator cho khoa này rồi. Không thể thêm nữa.'); window.history.back();</script>";
         } else {
             // Mã hóa mật khẩu
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);

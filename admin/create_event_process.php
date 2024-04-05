@@ -1,6 +1,8 @@
 <?php
 // Kết nối database
 require_once('../config.php');
+require_once('authentication.php');
+
 
 // Kiểm tra xem đã nhận được dữ liệu từ form chưa
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

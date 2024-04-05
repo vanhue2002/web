@@ -2,6 +2,7 @@
 session_start(); // Bắt đầu hoặc khởi tạo phiên
 require_once('../config.php');
 require_once('../login/header.php');
+require_once('authentication.php');
 
 if (isset($_SESSION['faculty_name'])) {
     $faculty_name = $_SESSION['faculty_name'];
@@ -32,22 +33,33 @@ if (isset($_SESSION['faculty_name'])) {
             echo "Contribution ID: " . $row['contribution_id'] . "<br>";
             echo "Title: " . $row['title'] . "<br>";
             echo "Content: " . $row['content'] . "<br>";
-            // Kiểm tra loại tệp tin
-            $file_path = $row['file_path'];
-            if (pathinfo($file_path, PATHINFO_EXTENSION) === 'zip') {
-                // Nếu là file zip, hiển thị tên file và tạo liên kết tải xuống
-                echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";
-            } else {
-                // Nếu là hình ảnh, hiển thị hình ảnh
-                echo "Image: <img src='../student/" . $row['file_path'] . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
+            
+            // Hiển thị tất cả các tệp tải lên
+            $file_paths = explode(',', $row['file_path']);
+            $imageDisplayed = false; // Biến để kiểm tra xem từ "Image" đã được hiển thị hay chưa
+            foreach ($file_paths as $file_path) {
+                // Kiểm tra xem tệp có phải là hình ảnh không
+                if (in_array(pathinfo($file_path, PATHINFO_EXTENSION), array("jpg", "jpeg", "png", "gif"))) {
+                    if (!$imageDisplayed) {
+                        echo "Image:<br>"; // Hiển thị từ "Image" chỉ một lần
+                        $imageDisplayed = true;
+                    }
+                    echo "<img src='../student/" . $file_path . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
+                } else {
+                    echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";
+                }
             }
+
+
+
+            
             echo "Status: " . $row['status'] . "<br>";
             echo "Created At: " . $row['created_at'] . "<br>";
             echo "Updated At: " . $row['updated_at'] . "<br>";
             echo "User ID: " . $row['user_id'] . "<br>";
             echo "Username: " . $row['username'] . "<br>";
             echo "Email: " . $row['email'] . "<br>";
-            echo "Faculty: " . $row['faculty_name'] . "<br>";
+            
 
             // Hiển thị form để thêm hoặc cập nhật bình luận
             echo "<form method='post' action='add_update_comment.php'>";

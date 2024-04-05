@@ -1,8 +1,9 @@
+Tạo cho tôi một trang php để  guest có thể xem được danh sách các đóng góp(contribution) đã được chủ khoa(Marketing Coordinator) publish
+Đây là file xử lí pulish của tôi
 <?php
-session_start();
+session_start(); // Bắt đầu hoặc khởi tạo phiên
 require_once('../config.php');
 require_once('authentication.php');
-require_once('../login/header.php');
 
 if (isset($_POST['publish_contribution']) && isset($_SESSION['faculty_name'])) {
     $faculty_name = $_SESSION['faculty_name'];
@@ -15,9 +16,9 @@ if (isset($_POST['publish_contribution']) && isset($_SESSION['faculty_name'])) {
         $row = mysqli_fetch_assoc($result_check_status);
         $current_status = $row['status'];
         
-        // Nếu trạng thái là "submitted" thì cập nhật thành "published" và cập nhật thời gian tạo
+        // Nếu trạng thái là "submitted" thì cập nhật thành "published"
         if ($current_status === "submitted") {
-            $sql_update = "UPDATE contributions SET status = 'published', created_at = NOW() WHERE contribution_id = $contribution_id";
+            $sql_update = "UPDATE contributions SET status = 'published' WHERE contribution_id = $contribution_id";
             $result_update = mysqli_query($conn, $sql_update);
 
             if ($result_update) {
@@ -35,3 +36,5 @@ if (isset($_POST['publish_contribution']) && isset($_SESSION['faculty_name'])) {
     echo "Yêu cầu không hợp lệ.";
 }
 ?>
+
+Còn đây là cơ sở dữ liệu

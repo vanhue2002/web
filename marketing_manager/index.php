@@ -6,4 +6,4 @@ require_once('authentication.php');
 
 <a href="view_contribution.php">Student Contributions</a>
 <br>
-<a href="statistics.html">Statistics</a>
+<a href="manager_dashboard.php">Statistics</a>

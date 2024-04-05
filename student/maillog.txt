@@ -1,0 +1,194 @@
+2024-04-04 15:00:02 2: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP g29-20020a63565d000000b005f05b06229dsm13544577pgm.41 - gsmtp
+
+2024-04-04 15:00:02 1: CLIENT -> SERVER: EHLO localhost
+
+2024-04-04 15:00:02 2: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [58.187.229.116]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2024-04-04 15:00:02 1: CLIENT -> SERVER: STARTTLS
+
+2024-04-04 15:00:02 2: SERVER -> CLIENT: 220 2.0.0 Ready to start TLS
+
+2024-04-04 15:00:02 1: CLIENT -> SERVER: EHLO localhost
+
+2024-04-04 15:00:02 2: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [58.187.229.116]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2024-04-04 15:00:02 1: CLIENT -> SERVER: AUTH LOGIN
+
+2024-04-04 15:00:02 2: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2024-04-04 15:00:02 1: CLIENT -> SERVER: [credentials hidden]
+2024-04-04 15:00:02 2: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2024-04-04 15:00:02 1: CLIENT -> SERVER: [credentials hidden]
+2024-04-04 15:00:03 2: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g29-20020a63565d000000b005f05b06229dsm13544577pgm.41 - gsmtp
+
+2024-04-04 15:00:03 1: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g29-20020a63565d000000b005f05b06229dsm13544577pgm.41 - gsmtp
+
+2024-04-04 15:00:03 2: SMTP Error: Could not authenticate.
+2024-04-04 15:00:03 1: CLIENT -> SERVER: QUIT
+
+2024-04-04 15:00:03 2: SERVER -> CLIENT: 221 2.0.0 closing connection g29-20020a63565d000000b005f05b06229dsm13544577pgm.41 - gsmtp
+
+2024-04-04 15:00:03 2: SMTP Error: Could not authenticate.
+2024-04-04 15:02:40 1: SMTP ERROR: Failed to connect to server:  (0)
+2024-04-04 15:02:40 2: SMTP Error: Could not connect to SMTP host. Failed to connect to server
+2024-04-04 15:02:53 2: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP h23-20020a17090acf1700b002a2f7dd8cecsm371584pju.4 - gsmtp
+
+2024-04-04 15:02:53 1: CLIENT -> SERVER: EHLO localhost
+
+2024-04-04 15:02:53 2: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [58.187.229.116]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2024-04-04 15:02:53 1: CLIENT -> SERVER: STARTTLS
+
+2024-04-04 15:02:54 2: SERVER -> CLIENT: 220 2.0.0 Ready to start TLS
+
+2024-04-04 15:02:54 1: CLIENT -> SERVER: EHLO localhost
+
+2024-04-04 15:02:54 2: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [58.187.229.116]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2024-04-04 15:02:54 1: CLIENT -> SERVER: AUTH LOGIN
+
+2024-04-04 15:02:54 2: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2024-04-04 15:02:54 1: CLIENT -> SERVER: [credentials hidden]
+2024-04-04 15:02:54 2: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2024-04-04 15:02:54 1: CLIENT -> SERVER: [credentials hidden]
+2024-04-04 15:02:54 2: SERVER -> CLIENT: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials h23-20020a17090acf1700b002a2f7dd8cecsm371584pju.4 - gsmtp
+
+2024-04-04 15:02:54 1: SMTP ERROR: Password command failed: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials h23-20020a17090acf1700b002a2f7dd8cecsm371584pju.4 - gsmtp
+
+2024-04-04 15:02:54 2: SMTP Error: Could not authenticate.
+2024-04-04 15:02:54 1: CLIENT -> SERVER: QUIT
+
+2024-04-04 15:02:54 2: SERVER -> CLIENT: 221 2.0.0 closing connection h23-20020a17090acf1700b002a2f7dd8cecsm371584pju.4 - gsmtp
+
+2024-04-04 15:02:54 2: SMTP Error: Could not authenticate.
+2024-04-04 15:13:23 2: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP p17-20020a170902e75100b001def0897284sm15486002plf.76 - gsmtp
+
+2024-04-04 15:13:23 1: CLIENT -> SERVER: EHLO localhost
+
+2024-04-04 15:13:23 2: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [58.187.229.116]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2024-04-04 15:13:23 1: CLIENT -> SERVER: STARTTLS
+
+2024-04-04 15:13:23 2: SERVER -> CLIENT: 220 2.0.0 Ready to start TLS
+
+2024-04-04 15:13:23 1: CLIENT -> SERVER: EHLO localhost
+
+2024-04-04 15:13:23 2: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [58.187.229.116]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2024-04-04 15:13:23 1: CLIENT -> SERVER: AUTH LOGIN
+
+2024-04-04 15:13:23 2: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2024-04-04 15:13:23 1: CLIENT -> SERVER: [credentials hidden]
+2024-04-04 15:13:24 2: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2024-04-04 15:13:24 1: CLIENT -> SERVER: [credentials hidden]
+2024-04-04 15:13:24 2: SERVER -> CLIENT: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor p17-20020a170902e75100b001def0897284sm15486002plf.76 - gsmtp
+
+2024-04-04 15:13:24 1: SMTP ERROR: Password command failed: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor p17-20020a170902e75100b001def0897284sm15486002plf.76 - gsmtp
+
+2024-04-04 15:13:24 2: SMTP Error: Could not authenticate.
+2024-04-04 15:13:24 1: CLIENT -> SERVER: QUIT
+
+2024-04-04 15:13:24 2: SERVER -> CLIENT: 221 2.0.0 closing connection p17-20020a170902e75100b001def0897284sm15486002plf.76 - gsmtp
+
+2024-04-04 15:13:24 2: SMTP Error: Could not authenticate.
+2024-04-04 15:15:07 2: SERVER -> CLIENT: 220 smtp.gmail.com ESMTP g6-20020a170902c38600b001e0b287c1d2sm5934782plg.215 - gsmtp
+
+2024-04-04 15:15:07 1: CLIENT -> SERVER: EHLO localhost
+
+2024-04-04 15:15:07 2: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [58.187.229.116]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2024-04-04 15:15:07 1: CLIENT -> SERVER: STARTTLS
+
+2024-04-04 15:15:08 2: SERVER -> CLIENT: 220 2.0.0 Ready to start TLS
+
+2024-04-04 15:15:08 1: CLIENT -> SERVER: EHLO localhost
+
+2024-04-04 15:15:08 2: SERVER -> CLIENT: 250-smtp.gmail.com at your service, [58.187.229.116]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+2024-04-04 15:15:08 1: CLIENT -> SERVER: AUTH LOGIN
+
+2024-04-04 15:15:08 2: SERVER -> CLIENT: 334 VXNlcm5hbWU6
+
+2024-04-04 15:15:08 1: CLIENT -> SERVER: [credentials hidden]
+2024-04-04 15:15:08 2: SERVER -> CLIENT: 334 UGFzc3dvcmQ6
+
+2024-04-04 15:15:08 1: CLIENT -> SERVER: [credentials hidden]
+2024-04-04 15:15:08 2: SERVER -> CLIENT: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor g6-20020a170902c38600b001e0b287c1d2sm5934782plg.215 - gsmtp
+
+2024-04-04 15:15:08 1: SMTP ERROR: Password command failed: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor g6-20020a170902c38600b001e0b287c1d2sm5934782plg.215 - gsmtp
+
+2024-04-04 15:15:08 2: SMTP Error: Could not authenticate.
+2024-04-04 15:15:08 1: CLIENT -> SERVER: QUIT
+
+2024-04-04 15:15:09 2: SERVER -> CLIENT: 221 2.0.0 closing connection g6-20020a170902c38600b001e0b287c1d2sm5934782plg.215 - gsmtp
+
+2024-04-04 15:15:09 2: SMTP Error: Could not authenticate.

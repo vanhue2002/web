@@ -1,6 +1,11 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    // Nếu chưa, bắt đầu một phiên session mới
+    session_start();
+}
 require_once('../config.php');
+require_once('authentication.php');
+require_once('../login/header.php');
 
 // Kiểm tra người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
@@ -48,36 +53,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $file_changed = false;
 
     // Kiểm tra xem có tệp mới được tải lên không
-    if ($_FILES["file"]["size"] > 0) {
-        // Xóa tệp cũ
-        unlink($file_path);
-        // Tạo tên tệp mới
+    if (!empty($_FILES['file']['name'][0])) {
+        $file_paths = [];
         $target_dir = "uploads/";
-        $target_file = $target_dir . basename($_FILES["file"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-        // Kiểm tra kích thước của tệp và các định dạng hợp lệ
-        if ($_FILES["file"]["size"] > 5000000) {
-            echo "Tệp quá lớn.";
-            $uploadOk = 0;
-        } elseif (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
-            echo "Chỉ chấp nhận các tệp JPG, JPEG, PNG & GIF.";
-            $uploadOk = 0;
-        }
-
-        if ($uploadOk == 0) {
-            echo "Có lỗi xảy ra khi tải lên.";
-        } else {
-            // Di chuyển tệp mới vào thư mục uploads
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-                $file_path = $target_file;
-                $file_changed = true;
-                echo "Tệp " . htmlspecialchars(basename($target_file)) . " đã được tải lên thành công.";
-            } else {
-                echo "Có lỗi xảy ra khi tải lên.";
+        foreach ($_FILES['file']['name'] as $key => $filename) {
+            $target_file = $target_dir . basename($filename);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            // Kiểm tra kích thước của tệp và các định dạng hợp lệ
+            if ($_FILES["file"]["size"][$key] > 5000000) {
+                echo "Tệp quá lớn.";
+                $uploadOk = 0;
+            } elseif (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif", "zip"])) {
+                echo "Chỉ chấp nhận các tệp JPG, JPEG, PNG, GIF và ZIP.";
+                $uploadOk = 0;
+            }
+            if ($uploadOk == 1) {
+                if (move_uploaded_file($_FILES["file"]["tmp_name"][$key], $target_file)) {
+                    $file_paths[] = $target_file;
+                    $file_changed = true;
+                    echo "Tệp " . htmlspecialchars(basename($target_file)) . " đã được tải lên thành công.<br>";
+                } else {
+                    echo "Có lỗi xảy ra khi tải lên.";
+                }
             }
         }
+        $file_path = implode(',', $file_paths);
     }
 
     // Cập nhật contribution trong cơ sở dữ liệu
@@ -110,8 +111,8 @@ mysqli_close($conn);
         <input type="text" id="title" name="title" value="<?php echo $title; ?>" required><br><br>
         <label for="content">Nội dung:</label><br>
         <textarea id="content" name="content" rows="4" cols="50" required><?php echo $content; ?></textarea><br><br>
-        <label for="file">Tệp đính kèm:</label><br>
-        <input type="file" id="file" name="file" accept="image/*"><br><br>
+        <label for="file">Hình ảnh hoặc tệp đính kèm:</label><br>
+        <input type="file" id="file" name="file[]" accept="image/*,.zip" multiple><br><br>
         <button type="submit">Cập nhật</button>
     </form>
 </body>

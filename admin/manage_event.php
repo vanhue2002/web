@@ -1,3 +1,8 @@
+<?php
+require_once('authentication.php');
+require_once('../login/header.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

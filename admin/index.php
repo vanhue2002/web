@@ -9,3 +9,5 @@ require_once('../login/header.php');
 <a href="create_event.php">Create Events</a>
 <br>
 <a href="manage_faculty.php">Manage Faculty</a>
+<br>
+<a href="../register/register_admin_process.php">Register</a>

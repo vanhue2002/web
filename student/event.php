@@ -1,6 +1,7 @@
 <?php
 require_once('../config.php');
 require_once('../login/header.php');
+require_once('authentication.php');
 
 // Kiểm tra người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
@@ -19,7 +20,6 @@ $sql = "SELECT e.event_id, e.event_name, e.submission_start_date, e.submission_e
         INNER JOIN users u ON u.faculty_name = f.faculty_name
         WHERE u.user_id = '$user_id'";
 $result = mysqli_query($conn, $sql);
-
 
 ?>
 

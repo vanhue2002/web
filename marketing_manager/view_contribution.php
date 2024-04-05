@@ -2,6 +2,7 @@
 session_start();
 require_once('../config.php');
 require_once('../login/header.php');
+require_once('authentication.php');
 
 // Kiểm tra xem người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
