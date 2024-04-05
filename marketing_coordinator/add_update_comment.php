@@ -17,9 +17,9 @@ if (isset($_POST['submit_comment'])) {
         $result_update_comment = mysqli_query($conn, $sql_update_comment);
 
         if ($result_update_comment) {
-            echo "Cập nhật bình luận thành công!";
+            echo "Edit comment successfully!";
         } else {
-            echo "Đã xảy ra lỗi khi cập nhật bình luận: " . mysqli_error($conn);
+            echo "An error occurred while editing comment: " . mysqli_error($conn);
         }
     } else {
         // Chưa có bình luận cho đóng góp này, thêm bình luận mới
@@ -27,13 +27,13 @@ if (isset($_POST['submit_comment'])) {
         $result_add_comment = mysqli_query($conn, $sql_add_comment);
 
         if ($result_add_comment) {
-            echo "Thêm bình luận thành công!";
+            echo "Successfully commented!";
         } else {
-            echo "Đã xảy ra lỗi khi thêm bình luận: " . mysqli_error($conn);
+            echo "An error occurred while commenting: " . mysqli_error($conn);
         }
     }
 } else {
-    echo "Yêu cầu không hợp lệ!";
+    echo "Invalid request!";
 }
 
 // Đóng kết nối

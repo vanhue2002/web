@@ -16,7 +16,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'Marketing Manager') {
     }
 
     // Hiển thị thông báo lỗi và chuyển hướng về trang trước đó
-    echo "<script>alert('Bạn không có quyền truy cập trang này!'); window.history.back();</script>";
+    echo "<script>alert('You don't have authorization to access this page!'); window.history.back();</script>";
     exit(); // Dừng kịch bản để ngăn chặn mã dưới đây được thực thi
 }
 

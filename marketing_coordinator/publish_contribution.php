@@ -19,17 +19,17 @@ if (isset($_POST['publish_contribution']) && isset($_SESSION['faculty_name'])) {
             $result_update = mysqli_query($conn, $sql_update);
 
             if ($result_update) {
-                echo "Đóng góp đã được xuất bản thành công.";
+                echo "Contributions published successfully!.";
             } else {
-                echo "Có lỗi xảy ra. Không thể xuất bản đóng góp.";
+                echo "An error occurred, publication failed.";
             }
         } else {
-            echo "Đóng góp này đã được xuất bản trước đó.";
+            echo "This contribution has been published.";
         }
     } else {
-        echo "Không thể kiểm tra trạng thái của đóng góp.";
+        echo "Can't check on current status of the contribution.";
     }
 } else {
-    echo "Yêu cầu không hợp lệ.";
+    echo "Invalid request.";
 }
 ?>

@@ -183,11 +183,11 @@ if (isset($_SESSION['faculty_name'])) {
         }
         echo "</div>";
     } else {
-        echo "Không có đóng góp nào được tìm thấy.";
+        echo "No contributions found.";
     }
     
 } else {
-    echo "Phiên đăng nhập chưa được bắt đầu hoặc biến 'faculty_name' không tồn tại trong phiên.";
+    echo "Session hasn't been started or 'faculty_name' does not exist in the current session.";
 }
 
 // Đóng kết nối
