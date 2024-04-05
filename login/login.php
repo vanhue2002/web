@@ -15,7 +15,7 @@ require_once('../login/header.php');
     <div class="gloss"></div>
     <img class="cover" src="https://raw.githubusercontent.com/robole/artifice/main/shiny-book-reveal/img/cover.png">
     <div class="description">
-      <h1>The Handmaid's Tale</h1>
+      <h1>Login</h1>
    <div>
    <?php
           // Show any error messages if login fails
@@ -35,7 +35,7 @@ require_once('../login/header.php');
     </div>
    
   </div>
-  <h1>The Handmaid's Tale</h1>
+  <h1>University Magazine</h1>
   <div class="rating">
     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
   </div>
