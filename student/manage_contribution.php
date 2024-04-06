@@ -20,84 +20,9 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Contributions</title>
+    <link rel="stylesheet" href="./css/manage_contribution.css">
     <style>
-         body{
-  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg'); 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: 'Pontano Sans', sans-serif;
-  font-size: calc(0.65em + .05vw);
-}
-        main {
-    margin: 20px auto; 
-    max-width: 800px; 
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-    background-color: #fff;
-}
-
-table {
-    width: 100%; 
-    border-collapse: collapse;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-}
-
-table th,
-table td {
-    padding: 10px; 
-    border: 1px solid #ccc; 
-    text-align: left;
-}
-
-table th {
-    background-color: #f0f0f0; }
-
-table td img {
-    max-width: 100px; 
-    max-height: 100px;
-}
-
-footer {
-  position: fixed;
-  bottom: 0; 
-  width: 100%; 
-  background-color: #343a40;
-  color: #fff;
-  text-align: center;
-}
-
-@media screen and (max-width: 800px) {
-    body {
-  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: 'Pontano Sans', sans-serif;
-  font-size: calc(0.65em + .05vw);
-  min-height: 100vh;
-  display: flex; 
-  flex-direction: column; 
-}
-            main {
-              flex:1;
-              padding: 10px; 
-            }
-           
-        }
-        table {
-            font-size: .8em;
-        }
-        table th,
-        table td {
-            padding: 5px; /* giảm padding trong ô */
-        }
-        table td img {
-            max-width: 50px; /* giảm kích thước hình ảnh */
-            max-height: 50px;
-        }
+        
     </style>
     <!-- Add your CSS links here -->
 </head>

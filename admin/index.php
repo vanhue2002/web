@@ -8,46 +8,9 @@ require_once('../login/header.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title> 
+    <link rel="stylesheet" href="./css/index.css">
     <style>
-       body {
-  background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: 'Pontano Sans', sans-serif;
-  font-size: calc(0.65em + .05vw);
-}
-.content {
-  padding: 20px;
-  background-color: #fff;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  .content div {
-    width: 60%;
-    border-radius: 50px;
-    text-align: center;
-    background-color: #007bff;
-  }
-
-  .content div a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 60px;
-  }
-  footer {
-    position: fixed; 
-    bottom: 0;
-    width: 100%;
-    background-color: #343a40;
-    color: #fff;
-    text-align: center;
-  }
- 
+      
     </style>
 </head>
 
