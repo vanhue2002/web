@@ -8,17 +8,7 @@ require_once('header.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Events</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <style>
-        section .signin {            
-            width: 1000px;           
-        }
-        h2{
-            text-align: center;
-            color: white;
-        }
-    </style>
+    <title>Quản Lý Sự Kiện</title>
 </head>
 <body>
     
