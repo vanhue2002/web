@@ -243,4 +243,6 @@ input[type="submit"]:active
   }
 }
 
-Bạn hãy xem file mẫu và từ đó giúp tôi sửa file style sao cho  file sau của tôi có giao diện giống file mẫu:
+Bạn hãy xem file mẫu và từ đó giúp tôi sửa file style mẫu dựa trên các thẻ mà tôi đã dùng sao cho  file sau của tôi có giao diện giống file mẫu:
+
+Làm ơn, file của tôi làm gì có cái thẻ này: .section .signin .content mà bạn cứ cho vào, đấy là mẫu, tôi muốn bạn xem mẫu rồi từ đó css cho file của tôi thôi chứ có bảo bạn làm y nguyên mẫu đâu

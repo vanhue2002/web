@@ -1,7 +1,7 @@
 <?php
 session_start(); // Bắt đầu hoặc khởi tạo phiên
 require_once('../config.php');
-require_once('../login/header.php');
+require_once('header.php');
 require_once('authentication.php');
 
 if (isset($_SESSION['faculty_name'])) {
@@ -121,3 +121,4 @@ if (isset($_SESSION['faculty_name'])) {
 // Đóng kết nối
 mysqli_close($conn);
 ?>
+
