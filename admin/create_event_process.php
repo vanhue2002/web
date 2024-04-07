@@ -19,14 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Thực thi truy vấn
         if (mysqli_query($conn, $sql)) {
-            echo "Sự kiện đã được tạo thành công!";
-            echo "<a href='../'>Trở lại trang chủ</a>";
+            echo "<script>alert('The event has been created successfully!'); window.history.back();</script>";
         } else {
-            echo "Đã xảy ra lỗi khi tạo sự kiện: " . mysqli_error($conn);
+            echo "<script>alert('An error occurred while creating the event: '); window.history.back();</script>" . mysqli_error($conn);
         }
     } else {
         // Nếu thiếu trường thông tin cần thiết, hiển thị thông báo lỗi
-        echo "Vui lòng điền đầy đủ thông tin để tạo sự kiện.";
+        echo "<script>alert('Please fill in all information to create an event.'); window.history.back();</script>";
     }
 } else {
     // Nếu không phải là phương thức POST, chuyển hướng người dùng đến trang tạo sự kiện

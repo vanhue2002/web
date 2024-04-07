@@ -2,7 +2,7 @@
 // Kết nối database
 require_once('../config.php');
 require_once('authentication.php');
-require_once('../login/header.php');
+require_once('header.php');
 
 // Kiểm tra xem có tham số event_id được truyền vào không
 if (isset($_GET['event_id'])) {
@@ -20,9 +20,9 @@ if (isset($_GET['event_id'])) {
         $query = "UPDATE events SET event_name = '$event_name', submission_start_date = '$submission_start_date', submission_end_date = '$submission_end_date', faculty_name = '$faculty_name' WHERE event_id = $event_id";
 
         if (mysqli_query($conn, $query)) {
-            echo "Sự kiện đã được cập nhật thành công!";
+            echo "<script>alert('The event has been updated successfully!'); window.history.back();</script>";
         } else {
-            echo "Đã xảy ra lỗi khi cập nhật sự kiện: " . mysqli_error($conn);
+            echo "<script>alert('An error occurred while updating the event: '); window.history.back();</script>" . mysqli_error($conn);
         }
     }
 
@@ -39,18 +39,70 @@ if (isset($_GET['event_id'])) {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Cập Nhật Sự Kiện</title>
+            <title>Update event</title>
+            <link rel="stylesheet" href="./css/style.css">
+            <style>
+                /* CSS cho thẻ h2 */
+section .signin .container h2 {
+  font-size: 2em;
+  color: #0f0;
+  text-transform: uppercase;
+}
+
+/* CSS cho thẻ label */
+section .signin .container form label {
+  color: #fff;
+}
+
+/* CSS cho các trường nhập liệu input và select */
+section .signin .container form input[type="text"],
+section .signin .container form input[type="date"],
+section .signin .container form select {
+  width: 100%;
+  background: #333;
+  border: none;
+  outline: none;
+  padding: 15px 10px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+  text-align: center;
+}
+
+/* CSS cho nút gửi dữ liệu input[type="submit"] */
+section .signin .container form input[type="submit"] {
+  padding: 10px;
+  background: #0f0;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.35em;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+section .signin .container form {
+  text-align: center;
+}
+/* CSS cho nền của input[type="submit"] khi được nhấn */
+input[type="submit"]:active {
+  opacity: 0.6;
+}
+
+            </style>
         </head>
         <body>
-            <h2>Cập Nhật Sự Kiện</h2>
+            <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
+            <div class="signin">
+        <div class="container">
+            <h2>UPDATE EVENT</h2><br>
             <form method="post">
-                <label for="event_name">Tên Sự Kiện:</label><br>
-                <input type="text" id="event_name" name="event_name" value="<?php echo $row['event_name']; ?>"><br>
-                <label for="submission_start_date">Ngày Bắt Đầu:</label><br>
-                <input type="date" id="submission_start_date" name="submission_start_date" value="<?php echo $row['submission_start_date']; ?>"><br>
-                <label for="submission_end_date">Ngày Kết Thúc:</label><br>
-                <input type="date" id="submission_end_date" name="submission_end_date" value="<?php echo $row['submission_end_date']; ?>"><br>
-                <label for="faculty_name">Khoa:</label><br>
+                <label for="event_name">Event name:</label><br>
+                <input type="text" id="event_name" name="event_name" value="<?php echo $row['event_name']; ?>"><br><br>
+                <label for="submission_start_date">Start date:</label><br>
+                <input type="date" id="submission_start_date" name="submission_start_date" value="<?php echo $row['submission_start_date']; ?>"><br><br>
+                <label for="submission_end_date">End date:</label><br>
+                <input type="date" id="submission_end_date" name="submission_end_date" value="<?php echo $row['submission_end_date']; ?>"><br><br>
+                <label for="faculty_name">Faculty:</label><br>
                 <!-- Đây là một ví dụ đơn giản, bạn có thể sử dụng các phương thức khác để lấy danh sách khoa từ cơ sở dữ liệu -->
                 <select id="faculty_name" name="faculty_name">
                     <?php
@@ -65,18 +117,22 @@ if (isset($_GET['event_id'])) {
                         }
                     ?>
                 </select><br><br>
-                <input type="submit" value="Cập Nhật">
+                <input type="submit" value="Update">
             </form>
+        </div>
+        </div>
+        </section>
         </body>
         </html>
 <?php
     } else {
-        echo "Sự kiện không tồn tại.";
+        echo "Event does not exist.";
     }
 } else {
-    echo "ID sự kiện không được cung cấp.";
+    echo "Event ID not provided.";
 }
 
 // Đóng kết nối database
 mysqli_close($conn);
 ?>
+

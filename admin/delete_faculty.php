@@ -15,18 +15,17 @@ if (isset($_GET['faculty_id'])) {
     // Thực thi truy vấn xóa
     mysqli_query($conn, $delete_comments_query);
     mysqli_query($conn, $delete_contributions_query);
-    mysqli_query($conn, $delete_statistics_query);
 
     // Xóa khoa từ bảng faculties
     $delete_faculty_query = "DELETE FROM faculties WHERE faculty_id = $faculty_id";
 
     if (mysqli_query($conn, $delete_faculty_query)) {
-        echo "Khoa đã được xóa thành công!";
+        echo "<script>alert('The faculty has been successfully deleted!'); window.history.back();</script>";
     } else {
-        echo "Đã xảy ra lỗi khi xóa khoa: " . mysqli_error($conn);
+        echo "<script>alert('An error occurred while deleting the faculty: '); window.history.back();</script>" . mysqli_error($conn);
     }
 } else {
-    echo "ID khoa không được cung cấp.";
+    echo "<script>alert('Faculty ID not provided.'); window.history.back();</script>";
 }
 
 // Đóng kết nối database

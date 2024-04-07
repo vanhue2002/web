@@ -15,15 +15,15 @@ if (isset($_GET['event_id'])) {
         $delete_event_query = "DELETE FROM events WHERE event_id = $event_id";
 
         if (mysqli_query($conn, $delete_event_query)) {
-            echo "Sự kiện đã được xóa thành công!";
+            echo "<script>alert('The event has been successfully deleted!'); window.history.back();</script>";
         } else {
-            echo "Đã xảy ra lỗi khi xóa sự kiện: " . mysqli_error($conn);
+            echo "<script>alert('An error occurred while deleting the event: '); window.history.back();</script>" . mysqli_error($conn);
         }
     } else {
-        echo "Đã xảy ra lỗi khi xóa các bản ghi liên quan: " . mysqli_error($conn);
+        echo "<script>alert('An error occurred while deleting related records: '); window.history.back();</script>" . mysqli_error($conn);
     }
 } else {
-    echo "ID sự kiện không được cung cấp.";
+    echo "<script>alert('Event ID not provided.'); window.history.back();</script>";
 }
 
 // Đóng kết nối database

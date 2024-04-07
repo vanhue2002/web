@@ -16,22 +16,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (mysqli_num_rows($result) > 0) {
             // Nếu tên khoa đã tồn tại, hiển thị thông báo lỗi
-            echo "Tên khoa đã tồn tại. Vui lòng chọn tên khoa khác.";
+            echo "<script>alert('Faculty name already exists. Please choose another faculty name.'); window.history.back();</script>";
         } else {
             // Nếu tên khoa chưa tồn tại, thêm thông tin về khoa vào cơ sở dữ liệu
             $sql = "INSERT INTO faculties (faculty_name) VALUES ('$faculty_name')";
 
             // Thực thi truy vấn
             if (mysqli_query($conn, $sql)) {
-                echo "Khoa đã được tạo thành công!";
-                echo "<a href='../'>Trở lại trang chủ</a>";
+                echo "<script>alert('The faculty has been created successfully!'); window.history.back();</script>";
             } else {
-                echo "Đã xảy ra lỗi khi tạo khoa: " . mysqli_error($conn);
+                echo "<script>alert('An error occurred while creating the faculty: '); window.history.back();</script>" . mysqli_error($conn);
             }
         }
     } else {
         // Nếu thiếu trường thông tin cần thiết, hiển thị thông báo lỗi
-        echo "Vui lòng điền tên khoa để tạo khoa mới.";
+        echo "<script>alert('Please fill in all information to create an faculty.'); window.history.back();</script>";
     }
 } else {
     // Nếu không phải là phương thức POST, chuyển hướng người dùng đến trang tạo khoa

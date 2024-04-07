@@ -1,6 +1,6 @@
 <?php
 require_once('authentication.php');
-require_once('../login/header.php');
+require_once('header.php');
 ?>
 
 <!DOCTYPE html>
@@ -8,15 +8,25 @@ require_once('../login/header.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Khoa</title>
+    <title>Manage Faculties</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        h2{
+            text-align: center;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h2>Quản Lý Khoa</h2>
+    <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
+    <div class="signin">
+<div class="container">
+    <h2>MANAGE FACULTIES</h2><br>
     <table border="1">
         <tr>
             <th>ID</th>
-            <th>Tên Khoa</th>
-            <th>Hành Động</th>
+            <th>Faculty name</th>
+            <th>Action</th>
         </tr>
         <?php
         // Kết nối database
@@ -31,7 +41,7 @@ require_once('../login/header.php');
             echo "<tr>";
             echo "<td>" . $row['faculty_id'] . "</td>";
             echo "<td>" . $row['faculty_name'] . "</td>";
-            echo "<td><a href='view_faculty.php?faculty_id=" . $row['faculty_id'] . "'>Xem</a> | <a href='delete_faculty.php?faculty_id=" . $row['faculty_id'] . "'>Xóa</a> | <a href='update_faculty.php?faculty_id=" . $row['faculty_id'] . "'>Cập Nhật</a></td>";
+            echo "<td><a href='view_faculty.php?faculty_id=" . $row['faculty_id'] . "'>View</a> | <a href='delete_faculty.php?faculty_id=" . $row['faculty_id'] . "'>Delete</a> | <a href='update_faculty.php?faculty_id=" . $row['faculty_id'] . "'>Update</a></td>";
             echo "</tr>";
         }
 
@@ -39,5 +49,8 @@ require_once('../login/header.php');
         mysqli_close($conn);
         ?>
     </table>
+    </div>
+    </div>
+    </section>
 </body>
 </html>
