@@ -4,6 +4,157 @@ require_once('../config.php');
 require_once('../login/header.php');
 require_once('authentication.php');
 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      /* body {
+    background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: calc(0.65em + .05vw);
+  }    */
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+  {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+body 
+{
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+}
+section 
+{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+section::before 
+{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#000,#0f0,#000);
+  animation: animate 5s linear infinite;
+}
+@keyframes animate 
+{
+  0%
+  {
+    transform: translateY(-100%);
+  }
+  100%
+  {
+    transform: translateY(100%);
+  }
+}
+section span 
+{
+  position: relative;
+  display: block;
+  width: calc(6.25vw - 2px);
+  height: calc(6.25vw - 2px);
+  background: #181818;
+  z-index: 2;
+  transition: 1.5s;
+}
+section span:hover 
+{
+  background: #0f0;
+  transition: 0s;
+}
+section .signin
+{
+  position: relative;
+
+  width: 80%;
+  background: #222;  
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  margin-left:100px;
+}
+section .signin .content 
+{
+  position: relative;
+
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+section .signin .content h2 
+{
+  font-size: 2em;
+  color: #0f0;
+  text-transform: uppercase;
+}
+  main {
+      margin: 20px auto;
+      max-width: 800px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      border-radius: 4px;
+  }
+  
+  .contribution strong {
+      font-size: 1.4em;
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+  }
+  
+  .contribution {
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #f0f0f0;
+      border-radius: 4px;
+      background: #f9f9f9;
+  }
+  
+  .pagination {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+  }
+  
+  .pagination a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+  }
+  
+   
+    </style>
+</head>
+<body>
+   <section>
+    <div class="signin">
+        <div class="content">
+           <main>
+           <?php
 if (isset($_SESSION['faculty_name'])) {
     $faculty_name = $_SESSION['faculty_name'];
     
@@ -117,6 +268,14 @@ if (isset($_SESSION['faculty_name'])) {
 } else {
     echo "Phiên đăng nhập chưa được bắt đầu hoặc biến 'faculty_name' không tồn tại trong phiên.";
 }
+?>  
+           </main>
+        </div>
+    </div>
+   </section>
+</body>
+</html>
+<?php
 
 // Đóng kết nối
 mysqli_close($conn);

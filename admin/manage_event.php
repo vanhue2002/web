@@ -9,6 +9,7 @@ require_once('../login/header.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Sự Kiện</title>
+    <link rel="stylesheet" href="./css/manage_event.css">
 </head>
 <body>
     <h2>Quản Lý Sự Kiện</h2>

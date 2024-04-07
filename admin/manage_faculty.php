@@ -9,6 +9,7 @@ require_once('../login/header.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Khoa</title>
+    <link rel="stylesheet" href="./css/manage_faculty.css">
 </head>
 <body>
     <h2>Quản Lý Khoa</h2>

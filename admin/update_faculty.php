@@ -53,6 +53,7 @@ if (isset($_GET['faculty_id'])) {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Cập Nhật Khoa</title>
+            <link rel="stylesheet" href="./css/update_faculty.css">
         </head>
         <body>
             <h2>Cập Nhật Khoa</h2>

@@ -20,7 +20,7 @@
                 <?php
                 // Show any error messages if login fails
                 if (isset($_GET['error'])) {
-                    echo "<p class='error'>Invalid username or password.</p>";
+                    echo "<p class='error' style='color:red'>Invalid username or password.</p>";
                 }
                 ?>
                 <div class="form">

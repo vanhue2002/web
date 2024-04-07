@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+}
+
+form {
+  width: 400px;
+  background: #222;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
+}
+
+h2 {
+  font-size: 2em;
+  color: #0f0;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+label {
+  color: #fff;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  background: #333;
+  border: none;
+  outline: none;
+  padding: 15px;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+input[type="submit"] {
+  padding: 15px;
+  background: #0f0;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.35em;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+input[type="submit"]:active {
+  opacity: 0.6;
+}

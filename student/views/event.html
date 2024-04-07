@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Index</title>
+    <link rel="stylesheet" href="./css/event.css">
+    <!-- Add your CSS links here -->
+    
+</head>
+<body>
+
+        <section>
+            <div class="signin">
+                <div class="content">
+                    <h2>Events for Your Faculty</h2>
+                    <ul>
+                        <?php
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    // Tạo liên kết cho mỗi sự kiện, trỏ đến trang submit_contribution.php và truyền event_id bằng query string
+                                    echo "<li><a href='submit_contribution.php?event_id={$row['event_id']}'>{$row['event_name']} - Submission period: {$row['submission_start_date']} to {$row['submission_end_date']}</a></li>";
+                                }
+                            } else {
+                                echo "<li>No events found for your faculty.</li>";
+                            }
+                        ?>
+                    </ul>
+                </div>
+            </div>  
+        </section>
+
+</body>
+</html>

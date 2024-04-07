@@ -40,6 +40,7 @@ if (isset($_GET['event_id'])) {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Cập Nhật Sự Kiện</title>
+            <link rel="stylesheet" href="./css/update_event.css">
         </head>
         <body>
             <h2>Cập Nhật Sự Kiện</h2>
