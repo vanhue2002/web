@@ -25,6 +25,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background: #222;
+    z-index: 2;
 }
 
 header h1 {
