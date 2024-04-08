@@ -81,95 +81,30 @@ section span:hover {
   transition: 0s;
 }
 
-/* Thiết lập phần signin */
-section .signin {
-  position: absolute;
-  width: 400px;
-  background: #222;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  border-radius: 4px;
-  box-shadow: 0 15px 35px rgba(0,0,0,9);
+
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  width: 200px; 
+  background-color: #222;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 
-/* Thiết lập nội dung của signin */
-section .signin .content {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 40px;
+.sidebar ul {
+  list-style: none;
+  padding: 0;
 }
 
-/* Thiết lập tiêu đề của signin */
-section .signin .content h2 {
-  font-size: 2em;
-  color: #0f0;
-  text-transform: uppercase;
+.sidebar ul li {
+  margin-bottom: 10px;
 }
 
-/* Thiết lập form trong signin */
-section .signin .content .form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-/* Thiết lập inputBox trong form */
-section .signin .content .form .inputBox {
-  position: relative;
-  width: 100%;
-}
-
-/* Thiết lập input trong inputBox */
-section .signin .content .form .inputBox input {
-  position: relative;
-  width: 100%;
-  background: #333;
-  border: none;
-  outline: none;
-  padding: 25px 10px 7.5px;
-  border-radius: 4px;
-  color: #fff;
-  font-weight: 500;
-  font-size: 1em;
-}
-
-/* Thiết lập icon trong inputBox */
-section .signin .content .form .inputBox i {
-  position: absolute;
-  left: 0;
-  padding: 15px 10px;
-  font-style: normal;
-  color: #aaa;
-  transition: 0.5s;
-  pointer-events: none;
-}
-
-/* Thiết lập hiệu ứng khi focus hoặc input hợp lệ */
-.signin .content .form .inputBox input:focus ~ i,
-.signin .content .form .inputBox input:valid ~ i {
-  transform: translateY(-7.5px);
-  font-size: 0.8em;
-  color: #fff;
-}
-
-/* Thiết lập các liên kết */
-.signin .content .form .links {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Thiết lập các liên kết a */
-.signin .content .form .links a {
+.sidebar ul li a {
+  display: block;
+  padding: 10px;
   color: #fff;
   text-decoration: none;
 }
@@ -293,5 +228,3 @@ table {
     </section> 
 </body>
 </html>
-
-
