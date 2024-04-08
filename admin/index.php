@@ -1,6 +1,6 @@
 <?php
 require_once('authentication.php');
-
+include '../header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
