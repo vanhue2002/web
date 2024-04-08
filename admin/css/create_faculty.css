@@ -37,7 +37,9 @@ label {
   color: #fff;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="date"],
+select {
   width: 100%;
   background: #333;
   border: none;

@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once('../config.php');
-require_once('../login/header.php');
+include '../header.php';
+
 require_once('authentication.php');
 
 // Kiểm tra xem người dùng đã đăng nhập chưa
@@ -122,6 +123,7 @@ section .signin
   border-radius: 14px;
   box-shadow: 0 15px 35px rgba(0,0,0,9);
   margin-left:100px;
+  margin-top:100px;
 }
 section .signin .content 
 {
@@ -181,6 +183,10 @@ section .signin .content h2
 <body>
     <header>
         <h2>View All Contributions</h2>
+        <?php  
+include '../header.php';
+        
+        ?>
     </header>
     <section>
         <div class="signin">

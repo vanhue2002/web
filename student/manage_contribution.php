@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 require_once('../config.php');
-require_once('../login/header.php');
+include '../header.php';
 require_once('authentication.php');
 
 // Kiểm tra xem người dùng đã đăng nhập chưa

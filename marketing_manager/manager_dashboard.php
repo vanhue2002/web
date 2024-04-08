@@ -1,6 +1,7 @@
 <?php
 require_once('../config.php');
-require_once('../login/header.php');
+include '../header.php';
+
 require_once('authentication.php');
 
 // Truy vấn để lấy số lượng đóng góp của từng khoa

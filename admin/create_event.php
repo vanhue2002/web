@@ -1,7 +1,9 @@
 <?php
-require_once('header.php');
+
 
 require_once('authentication.php');
+include '../header.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -13,10 +15,13 @@ require_once('authentication.php');
     <title>Create event</title>
     <link rel="stylesheet" href="./css/style.css">
     <style>
+
+
         section .signin .container h2 {
   font-size: 2em;
   color: #0f0;
   text-transform: uppercase;
+  
 }
 
 /* CSS cho thẻ label */
@@ -59,7 +64,6 @@ input[type="submit"]:active {
 }
     </style>
 
-    <title>Tạo Sự Kiện</title>
     <link rel="stylesheet" href="./css/create_event.css">
 
 </head>
@@ -69,16 +73,16 @@ input[type="submit"]:active {
 <div class="container">
     <h2>CREATE NEW EVENT</h2>
     <form action="create_event_process.php" method="POST">
-        <label for="event_name">Event name:</label><br>
-        <input type="text" id="event_name" name="event_name" required ><br><br>
+        <label for="event_name">Event name:</label>
+        <input type="text" id="event_name" name="event_name" required >
 
-        <label for="start_date">Start date:</label><br>
-        <input type="date" id="start_date" name="start_date" required><br><br>
+        <label for="start_date">Start date:</label>
+        <input type="date" id="start_date" name="start_date" required>
 
-        <label for="end_date">End date:</label><br>
-        <input type="date" id="end_date" name="end_date" required><br><br>
+        <label for="end_date">End date:</label>
+        <input type="date" id="end_date" name="end_date" required>
 
-        <label for="faculty_name">Faculty:</label><br>
+        <label for="faculty_name">Faculty:</label>
         <select id="faculty_name" name="faculty_name" required>
             <?php
                 require_once('../config.php');
@@ -89,7 +93,7 @@ input[type="submit"]:active {
                 }
                 mysqli_close($conn);
             ?>
-        </select><br><br>
+        </select>
 
         <input type="submit" value="Create">
     </form>

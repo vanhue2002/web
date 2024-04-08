@@ -1,5 +1,5 @@
 <?php
-require_once('../login/header.php');
+include '../header.php';
 require_once('../config.php');
 require_once('authentication.php');
 
