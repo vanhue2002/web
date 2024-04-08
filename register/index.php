@@ -14,7 +14,7 @@
                 <div class="links">
                     <a href="register_admin.php" class="register-link">Admin Register</a>
                     <br>
-                    <br> <!-- Added line break -->
+                    <br> 
                     <a href="register_guest.php" class="register-link">Guest Register</a>
                 </div>
             </div>

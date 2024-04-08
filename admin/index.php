@@ -1,6 +1,6 @@
 <?php
 require_once('authentication.php');
-// require_once('header.php');
+
 include '../header.php';
 ?>
 <!DOCTYPE html>
@@ -74,17 +74,16 @@ section span:hover
   transition: 0s;
 }
 
-/* New CSS for sidebar navigation */
+
 .sidebar {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   height: auto;
-  width: 200px; /* Adjust width as needed */
+  width: 200px; 
   background-color: #222;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow */
-}
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
 
 .sidebar ul {
   list-style: none;
@@ -107,11 +106,10 @@ section span:hover
 }
 
 .signin {
-  margin-left: 220px; /* Adjust the margin to accommodate the sidebar width */
+  margin-left: 220px; 
 }
 
 .signin .content {
-  /* Your existing content styles */
 }
 
 .signin .content > div {

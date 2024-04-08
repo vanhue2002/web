@@ -3,10 +3,8 @@ include '../header.php';
 require_once('../config.php');
 require_once('authentication.php');
 
-// Kiểm tra xem biến session đã tồn tại và có giá trị không
 $faculty_id = isset($_SESSION['selected_faculty_id']) ? $_SESSION['selected_faculty_id'] : '';
 
-// Lấy event_id từ query string nếu có
 if(isset($_GET['event_id'])) {
     $_SESSION['selected_event_id'] = $_GET['event_id'];
 }
@@ -235,7 +233,6 @@ input[type="submit"]:active
         <input type="file" id="file" name="file[]" accept="image/*,.zip" multiple><br><br>
         <label for="agree" style="color:#fff"   >Tôi đồng ý với <a href="#">Điều khoản và Điều kiện</a>:</label>
         <input type="checkbox" id="agree" name="agree" required><br><br>
-        <!-- Sử dụng biến faculty_id đã được kiểm tra -->
         <input type="hidden" name="faculty_id" value="<?php echo $faculty_id; ?>">
         <div class="inputBox">
                 <input type="submit" onclick="showNotification()" value="Sent">

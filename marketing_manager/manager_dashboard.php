@@ -4,7 +4,6 @@ include '../header.php';
 
 require_once('authentication.php');
 
-// Truy vấn để lấy số lượng đóng góp của từng khoa
 $contributions_query = "SELECT f.faculty_name, COUNT(c.contribution_id) AS total_contributions
                         FROM faculties f
                         LEFT JOIN users u ON f.faculty_name = u.faculty_name
@@ -13,7 +12,6 @@ $contributions_query = "SELECT f.faculty_name, COUNT(c.contribution_id) AS total
 
 $contributions_result = $conn->query($contributions_query);
 
-// Truy vấn để tính số lượng sinh viên và số lượng sinh viên đã nộp bài của mỗi khoa
 $students_query = "SELECT f.faculty_name, 
                           COUNT(u.user_id) AS total_students,
                           SUM(CASE WHEN u.role = 'student' THEN 1 ELSE 0 END) AS students_with_contributions
@@ -23,16 +21,13 @@ $students_query = "SELECT f.faculty_name,
 
 $students_result = $conn->query($students_query);
 
-// Lấy tổng số lượng đóng góp
 $total_contributions_query = "SELECT COUNT(*) AS total_contributions FROM contributions";
 $total_contributions_result = $conn->query($total_contributions_query);
 $total_contributions_row = $total_contributions_result->fetch_assoc();
 $total_contributions = $total_contributions_row['total_contributions'];
 
-// Tạo mảng để lưu trữ dữ liệu
 $data = array();
 
-// Lặp qua kết quả và đưa vào mảng dữ liệu
 while ($row = $contributions_result->fetch_assoc()) {
     $faculty_name = $row['faculty_name'];
     $data[$row['faculty_name']]['total_contributions'] = $row['total_contributions'];
@@ -63,7 +58,6 @@ $sql_contributions = "SELECT f.faculty_name, COUNT(c.contribution_id) AS num_con
 
 $result_contributions = $conn->query($sql_contributions);
 
-// Truy vấn SQL để tính tổng số sinh viên của mỗi khoa
 $sql_students = "SELECT faculty_name, COUNT(user_id) AS num_students
                  FROM users
                  WHERE role = 'student'
@@ -72,7 +66,6 @@ $sql_students = "SELECT faculty_name, COUNT(user_id) AS num_students
 $result_students = $conn->query($sql_students);
 
 
-// Đóng kết nối
 $conn->close();
 ?>
 
@@ -136,14 +129,11 @@ $conn->close();
     </table>
     
     <script>
-        // Lấy dữ liệu từ PHP và chuyển thành JavaScript
         const facultyData = <?php echo json_encode($data); ?>;
 
-        // Tạo mảng dữ liệu cho biểu đồ
         const labels = Object.keys(facultyData);
         const contributions = labels.map(label => facultyData[label].total_contributions);
 
-        // Tạo biểu đồ
         const facultyChart = new Chart(document.getElementById('facultyChart'), {
             type: 'pie',
             data: {

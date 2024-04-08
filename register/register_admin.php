@@ -127,7 +127,6 @@ $result = mysqli_query($conn, $query);
         <label for="role">Vai trò:</label>
         <select name="role" id="role">
             <?php
-            // Đổ dữ liệu từ kết quả truy vấn vào danh sách dropdown
             while ($row = mysqli_fetch_assoc($result_roles)) {
                 echo "<option value='" . $row['role'] . "'>" . $row['role'] . "</option>";
             }
@@ -138,12 +137,10 @@ $result = mysqli_query($conn, $query);
             <?php
             
 
-            // Hiển thị các tùy chọn cho khoa
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<option value='" . $row['faculty_name'] . "'>" . $row['faculty_name'] . "</option>";
             }
 
-            // Đóng kết nối database
             mysqli_close($conn);
             ?>
         </select><br><br>

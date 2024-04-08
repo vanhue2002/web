@@ -22,12 +22,10 @@ include '../header.php';
   
 }
 
-/* CSS cho thẻ label */
 section .signin .container form label {
   color: #fff;
 }
 
-/* CSS cho các trường nhập liệu input và select */
 section .signin .container form input[type="text"],
 section .signin .container form input[type="date"],
 section .signin .container form select {
@@ -43,7 +41,6 @@ section .signin .container form select {
   text-align: center;
 }
 
-/* CSS cho nút gửi dữ liệu input[type="submit"] */
 section .signin .container form input[type="submit"] {
   padding: 10px;
   background: #0f0;
@@ -56,7 +53,6 @@ section .signin .container form input[type="submit"] {
 section .signin .container form {
   text-align: center;
 }
-/* CSS cho nền của input[type="submit"] khi được nhấn */
 input[type="submit"]:active {
   opacity: 0.6;
 }

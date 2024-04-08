@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-$role = $_SESSION['role']; // replace 'role' with the actual key you used to store user's role in session
+$role = $_SESSION['role']; 
 if($role == 'admin'){
     $_SESSION['header_title'] = 'Admin Dashboard';
 } elseif ($role == 'student') {
@@ -21,7 +21,6 @@ if($role == 'admin'){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Marketing Contribution Portal</title>
     <link rel="stylesheet" href="../headerstyle.css">
-    <!-- Add your CSS links here -->
 </head>
 <body>
     <header>

@@ -18,7 +18,6 @@
             <div class="content">
                 <h2>Login</h2>
                 <?php
-                // Show any error messages if login fails
                 if (isset($_GET['error'])) {
                     echo "<p class='error' style='color:red'>Invalid username or password.</p>";
                 }

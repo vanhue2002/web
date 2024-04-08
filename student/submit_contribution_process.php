@@ -1,23 +1,20 @@
 <?php
-session_start(); // Bắt đầu phiên đăng nhập
+session_start();
 
 require_once('../config.php');
 require_once('authentication.php');
 
-// Kiểm tra phiên đăng nhập
 if (!isset($_SESSION['user_id'])) {
     echo "Phiên đăng nhập chưa được bắt đầu hoặc biến 'user_id' không tồn tại trong phiên.";
     exit();
 }
 
-// Tiếp tục xử lý dữ liệu đóng góp
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
     $contribution = $_POST['contribution'];
     $user_id = $_SESSION['user_id'];
     $event_id = $_SESSION['selected_event_id'];
 
-    // Kiểm tra ngày đóng cửa của sự kiện
     $get_submission_end_date_query = "SELECT submission_end_date FROM events WHERE event_id = ?";
     $stmt_submission_end_date = $conn->prepare($get_submission_end_date_query);
     $stmt_submission_end_date->bind_param("i", $event_id);
@@ -28,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_submission_end_date->bind_result($submission_end_date);
         $stmt_submission_end_date->fetch();
 
-        // Kiểm tra ngày hiện tại có vượt quá ngày đóng cửa không
         if (strtotime($submission_end_date) < time()) {
             echo "Bạn không thể nộp đóng góp sau ngày đóng cửa.";
             exit();
@@ -38,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Lấy tên sự kiện từ cơ sở dữ liệu và lưu vào session
     $get_event_name_query = "SELECT event_name FROM events WHERE event_id = ?";
     $stmt_event_name = $conn->prepare($get_event_name_query);
     $stmt_event_name->bind_param("i", $event_id);
@@ -54,20 +49,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Xử lý tệp tải lên
     $target_dir = "uploads/";
 
-    // Kiểm tra xem thư mục có tồn tại không
     if (!file_exists($target_dir)) {
         mkdir($target_dir, 0777, true);
     }
 
     $uploadOk = 1;
 
-    // Khởi tạo mảng để lưu trữ đường dẫn các tệp tải lên
     $file_paths = array();
 
-    // Lặp qua từng file được tải lên
     foreach ($_FILES["file"]["tmp_name"] as $index => $tmp_name) {
         $target_file = $target_dir . basename($_FILES["file"]["name"][$index]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -75,14 +66,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($_FILES["file"]["size"][$index] > 500000000) {
             echo "Tệp quá lớn.";
             $uploadOk = 0;
-            continue; // Chuyển sang file tiếp theo
+            continue; 
         }
 
         $imageFileExtensions = array("jpg", "jpeg", "png", "gif");
         if (!in_array($imageFileType, $imageFileExtensions) && $imageFileType != "zip") {
             
             $uploadOk = 0;
-            continue; // Chuyển sang file tiếp theo
+            continue; 
         }
 
         if ($uploadOk == 0) {
@@ -90,19 +81,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             if (move_uploaded_file($tmp_name, $target_file)) {
                 echo "Tệp " . htmlspecialchars(basename($target_file)) . " đã được tải lên thành công.";
-                $file_paths[] = $target_file; // Lưu đường dẫn tệp vào mảng
+                $file_paths[] = $target_file; 
             } else {
                 echo "Có lỗi xảy ra khi tải lên.";
             }
         }
     }
 
-    // Thêm thông tin đóng góp vào cơ sở dữ liệu
     $status = "submitted";
     $created_at = date('Y-m-d H:i:s');
     $updated_at = date('Y-m-d H:i:s');
 
-    // Chuyển mảng đường dẫn thành một chuỗi để lưu vào trường file_path
     $file_paths_str = implode(',', $file_paths);
 
     $sql = "INSERT INTO contributions (event_id, user_id, title, content, file_path, status, created_at, updated_at) 
@@ -115,8 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt_insert_contribution->execute()) {
         echo "Ghi đóng góp vào cơ sở dữ liệu thành công.";
 
-        // Lấy thông tin người gửi và tiếp tục xử lý email
-        // Lấy thông tin người gửi
+     
         $get_sender_info_query = "SELECT username, email, faculty_name FROM users WHERE user_id = ?";
         $stmt_sender_info = $conn->prepare($get_sender_info_query);
         $stmt_sender_info->bind_param("i", $user_id);
@@ -128,7 +116,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_sender_info->fetch();
         }
 
-        // Lấy thông tin người nhận (chủ khoa của khoa của sinh viên)
         $get_marketing_coordinator_info_query = "SELECT email FROM users WHERE role = 'Marketing Coordinator' AND faculty_name = ?";
         $stmt_marketing_coordinator_info = $conn->prepare($get_marketing_coordinator_info_query);
         $stmt_marketing_coordinator_info->bind_param("s", $sender_faculty_name);
@@ -139,7 +126,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_marketing_coordinator_info->bind_result($marketing_coordinator_email);
             $stmt_marketing_coordinator_info->fetch();
 
-            // Gửi email thông báo
             require '../send_email.php';
         } else {
             echo "Không tìm thấy chủ khoa cho khoa " . $sender_faculty_name;

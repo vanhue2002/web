@@ -1,23 +1,18 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-    // Nếu chưa, bắt đầu một phiên session mới
     session_start();
 }
 require_once('../config.php');
 include '../header.php';
 require_once('authentication.php');
 
-// Kiểm tra xem người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
-    // Nếu chưa đăng nhập, chuyển hướng người dùng đến trang đăng nhập
     header("Location: login.php");
     exit();
 }
 
-// Lấy user_id của sinh viên từ session
 $user_id = $_SESSION['user_id'];
 
-// Truy vấn để lấy các đóng góp của sinh viên
 $sql = "SELECT * FROM contributions WHERE user_id = '$user_id'";
 $result = mysqli_query($conn, $sql);
 ?>
@@ -211,20 +206,19 @@ input[type="submit"]:active
   }
 }
 .signin .content .links a {
-  color: #0f0; /* Màu xanh lá cây */
-  text-decoration: none; /* Loại bỏ gạch chân */
-  transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu khi di chuột qua */
+  color: #0f0; 
+  text-decoration: none; 
+  transition: color 0.3s ease; 
 }
 
 .signin .content .links a:hover {
-  color: #0f0; /* Màu xanh lá cây khi di chuột qua */
-}
+  color: #0f0; }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background-color: #f2f2f2; /* Màu xám nhạt */
+    background-color: #f2f2f2; 
 }
 
 table th, table td {
@@ -234,15 +228,15 @@ table th, table td {
 }
 
 table th {
-    background-color: #dddddd; /* Màu nền đậm cho tiêu đề */
+    background-color: #dddddd;
 }
 
 table tr:nth-child(even) {
-    background-color: #ffffff; /* Màu nền cho hàng chẵn */
+    background-color: #ffffff; 
 }
 
 table tr:hover {
-    background-color: #f0f0f0; /* Màu nền khi di chuột qua */
+    background-color: #f0f0f0; 
 }
 
 img {
@@ -254,7 +248,6 @@ img {
 
 
     </style>
-    <!-- Add your CSS links here -->
 </head>
 <body>
     
@@ -277,15 +270,11 @@ img {
                 echo "<td>{$row['title']}</td>";
                 echo "<td>{$row['content']}</td>";
                 echo "<td>";
-                // Hiển thị tất cả các tệp tải lên
                 $file_paths = explode(',', $row['file_path']);
                 foreach ($file_paths as $file_path) {
-                    // Kiểm tra loại tệp tin
                     if (pathinfo($file_path, PATHINFO_EXTENSION) === 'zip') {
-                        // Nếu là file zip, hiển thị tên file và tạo liên kết tải xuống
                         echo "<a href='$file_path' download>" . basename($file_path) . "</a><br>";
                     } else {
-                        // Nếu là hình ảnh, hiển thị hình ảnh
                         echo "<img src='$file_path' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
                     }
                 }

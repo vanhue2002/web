@@ -24,14 +24,11 @@ include '../header.php';
             <th>Action</th>
         </tr>
         <?php
-        // Kết nối database
         require_once('../config.php');
 
-        // Truy vấn để lấy danh sách các khoa
         $query = "SELECT * FROM faculties";
         $result = mysqli_query($conn, $query);
 
-        // Hiển thị các khoa trong bảng
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td>" . $row['faculty_id'] . "</td>";
@@ -40,7 +37,6 @@ include '../header.php';
             echo "</tr>";
         }
 
-        // Đóng kết nối database
         mysqli_close($conn);
         ?>
     </table>
