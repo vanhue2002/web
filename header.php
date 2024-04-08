@@ -8,10 +8,12 @@ if($role == 'admin'){
     $_SESSION['header_title'] = 'Admin Dashboard';
 } elseif ($role == 'student') {
     $_SESSION['header_title'] = 'Student Dashboard';
-} elseif ($role == 'manager') {
+} elseif ($role == 'marketing_coordinator') {
     $_SESSION['header_title'] = 'Manager Dashboard';
 } elseif ($role == 'guest') {
     $_SESSION['header_title'] = 'Guest Dashboard';
+}else {
+    $_SESSION['header_title'] = 'Marketing Coordinator';
 }
 ?>
 <!DOCTYPE html>
@@ -34,7 +36,7 @@ if($role == 'admin'){
                     if(isset($_SESSION['username'])) {
                         echo '<a>Welcome, '. $_SESSION['username'] .'!</a>';
                         echo '<a href="../login/logout.php">Logout</a>';
-                    }             
+                    }                 
                 }
                 elseif($role == 'student'){
                     echo '<a class="" href="index.php" >Home</a>';
@@ -46,28 +48,26 @@ if($role == 'admin'){
                     }
                 }
                 elseif($role == 'guest'){
-                    echo '<a class="active" href="index.php" >Home</a>';
+                    echo '<a class="" href="index.php" >Home</a>';
                     if(isset($_SESSION['username'])) {
                         echo '<a>Welcome, '. $_SESSION['username'] .'!</a>';
                         echo '<a href="../login/logout.php">Logout</a>';
                     }
                 }
-                elseif($role == 'marketing_coordinator'){
-
+      
+                else {
+                    
                     echo '<a class="" href="index.php" >Home</a>';
                     echo '<a href="manager_dashboard.php">Student Contribution</a>';
                     echo '<a href="manage_faculty.php">Statistics</a>';
                     if(isset($_SESSION['username'])) {
                         echo '<a>Welcome, '. $_SESSION['username'] .'!</a>';
                         echo '<a href="../login/logout.php">Logout</a>';
-                    }
+                    }              
                 }
             
             ?>
       </div>
-            
-            
-           
-       
+
     </header>
   

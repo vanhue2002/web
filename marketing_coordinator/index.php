@@ -1,5 +1,7 @@
-<?php require_once('header.php');
+<?php 
+include '../header.php';
 require_once('authentication.php');
+
 ?>
 <h1>Welcome Marketing Coordinator</h1>
 <a href="coordinator_manage_contribution.php">Student contributions</a>

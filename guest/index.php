@@ -1,5 +1,6 @@
 <?php  
-require_once('header.php');
+include '../header.php';
+
 require_once('authentication.php');
 ?>
 <!DOCTYPE html>
