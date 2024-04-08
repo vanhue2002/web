@@ -4,18 +4,232 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./css/index.css" />
+    <style>
+      /* Import CSS từ Google Fonts */
+      @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+      /* Thiết lập CSS cơ bản */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Quicksand", sans-serif;
+      }
+
+      /* Thiết lập body */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #000;
+        padding-top: 160px; /* Dịch chuyển nội dung trang xuống dưới header */
+      }
+
+      /* Thiết lập section */
+      section {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+        flex-wrap: wrap;
+        overflow: visible;
+      }
+
+      /* Thiết lập animation */
+      section::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(#000, #0f0, #000);
+        animation: animate 5s linear infinite;
+      }
+
+      /* Thiết lập animation keyframes */
+      @keyframes animate {
+        0% {
+          transform: translateY(-100%);
+        }
+        100% {
+          transform: translateY(100%);
+        }
+      }
+
+      /* Thiết lập các ô vuông */
+      section span {
+        position: relative;
+        display: block;
+        width: calc(6.25vw - 2px);
+        height: calc(6.25vw - 2px);
+        background: #181818;
+        z-index: 2;
+        transition: 1.5s;
+      }
+
+      /* Thiết lập hover cho ô vuông */
+      section span:hover {
+        background: #0f0;
+        transition: 0s;
+      }
+      .signin {
+        position: absolute; /* Thêm thuộc tính này */
+        top: 50%; /* Thêm thuộc tính này */
+        left: 50%; /* Thêm thuộc tính này */
+        transform: translate(-50%, -50%); /* Thêm thuộc tính này */
+        z-index: 9999;
+      }
+      /* Thiết lập nút submit */
+      .signin .content {
+        padding: 10px;
+        background: #333;
+        color: #0f0;
+        font-weight: 600;
+        font-size: 1.35em;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+      }
+      .menu-item {
+        padding: 15px 25px;
+        background-color: #0f0;
+        color: #000;
+        font-weight: 600;
+        text-decoration: none;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 15px;
+        margin-top: 15px;
+      }
+
+      /* Media query cho màn hình nhỏ */
+      @media (max-width: 900px) {
+        section span {
+          width: calc(10vw - 2px);
+          height: calc(10vw - 2px);
+        }
+      }
+
+      /* Media query cho màn hình rất nhỏ */
+      @media (max-width: 600px) {
+        section span {
+          width: calc(20vw - 2px);
+          height: calc(20vw - 2px);
+        }
+      }
+
+      main {
+        margin: 20px auto;
+        max-width: 800px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #333;
+        border-radius: 4px;
+      }
+
+      .contribution strong {
+        font-size: 1.4em;
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .contribution {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #0f0;
+        border-radius: 4px;
+        background: #0f0;
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .pagination a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #333;
+      }
+    </style>
   </head>
   <body>
     <section>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
+      <span></span> <span></span> <span></span> <span></span> <span></span>
       <div class="signin">
         <div class="content">
-          <nav class="sidebar">
-            <ul>
-              <li><a href="event.php">Events</a></li>
-              <li><a href="manage_contribution.php">Contributions</a></li>
-            </ul>
-          </nav>
+          <main>
+            <h2>Marketing Manager</h2>
+            <button class="menu-item" onclick="location.href='event.phpp'">
+              Events
+            </button>
+            <br />
+            <button
+              class="menu-item"
+              onclick="location.href='manage_contribution.php'"
+            >
+              Contributions
+            </button>
+          </main>
         </div>
       </div>
     </section>

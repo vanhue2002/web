@@ -13,7 +13,7 @@ if($role == 'admin'){
 } elseif ($role == 'guest') {
     $_SESSION['header_title'] = 'Guest Dashboard';
 }else {
-    $_SESSION['header_title'] = 'Marketing Coordinator';
+    $_SESSION['header_title'] = 'Marketing Manager';
 }
 ?>
 <!DOCTYPE html>
@@ -58,8 +58,8 @@ if($role == 'admin'){
                 else {
                     
                     echo '<a class="" href="index.php" >Home</a>';
-                    echo '<a href="manager_dashboard.php">Student Contribution</a>';
-                    echo '<a href="manage_faculty.php">Statistics</a>';
+                    echo '<a href="view_contribution.php">Student Contribution</a>';
+                    echo '<a href="manager_dashboard.php">Statistics</a>';
                     if(isset($_SESSION['username'])) {
                         echo '<a>Welcome, '. $_SESSION['username'] .'!</a>';
                         echo '<a href="../login/logout.php">Logout</a>';
