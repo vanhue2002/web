@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 require_once('../config.php');
 require_once('authentication.php');
-require_once('../login/header.php');
+include '../header.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
