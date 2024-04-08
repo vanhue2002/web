@@ -1,6 +1,6 @@
 <?php
 require_once('../config.php');
-require_once('../login/header.php');
+
 require_once('authentication.php');
 
 // Kiểm tra người dùng đã đăng nhập chưa
