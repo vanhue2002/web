@@ -8,12 +8,12 @@ if($role == 'admin'){
     $_SESSION['header_title'] = 'Admin Dashboard';
 } elseif ($role == 'student') {
     $_SESSION['header_title'] = 'Student Dashboard';
-} elseif ($role == 'marketing_coordinator') {
-    $_SESSION['header_title'] = 'Manager Dashboard';
+} elseif ($role == 'Marketing Manager') {
+    $_SESSION['header_title'] = 'Manager Manager';
 } elseif ($role == 'guest') {
     $_SESSION['header_title'] = 'Guest Dashboard';
 }else {
-    $_SESSION['header_title'] = 'Marketing Manager';
+    $_SESSION['header_title'] = 'Marketing Coordinator';
 }
 ?>
 <!DOCTYPE html>
@@ -26,6 +26,13 @@ if($role == 'admin'){
 </head>
 <body>
     <header>
+    <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+
+    </div>
     <h1><?php echo isset($_SESSION['header_title']) ? $_SESSION['header_title'] : 'Default Title'; ?></h1>  
         <div class="topnav">
             <?php 
@@ -54,12 +61,20 @@ if($role == 'admin'){
                         echo '<a href="../login/logout.php">Logout</a>';
                     }
                 }
-      
-                else {
-                    
+                elseif($role == 'Marketing Manager'){
                     echo '<a class="" href="index.php" >Home</a>';
                     echo '<a href="view_contribution.php">Student Contribution</a>';
                     echo '<a href="manager_dashboard.php">Statistics</a>';
+                    if(isset($_SESSION['username'])) {
+                        echo '<a>Welcome, '. $_SESSION['username'] .'!</a>';
+                        echo '<a href="../login/logout.php">Logout</a>';
+                    }  
+                }
+                else {
+                    
+                    echo '<a class="" href="index.php" >Home</a>';
+                    echo '<a href="publish_contribution.php">Publish Contribution</a>';
+                    echo '<a href="coordinator_manage_contribution.php">Coordinator Manage</a>';
                     if(isset($_SESSION['username'])) {
                         echo '<a>Welcome, '. $_SESSION['username'] .'!</a>';
                         echo '<a href="../login/logout.php">Logout</a>';

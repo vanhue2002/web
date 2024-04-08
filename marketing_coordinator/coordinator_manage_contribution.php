@@ -57,16 +57,7 @@ section::before
     transform: translateY(100%);
   }
 }
-section span 
-{
-  position: relative;
-  display: block;
-  width: calc(6.25vw - 2px);
-  height: calc(6.25vw - 2px);
-  background: #181818;
-  z-index: 2;
-  transition: 1.5s;
-}
+
 section span:hover 
 {
   background: #0f0;
@@ -140,7 +131,20 @@ section .signin .content h2
       color: #333;
   }
   
-   
+
+    .published {
+        /* CSS cho trạng thái "published" */
+        color: green;
+    }
+
+  
+
+    .default {
+        /* CSS mặc định nếu không có trạng thái nào phù hợp */
+        color: black;
+    }
+
+
     </style>
 </head>
 <body>
@@ -187,8 +191,16 @@ if (isset($_SESSION['faculty_name'])) {
                     echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";
                 }
             }
-
-            echo "Status: " . $row['status'] . "<br>";
+            $status_class = "";
+switch($row['status'])
+{
+  case 'published':
+    $status_class = "published";
+    break;
+  default:
+    $status_class = "default";
+}
+echo "Status: <span class='{$status_class}'> " . $row['status'] . "</span><br>"; 
             echo "Created At: " . $row['created_at'] . "<br>";
             echo "Updated At: " . $row['updated_at'] . "<br>";
             echo "User ID: " . $row['user_id'] . "<br>";
