@@ -25,6 +25,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background: #222;
+    z-index: 2;
 }
 
 header h1 {
@@ -42,13 +43,13 @@ header h1 {
 }
 
 .topnav a.active {
-    background-color: #0f0;
-    color: #000;
+    color: #fff;
+    text-decoration: none;
+    color: inherit; 
 }
 
 .topnav a:hover {
     background-color: #0f0;
     color: #000;
 }
-
 

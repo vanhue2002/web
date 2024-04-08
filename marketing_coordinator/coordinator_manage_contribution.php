@@ -1,5 +1,5 @@
 <?php
-session_start(); // Bắt đầu hoặc khởi tạo phiên
+session_start(); 
 require_once('../config.php');
 require_once('header.php');
 require_once('authentication.php');
@@ -12,14 +12,6 @@ require_once('authentication.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-      /* body {
-    background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-family: 'Pontano Sans', sans-serif;
-    font-size: calc(0.65em + .05vw);
-  }    */
   @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
   {
   margin: 0;
@@ -93,6 +85,7 @@ section .signin
   border-radius: 14px;
   box-shadow: 0 15px 35px rgba(0,0,0,9);
   margin-left:100px;
+  margin-top:160px;
 }
 section .signin .content 
 {
@@ -158,15 +151,12 @@ section .signin .content h2
 if (isset($_SESSION['faculty_name'])) {
     $faculty_name = $_SESSION['faculty_name'];
     
-    // Định nghĩa trang hiện tại và số đóng góp trên mỗi trang
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $items_per_page = 5;
     $offset = ($page - 1) * $items_per_page;
     
-    // Lấy thời điểm hiện tại
     $current_time = time();
 
-    // Thực hiện truy vấn để lấy thông tin về các đóng góp từ sinh viên trong cùng khoa
     $sql = "SELECT c.contribution_id, c.title, c.content, c.file_path, c.status, c.created_at, c.updated_at, 
                    u.user_id, u.username, u.email, u.faculty_name
             FROM contributions c
@@ -178,21 +168,17 @@ if (isset($_SESSION['faculty_name'])) {
     $result = mysqli_query($conn, $sql);
     
     if (mysqli_num_rows($result) > 0) {
-        // Duyệt qua từng hàng kết quả
         while ($row = mysqli_fetch_assoc($result)) {
-            // Hiển thị thông tin của mỗi đóng góp và sinh viên
             echo "Contribution ID: " . $row['contribution_id'] . "<br>";
             echo "Title: " . $row['title'] . "<br>";
             echo "Content: " . $row['content'] . "<br>";
             
-            // Hiển thị tất cả các tệp tải lên
             $file_paths = explode(',', $row['file_path']);
-            $imageDisplayed = false; // Biến để kiểm tra xem từ "Image" đã được hiển thị hay chưa
+            $imageDisplayed = false; 
             foreach ($file_paths as $file_path) {
-                // Kiểm tra xem tệp có phải là hình ảnh không
                 if (in_array(pathinfo($file_path, PATHINFO_EXTENSION), array("jpg", "jpeg", "png", "gif"))) {
                     if (!$imageDisplayed) {
-                        echo "Image:<br>"; // Hiển thị từ "Image" chỉ một lần
+                        echo "Image:<br>"; 
                         $imageDisplayed = true;
                     }
                     echo "<img src='../student/" . $file_path . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
@@ -201,9 +187,6 @@ if (isset($_SESSION['faculty_name'])) {
                 }
             }
 
-
-
-            
             echo "Status: " . $row['status'] . "<br>";
             echo "Created At: " . $row['created_at'] . "<br>";
             echo "Updated At: " . $row['updated_at'] . "<br>";
@@ -211,51 +194,42 @@ if (isset($_SESSION['faculty_name'])) {
             echo "Username: " . $row['username'] . "<br>";
             echo "Email: " . $row['email'] . "<br>";
             
-
-            // Hiển thị form để thêm hoặc cập nhật bình luận
             echo "<form method='post' action='add_update_comment.php'>";
             echo "<input type='hidden' name='contribution_id' value='" . $row['contribution_id'] . "'>";
             echo "<textarea name='comment_content' placeholder='Nhập nội dung bình luận'></textarea><br>";
             echo "<button type='submit' name='submit_comment'>Gửi bình luận</button>";
             echo "</form>";
             
-            // Hiển thị các bình luận cho đóng góp
             $contribution_id = $row['contribution_id'];
             $sql_comments = "SELECT * FROM comments WHERE contribution_id = $contribution_id";
             $result_comments = mysqli_query($conn, $sql_comments);
             while ($comment_row = mysqli_fetch_assoc($result_comments)) {
-                // Lấy tên người dùng từ ID người dùng
                 $user_id = $comment_row['user_id'];
                 $sql_username = "SELECT username FROM users WHERE user_id = $user_id";
                 $result_username = mysqli_query($conn, $sql_username);
                 $row_username = mysqli_fetch_assoc($result_username);
                 $username = $row_username['username'];
 
-                // Hiển thị thông tin bình luận với tên người dùng thay vì ID người dùng
                 echo "<p><strong>Username:</strong> " . $username . "</p>";
                 echo "<p><strong>Nội dung:</strong> " . $comment_row['content'] . "</p>";
                 echo "<p><strong>Ngày tạo:</strong> " . $comment_row['created_at'] . "</p>";
             }
             
-            // Chọn để xuất bản
             echo "<form method='post' action='publish_contribution.php'>";
             echo "<input type='hidden' name='contribution_id' value='" . $row['contribution_id'] . "'>";
             echo "<button type='submit' name='publish_contribution'>Xuất bản</button>";
             echo "</form>";
 
-            echo "<hr>"; // Tạo đường kẻ ngang để phân biệt giữa các đóng góp
+            echo "<hr>"; 
         }
         
-        // Đếm tổng số đóng góp
         $sql_count = "SELECT COUNT(*) AS total_contributions FROM contributions c INNER JOIN users u ON c.user_id = u.user_id WHERE u.faculty_name = '$faculty_name'";
         $result_count = mysqli_query($conn, $sql_count);
         $row_count = mysqli_fetch_assoc($result_count);
         $total_contributions = $row_count['total_contributions'];
 
-        // Tính toán tổng số trang
         $total_pages = ceil($total_contributions / $items_per_page);
 
-        // Hiển thị các liên kết đến các trang kế tiếp
         echo "<div class='pagination'>";
         for ($i = 1; $i <= $total_pages; $i++) {
             echo "<a href='coordinator_manage_contribution.php?page=$i'>$i</a> ";

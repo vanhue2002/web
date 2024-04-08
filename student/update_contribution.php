@@ -1,58 +1,46 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-    // Nếu chưa, bắt đầu một phiên session mới
     session_start();
 }
 require_once('../config.php');
 require_once('authentication.php');
+require_once('../login/header.php');
 
-
-// Kiểm tra người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
-    // Nếu chưa đăng nhập, chuyển hướng người dùng đến trang đăng nhập
     header("Location: login.php");
     exit();
 }
 
-// Kiểm tra xem contribution_id đã được truyền qua query string không
 if (!isset($_GET['contribution_id'])) {
     echo "Contribution ID không hợp lệ.";
     exit();
 }
 
-// Lấy contribution_id từ query string
 $contribution_id = $_GET['contribution_id'];
 
-// Truy vấn để lấy thông tin về contribution dựa trên contribution_id
 $sql = "SELECT * FROM contributions WHERE contribution_id = '$contribution_id'";
 $result = mysqli_query($conn, $sql);
 
-// Kiểm tra xem contribution có tồn tại không
 if (mysqli_num_rows($result) == 0) {
     echo "Không tìm thấy đóng góp.";
     exit();
 }
 
-// Lấy thông tin về contribution
 $row = mysqli_fetch_assoc($result);
 $title = $row['title'];
 $content = $row['content'];
 $file_path = $row['file_path'];
 
-// Kiểm tra quyền truy cập: chỉ cho phép cập nhật nếu user_id của contribution giống với user_id của người đăng nhập
 if ($_SESSION['user_id'] != $row['user_id']) {
     echo "Bạn không có quyền truy cập vào đóng góp này.";
     exit();
 }
 
-// Xử lý form cập nhật contribution
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Lấy dữ liệu từ form
     $new_title = $_POST['title'];
     $new_content = $_POST['content'];
     $file_changed = false;
 
-    // Kiểm tra xem có tệp mới được tải lên không
     if (!empty($_FILES['file']['name'][0])) {
         $file_paths = [];
         $target_dir = "uploads/";
@@ -60,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $target_file = $target_dir . basename($filename);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            // Kiểm tra kích thước của tệp và các định dạng hợp lệ
             if ($_FILES["file"]["size"][$key] > 5000000) {
                 echo "Tệp quá lớn.";
                 $uploadOk = 0;
@@ -81,14 +68,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $file_path = implode(',', $file_paths);
     }
 
-    // Cập nhật contribution trong cơ sở dữ liệu
     $update_sql = "UPDATE contributions SET title = '$new_title', content = '$new_content'";
     if ($file_changed) {
         $update_sql .= ", file_path = '$file_path'";
     }
     $update_sql .= ", updated_at = NOW() WHERE contribution_id = '$contribution_id'";
     if (mysqli_query($conn, $update_sql)) {
-        echo "Cập nhật đóng góp thành công.";
+      echo "<script type='text/javascript'>alert('Contribution cập nhật thành công!'); window.location.href='./manage_contribution.php';</script>";
     } else {
         echo "Lỗi: " . $update_sql . "<br>" . mysqli_error($conn);
     }
@@ -104,7 +90,7 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật đóng góp</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 *
 {
   margin: 0;
@@ -306,13 +292,15 @@ input[type="submit"]:active
 
         <div class="form">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?contribution_id=' . $contribution_id; ?>" method="POST" enctype="multipart/form-data">
-        <label for="title">Tiêu đề:</label><br>
-        <input type="text" id="title" name="title" value="<?php echo $title; ?>" required><br><br>
-        <label for="content">Nội dung:</label><br>
-        <textarea id="content" name="content" rows="4" cols="50" required><?php echo $content; ?></textarea><br><br>
-        <label for="file">Hình ảnh hoặc tệp đính kèm:</label><br>
-        <input type="file" id="file" name="file[]" accept="image/*,.zip" multiple><br><br>
-        <button type="submit">Cập nhật</button>
+        <label for="title">Tiêu đề:</label>
+        <input type="text" id="title" name="title" value="<?php echo $title; ?>" required>
+        <label for="content">Nội dung:</label>
+        <textarea id="content" name="content" rows="4" cols="50" required><?php echo $content; ?></textarea>
+        <label for="file">Hình ảnh hoặc tệp đính kèm:</label>
+        <input type="file" id="file" name="file[]" accept="image/*,.zip" multiple>
+        <div class="inputBox">
+                <input type="submit" onclick="showNotification()" value="Update">
+        </div>
     </form>
         </div>
       </div>

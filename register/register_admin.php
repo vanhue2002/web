@@ -119,31 +119,28 @@ $result = mysqli_query($conn, $query);
     <h2>Đăng ký tài khoản cho Admin</h2>
     <form action="register_admin_process.php" method="POST">
         <label for="username">Tên người dùng:</label>
-        <input type="username" id="username" name="username" required><br><br>
+        <input type="username" id="username" name="username" required>
         <label for="password">Mật khẩu:</label>
-        <input type="password" id="password" name="password" required><br><br>
+        <input type="password" id="password" name="password" required>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+        <input type="email" id="email" name="email" required><b
         <label for="role">Vai trò:</label>
         <select name="role" id="role">
             <?php
-            // Đổ dữ liệu từ kết quả truy vấn vào danh sách dropdown
             while ($row = mysqli_fetch_assoc($result_roles)) {
                 echo "<option value='" . $row['role'] . "'>" . $row['role'] . "</option>";
             }
             ?>
-        </select><br><br>
+        </select>
         <label for="faculty_name">Chọn khoa:</label>
         <select name="faculty_name" id="faculty_name">
             <?php
             
 
-            // Hiển thị các tùy chọn cho khoa
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<option value='" . $row['faculty_name'] . "'>" . $row['faculty_name'] . "</option>";
             }
 
-            // Đóng kết nối database
             mysqli_close($conn);
             ?>
         </select><br><br>

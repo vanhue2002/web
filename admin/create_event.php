@@ -1,7 +1,9 @@
 <?php
-require_once('header.php');
+
 
 require_once('authentication.php');
+include '../header.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -13,18 +15,19 @@ require_once('authentication.php');
     <title>Create event</title>
     <link rel="stylesheet" href="./css/style.css">
     <style>
+
+
         section .signin .container h2 {
   font-size: 2em;
   color: #0f0;
   text-transform: uppercase;
+  
 }
 
-/* CSS cho thẻ label */
 section .signin .container form label {
   color: #fff;
 }
 
-/* CSS cho các trường nhập liệu input và select */
 section .signin .container form input[type="text"],
 section .signin .container form input[type="date"],
 section .signin .container form select {
@@ -40,7 +43,6 @@ section .signin .container form select {
   text-align: center;
 }
 
-/* CSS cho nút gửi dữ liệu input[type="submit"] */
 section .signin .container form input[type="submit"] {
   padding: 10px;
   background: #0f0;
@@ -53,13 +55,11 @@ section .signin .container form input[type="submit"] {
 section .signin .container form {
   text-align: center;
 }
-/* CSS cho nền của input[type="submit"] khi được nhấn */
 input[type="submit"]:active {
   opacity: 0.6;
 }
     </style>
 
-    <title>Tạo Sự Kiện</title>
     <link rel="stylesheet" href="./css/create_event.css">
 
 </head>
@@ -69,16 +69,16 @@ input[type="submit"]:active {
 <div class="container">
     <h2>CREATE NEW EVENT</h2>
     <form action="create_event_process.php" method="POST">
-        <label for="event_name">Event name:</label><br>
-        <input type="text" id="event_name" name="event_name" required ><br><br>
+        <label for="event_name">Event name:</label>
+        <input type="text" id="event_name" name="event_name" required >
 
-        <label for="start_date">Start date:</label><br>
-        <input type="date" id="start_date" name="start_date" required><br><br>
+        <label for="start_date">Start date:</label>
+        <input type="date" id="start_date" name="start_date" required>
 
-        <label for="end_date">End date:</label><br>
-        <input type="date" id="end_date" name="end_date" required><br><br>
+        <label for="end_date">End date:</label>
+        <input type="date" id="end_date" name="end_date" required>
 
-        <label for="faculty_name">Faculty:</label><br>
+        <label for="faculty_name">Faculty:</label>
         <select id="faculty_name" name="faculty_name" required>
             <?php
                 require_once('../config.php');
@@ -89,7 +89,7 @@ input[type="submit"]:active {
                 }
                 mysqli_close($conn);
             ?>
-        </select><br><br>
+        </select>
 
         <input type="submit" value="Create">
     </form>

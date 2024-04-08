@@ -1,33 +1,27 @@
 <?php
 session_start();
 require_once('../config.php');
-require_once('../login/header.php');
+include '../header.php';
+
 require_once('authentication.php');
 
-// Kiểm tra xem người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
-    // Nếu chưa đăng nhập, chuyển hướng người dùng đến trang đăng nhập
     header("Location: login.php");
     exit();
 }
 
-// Lấy user_id của người dùng từ session
 $user_id = $_SESSION['user_id'];
 
-// Kiểm tra vai trò của người dùng
 if ($_SESSION['role'] !== 'Marketing Manager') {
-    // Nếu không phải là Marketing Manager, chuyển hướng người dùng đến trang không có quyền truy cập
     header("Location: access_denied.php");
     exit();
 }
 
 
-// Định nghĩa trang hiện tại và số đóng góp trên mỗi trang
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $items_per_page = 5;
 $offset = ($page - 1) * $items_per_page;
 
-// Truy vấn để lấy tất cả các đóng góp từ tất cả các khoa
 $sql = "SELECT * FROM contributions LIMIT $offset, $items_per_page";
 $result = mysqli_query($conn, $sql);
 ?>
@@ -39,16 +33,8 @@ $result = mysqli_query($conn, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Contributions</title>
     <link rel="stylesheet" href="./css/view_contribution.css">
-    <!-- Add your CSS links here -->
     <style>
-      /* body {
-    background-image: url('https://img.lovepik.com/photo/40150/9846.jpg_wh860.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-family: 'Pontano Sans', sans-serif;
-    font-size: calc(0.65em + .05vw);
-  }    */
+      
   @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
   {
   margin: 0;
@@ -122,6 +108,7 @@ section .signin
   border-radius: 14px;
   box-shadow: 0 15px 35px rgba(0,0,0,9);
   margin-left:100px;
+  margin-top:100px;
 }
 section .signin .content 
 {
@@ -181,6 +168,10 @@ section .signin .content h2
 <body>
     <header>
         <h2>View All Contributions</h2>
+        <?php  
+include '../header.php';
+        
+        ?>
     </header>
     <section>
         <div class="signin">
@@ -189,16 +180,12 @@ section .signin .content h2
         <?php
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                // Hiển thị thông tin của mỗi đóng góp
                 echo "<strong>Title:</strong> " . $row['title'] . "<br>";
                 echo "<strong>Content:</strong> " . $row['content'] . "<br>";
-                // Kiểm tra loại tệp tin
                 $file_path = $row['file_path'];
                 if (pathinfo($file_path, PATHINFO_EXTENSION) === 'zip') {
-                    // Nếu là file zip, hiển thị tên file và tạo liên kết tải xuống
                     echo "<strong>File:</strong> <a href='$file_path' download>" . basename($file_path) . "</a><br>";
                 } else {
-                    // Nếu là hình ảnh, hiển thị hình ảnh
                     echo "<strong>Image:</strong> <img src='../student/" . $row['file_path'] . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
                 }
                 echo "<strong>Status:</strong> " . $row['status'] . "<br>";
@@ -206,13 +193,12 @@ section .signin .content h2
                 echo "<strong>Updated At:</strong> " . $row['updated_at'] . "<br>";
                 echo "<strong>Student ID:</strong> " . $row['user_id'] . "<br>";
                 
-                echo "<hr>"; // Tạo đường kẻ ngang để phân biệt giữa các đóng góp
+                echo "<hr>"; 
             }
         } else {
             echo "<p>No contributions found.</p>";
         }
         ?>
-        <!-- Hiển thị các liên kết đến các trang kế tiếp -->
         <?php
         $sql_count = "SELECT COUNT(*) AS total_contributions FROM contributions";
         $result_count = mysqli_query($conn, $sql_count);

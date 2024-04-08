@@ -1,53 +1,39 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
-    // Nếu chưa, bắt đầu một phiên session mới
     session_start();
 }
 require_once('../config.php');
 require_once('authentication.php');
 
-// Kiểm tra người dùng đã đăng nhập chưa
 if (!isset($_SESSION['user_id'])) {
-    // Nếu chưa đăng nhập, chuyển hướng người dùng đến trang đăng nhập
     header("Location: login.php");
     exit();
 }
 
-// Kiểm tra xem contribution_id đã được truyền qua query string không
 if (!isset($_GET['contribution_id'])) {
     echo "Contribution ID không hợp lệ.";
     exit();
 }
 
-// Lấy contribution_id từ query string
 $contribution_id = $_GET['contribution_id'];
 
-// Truy vấn để lấy thông tin về contribution dựa trên contribution_id
 $sql = "SELECT * FROM contributions WHERE contribution_id = '$contribution_id'";
 $result = mysqli_query($conn, $sql);
 
-// Kiểm tra xem contribution có tồn tại không
 if (mysqli_num_rows($result) == 0) {
     echo "Không tìm thấy đóng góp.";
     exit();
 }
 
-// Lấy thông tin về contribution
 $row = mysqli_fetch_assoc($result);
 
-// Kiểm tra quyền truy cập: chỉ cho phép xóa nếu user_id của contribution giống với user_id của người đăng nhập
 if ($_SESSION['user_id'] != $row['user_id']) {
     echo "Bạn không có quyền truy cập vào đóng góp này.";
     exit();
 }
 
-// Xác nhận xóa đóng góp
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Kiểm tra xem có các bản ghi liên quan từ các bảng khác trỏ đến đóng góp này không
-    // Nếu có, bạn cần xử lý trước khi xóa đóng góp
-    // Ví dụ: Xóa các bản ghi liên quan từ các bảng khác
-
-    // Sau đó, tiến hành xóa đóng góp
+    
     $delete_sql = "DELETE FROM contributions WHERE contribution_id = '$contribution_id'";
     if (mysqli_query($conn, $delete_sql)) {
         header("Location: manage_contribution.php");

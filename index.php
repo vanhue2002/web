@@ -11,7 +11,6 @@
 
     <script>
         function redirectToLoginPage() {
-            // Chuyển hướng đến trang đăng nhập của bạn
             window.location.href = "login/login.php";
         }
     </script>

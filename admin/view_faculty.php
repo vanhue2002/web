@@ -1,20 +1,48 @@
 <?php
-// Kết nối database
 require_once('../config.php');
 require_once('authentication.php');
-require_once('../login/header.php');
+include '../header.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        section .signin .container h2 {
+  font-size: 2em;
+  color: #0f0;
+  text-transform: uppercase;
+  
+}
 
-// Kiểm tra xem có tham số faculty_id được truyền vào không
+section .signin .container{
+  color: #fff;
+}
+
+section .signin .container form {
+  text-align: center;
+}
+
+    </style>
+</head>
+<body>
+       <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
+    <div class="signin">
+<div class="container">
+    <h2 style="color: #0f0;">View FACULTIES</h2><br>
+   
+
+<?php
 if (isset($_GET['faculty_id'])) {
     $faculty_id = $_GET['faculty_id'];
 
-            // Truy vấn để lấy thông tin của khoa dựa trên faculty_id
             $query = "SELECT * FROM faculties WHERE faculty_id = $faculty_id";
             $result = mysqli_query($conn, $query);
 
-            // Kiểm tra xem khoa có tồn tại không
             if (mysqli_num_rows($result) == 1) {
-                // Hiển thị thông tin của khoa
                 $row = mysqli_fetch_assoc($result);
                 echo "<div class='info'>ID: " . $row['faculty_id'] . "</div>";
                 echo "<div class='info'>Tên Khoa: " . $row['faculty_name'] . "</div>";
@@ -24,7 +52,14 @@ if (isset($_GET['faculty_id'])) {
         } else {
             echo "ID khoa không được cung cấp.";
         }
+?>
+    </div>
+    </div>
+    </section>
+    
+</body>
+</html>
 
-// Đóng kết nối database
+<?php
 mysqli_close($conn);
 ?>
