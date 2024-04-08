@@ -28,18 +28,18 @@ if($role == 'admin'){
         <div class="topnav">
             <?php 
                 if($role == 'admin'){                   
-                    echo '<a class="active" href="index.php" >Home</a>';
-                    echo '<a href="./admin/manage_event.php">Manage Events</a>';
-                    echo '<a href="./admin/manage_faculty.php">Manage Faculties</a>';
+                    echo '<a class="" href="index.php" >Home</a>';
+                    echo '<a href="manage_event.php">Manage Events</a>';
+                    echo '<a href="manage_faculty.php">Manage Faculties</a>';
                     if(isset($_SESSION['username'])) {
                         echo '<a>Welcome, '. $_SESSION['username'] .'!</a>';
                         echo '<a href="../login/logout.php">Logout</a>';
                     }             
                 }
                 elseif($role == 'student'){
-                    echo '<a class="active" href="index.php" >Home</a>';
-                    echo '<a class="active" href="index.php" >Manage_dashboard</a>';
-                    echo '<a class="active" href="index.php" >Contribution</a>';
+                    echo '<a class="" href="index.php" >Home</a>';
+                    echo '<a class="" href="event.php" >Event</a>';
+                    echo '<a class="" href="manage_contribution.php" >Contribution</a>';
                     if(isset($_SESSION['username'])) {
                         echo '<a>Welcome, '. $_SESSION['username'] .'!</a>';
                         echo '<a href="../login/logout.php">Logout</a>';
@@ -52,8 +52,11 @@ if($role == 'admin'){
                         echo '<a href="../login/logout.php">Logout</a>';
                     }
                 }
-                elseif($role == 'manager'){
-                    echo '<a class="active" href="index.php" >Home</a>';
+                elseif($role == 'marketing_coordinator'){
+
+                    echo '<a class="" href="index.php" >Home</a>';
+                    echo '<a href="manager_dashboard.php">Student Contribution</a>';
+                    echo '<a href="manage_faculty.php">Statistics</a>';
                     if(isset($_SESSION['username'])) {
                         echo '<a>Welcome, '. $_SESSION['username'] .'!</a>';
                         echo '<a href="../login/logout.php">Logout</a>';

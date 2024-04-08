@@ -5,7 +5,8 @@ require_once('../config.php');
 require_once('authentication.php');
 
 if (!isset($_SESSION['user_id'])) {
-    echo "Phiên đăng nhập chưa được bắt đầu hoặc biến 'user_id' không tồn tại trong phiên.";
+    echo "<script type='text/javascript'>alert('Phiên đăng nhập chưa được bắt đầu hoặc biến 'user_id' không tồn tại trong phiên.'); window.location.href='./event.php';</script>";
+
     exit();
 }
 
@@ -26,11 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_submission_end_date->fetch();
 
         if (strtotime($submission_end_date) < time()) {
-            echo "Bạn không thể nộp đóng góp sau ngày đóng cửa.";
+            echo "<script type='text/javascript'>alert('Bạn không thể nộp đóng góp sau ngày đóng cửa.'); window.location.href='./event.php';</script>";
             exit();
         }
     } else {
-        echo "Không tìm thấy sự kiện.";
+    echo "<script type='text/javascript'>alert('Không tìm thấy sự kiện.'); window.location.href='./event.php';</script>";
+
         exit();
     }
 
@@ -45,7 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt_event_name->fetch();
         $_SESSION['selected_event_name'] = $selected_event_name;
     } else {
-        echo "Không tìm thấy thông tin về sự kiện.";
+    echo "<script type='text/javascript'>alert('Không tìm thấy sự kiện.'); window.location.href='./event.php';</script>";
+
         exit();
     }
 
@@ -102,7 +105,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     if ($stmt_insert_contribution->execute()) {
-        echo "Ghi đóng góp vào cơ sở dữ liệu thành công.";
+    echo "<script type='text/javascript'>alert('Contribution to database successfully'); window.location.href='./manage_contribution.php';</script>";
+
 
      
         $get_sender_info_query = "SELECT username, email, faculty_name FROM users WHERE user_id = ?";
@@ -128,12 +132,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             require '../send_email.php';
         } else {
-            echo "Không tìm thấy chủ khoa cho khoa " . $sender_faculty_name;
+            echo "Not found for the faculty " . $sender_faculty_name;
         }
     } else {
-        echo "Lỗi khi thêm đóng góp vào cơ sở dữ liệu: " . $stmt_insert_contribution->error;
+        echo "Error adding contribution to database " . $stmt_insert_contribution->error;
     }
 } else {
-    echo "Yêu cầu không hợp lệ.";
+    echo "Invalid request.";
 }
 ?>

@@ -98,6 +98,7 @@ section .signin
   padding: 40px;
   border-radius: 14px;
   box-shadow: 0 15px 35px rgba(0,0,0,9);
+  margin-top:100px;
 }
 section .signin .content 
 {
@@ -118,9 +119,7 @@ section .signin .content h2
 section .signin .content .form 
 {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+  margin-top:-45px;  
   overflow: auto;
 }
 section .signin .content .form .inputBox

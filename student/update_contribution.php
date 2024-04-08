@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $update_sql .= ", updated_at = NOW() WHERE contribution_id = '$contribution_id'";
     if (mysqli_query($conn, $update_sql)) {
-        echo "Cập nhật đóng góp thành công.";
+      echo "<script type='text/javascript'>alert('Contribution cập nhật thành công!'); window.location.href='./manage_contribution.php';</script>";
     } else {
         echo "Lỗi: " . $update_sql . "<br>" . mysqli_error($conn);
     }
@@ -90,7 +90,7 @@ mysqli_close($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật đóng góp</title>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+       @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 *
 {
   margin: 0;
@@ -273,13 +273,13 @@ input[type="submit"]:active
   }
 }
 .signin .content .links a {
-  color: #0f0; 
-  text-decoration: none; 
-  transition: color 0.3s ease; 
+  color: #0f0; /* Màu xanh lá cây */
+  text-decoration: none; /* Loại bỏ gạch chân */
+  transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu khi di chuột qua */
 }
 
 .signin .content .links a:hover {
-  color: #0f0; 
+  color: #0f0; /* Màu xanh lá cây khi di chuột qua */
 }
 
     </style>
@@ -292,13 +292,15 @@ input[type="submit"]:active
 
         <div class="form">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?contribution_id=' . $contribution_id; ?>" method="POST" enctype="multipart/form-data">
-        <label for="title">Tiêu đề:</label><br>
-        <input type="text" id="title" name="title" value="<?php echo $title; ?>" required><br><br>
-        <label for="content">Nội dung:</label><br>
-        <textarea id="content" name="content" rows="4" cols="50" required><?php echo $content; ?></textarea><br><br>
-        <label for="file">Hình ảnh hoặc tệp đính kèm:</label><br>
-        <input type="file" id="file" name="file[]" accept="image/*,.zip" multiple><br><br>
-        <button type="submit">Cập nhật</button>
+        <label for="title">Tiêu đề:</label>
+        <input type="text" id="title" name="title" value="<?php echo $title; ?>" required>
+        <label for="content">Nội dung:</label>
+        <textarea id="content" name="content" rows="4" cols="50" required><?php echo $content; ?></textarea>
+        <label for="file">Hình ảnh hoặc tệp đính kèm:</label>
+        <input type="file" id="file" name="file[]" accept="image/*,.zip" multiple>
+        <div class="inputBox">
+                <input type="submit" onclick="showNotification()" value="Update">
+        </div>
     </form>
         </div>
       </div>

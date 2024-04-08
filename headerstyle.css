@@ -43,13 +43,13 @@ header h1 {
 }
 
 .topnav a.active {
-    background-color: #0f0;
-    color: #000;
+    color: #fff;
+    text-decoration: none;
+    color: inherit; 
 }
 
 .topnav a:hover {
     background-color: #0f0;
     color: #000;
 }
-
 
