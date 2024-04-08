@@ -30,7 +30,6 @@ if($role == 'admin'){
             <?php 
                 if($role == 'admin'){                   
                     echo '<a class="active" href="index.php" >Home</a>';
-                    echo  '<a href="./admin/index.php">Admin Dashboard</a>';
                     echo '<a href="./admin/manage_event.php">Manage Events</a>';
                     echo '<a href="./admin/manage_faculty.php">Manage Faculties</a>';
                     if(isset($_SESSION['username'])) {

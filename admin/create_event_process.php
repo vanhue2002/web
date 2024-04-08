@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO events (event_name, submission_start_date, submission_end_date, faculty_name) VALUES ('$event_name', '$start_date', '$end_date', '$faculty_name')";
 
         if (mysqli_query($conn, $sql)) {
-            echo "<script>alert('The event has been created successfully!'); window.history.back();</script>";
+            echo "<script type='text/javascript'>alert('Event edited successfully!'); window.location.href='./manage_event.php';</script>";
         } else {
             echo "<script>alert('An error occurred while creating the event: '); window.history.back();</script>" . mysqli_error($conn);
         }
