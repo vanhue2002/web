@@ -84,7 +84,9 @@ section span:hover
   width: 200px; 
   background-color: #222;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
 
+/* Updated CSS for list items */
 .sidebar ul {
   list-style: none;
   padding: 0;
@@ -92,12 +94,14 @@ section span:hover
 
 .sidebar ul li {
   margin-bottom: 10px;
+  /* Set the color of list items */
+  color: #fff;
 }
 
 .sidebar ul li a {
   display: block;
   padding: 10px;
-  color: #fff;
+  color: inherit; /* Inherit color from parent */
   text-decoration: none;
 }
 
