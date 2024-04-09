@@ -30,7 +30,7 @@ if ($result) {
                 if ($result && mysqli_num_rows($result) > 0) {
                     $row = mysqli_fetch_assoc($result);
                     $_SESSION['faculty_name'] = $row['faculty_name'];
-                    header("Location: ../guest/index.php");
+                    header("Location: ../guest/list_publish_contribution.php");
                     exit();
                 } else {
                     header("Location: login.php?error=no_faculty_info");
