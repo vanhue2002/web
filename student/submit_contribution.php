@@ -212,15 +212,15 @@ input[type="submit"]:active
     </style>
 </head>
 <body>
-    <section>
+    <section> 
         <div class ="signin">
             <div class="content">
-    <h2>Nộp đóng góp</h2>
+    <h2>Submit Contribution</h2>
 <div class="form">
 <form action="submit_contribution_process.php" method="POST" enctype="multipart/form-data">
        <div class= "inputBox">
         <input type="text" id="title" name="title" required>
-       <i>Tiêu Đề   </i>
+       <i>Title   </i>
        </div>
        <br>
        <div class="inputBox">
@@ -228,9 +228,9 @@ input[type="submit"]:active
         <i>Discription</i>
        </div>
        <br><br>
-        <i style="color:#fff">Hình ảnh hoặc tệp đính kèm:</i><br>
+        <i style="color:#fff">Image or File:</i><br>
         <input type="file" id="file" name="file[]" accept="image/*,.zip" multiple><br><br>
-        <label for="agree" style="color:#fff"   >Tôi đồng ý với <a href="#">Điều khoản và Điều kiện</a>:</label>
+        <label for="agree" style="color:#fff"   >I agree with <a href="#">Terms and Condition</a>:</label>
         <input type="checkbox" id="agree" name="agree" required><br><br>
         <input type="hidden" name="faculty_id" value="<?php echo $faculty_id; ?>">
         <div class="inputBox">

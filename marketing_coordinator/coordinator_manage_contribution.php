@@ -209,8 +209,8 @@ echo "Status: <span class='{$status_class}'> " . $row['status'] . "</span><br>";
             
             echo "<form method='post' action='add_update_comment.php'>";
             echo "<input type='hidden' name='contribution_id' value='" . $row['contribution_id'] . "'>";
-            echo "<textarea name='comment_content' placeholder='Nhập nội dung bình luận'></textarea><br>";
-            echo "<button type='submit' name='submit_comment'>Gửi bình luận</button>";
+            echo "<textarea name='comment_content' placeholder='Enter comment content'></textarea><br>";
+            echo "<button type='submit' name='submit_comment'>Send</button>";
             echo "</form>";
             
             $contribution_id = $row['contribution_id'];
@@ -224,13 +224,13 @@ echo "Status: <span class='{$status_class}'> " . $row['status'] . "</span><br>";
                 $username = $row_username['username'];
 
                 echo "<p><strong>Username:</strong> " . $username . "</p>";
-                echo "<p><strong>Nội dung:</strong> " . $comment_row['content'] . "</p>";
-                echo "<p><strong>Ngày tạo:</strong> " . $comment_row['created_at'] . "</p>";
+                echo "<p><strong>Comment content:</strong> " . $comment_row['content'] . "</p>";
+                echo "<p><strong>Date create:</strong> " . $comment_row['created_at'] . "</p>";
             }
             
             echo "<form method='post' action='publish_contribution.php'>";
             echo "<input type='hidden' name='contribution_id' value='" . $row['contribution_id'] . "'>";
-            echo "<button type='submit' name='publish_contribution'>Xuất bản</button>";
+            echo "<button type='submit' name='publish_contribution'>Publish</button>";
             echo "</form>";
 
             echo "<hr>"; 
