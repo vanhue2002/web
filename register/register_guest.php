@@ -4,29 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký tài khoản cho Khách hàng</title>
+    <title>Guest register</title>
+    <link rel="stylesheet" href="../login/css/style.css">
     <style>
        
-    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(to bottom, #000, #0f0, #000);
-            background-size: 100% 200%; 
-            animation: animateBackground 5s linear infinite;
-        }
-
-        @keyframes animateBackground {
-            0% {
-                background-position: 0% 0%; 
-            }
-            100% {
-                background-position: 0% 100%; 
-            }
-        }
+    
 
         h2 {
             font-size: 2em;
@@ -36,23 +18,12 @@
             padding: 40px;
         }
 
-        form {
-            width: 400px;
-            background: #222;
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-            border-radius: 4px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
-            flex-direction: column; 
-        }
+        
 
         form label {
             color: #fff;
             margin-bottom: 10px; 
-
+        }
         form input[type="text"],
         form input[type="password"],
         form select {
@@ -88,13 +59,19 @@
     </style>
 </head>
 <body>
-    <h2>Đăng ký tài khoản cho Khách hàng</h2>
+    
+    
+    <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
+        <div class="signin">
+            <div class="content">
+            
     <form action="register_guest_process.php" method="POST">
-        <label for="username">Tên người dùng:</label>
+    <h2>GUEST REGISTER</h2>
+        <label for="username">Username:</label><br><br>
         <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Mật khẩu:</label>
+        <label for="password">Password:</label><br><br>
         <input type="password" id="password" name="password" required><br><br>
-        <label for="faculty">Khoa:</label>
+        <label for="faculty">Faculty:</label><br><br>
         <select id="faculty" name="faculty" required>
             <?php
             require_once('../config.php');
@@ -108,9 +85,12 @@
             mysqli_close($conn);
             ?>
         </select><br><br>
-        <button type="submit">Đăng ký</button>
+        <button type="submit">Register</button>
     </form>
-
+                </div>
+            </div>
+        </div>
+    </section>
     
 
     
