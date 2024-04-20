@@ -73,7 +73,6 @@ if($role == 'admin'){
                 else {
                     
                     echo '<a class="" href="index.php" >Home</a>';
-                    echo '<a href="publish_contribution.php">Publish Contribution</a>';
                     echo '<a href="coordinator_manage_contribution.php">Coordinator Manage</a>';
                     if(isset($_SESSION['username'])) {
                         echo '<a>Welcome, '. $_SESSION['username'] .'!</a>';

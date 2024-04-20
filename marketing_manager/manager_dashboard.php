@@ -77,20 +77,140 @@ $conn->close();
     <title>Contribution Overview</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background-color: #f2f2f2;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .progress {
-            height: 100%;
-            background-color: #4caf50;
-        }
+         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+  {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+body 
+{
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+}
+section 
+{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+section::before 
+{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#000,#0f0,#000);
+  animation: animate 5s linear infinite;
+}
+@keyframes animate 
+{
+  0%
+  {
+    transform: translateY(-100%);
+  }
+  100%
+  {
+    transform: translateY(100%);
+  }
+}
+section span 
+{
+  position: relative;
+  display: block;
+  width: calc(6.25vw - 2px);
+  height: calc(6.25vw - 2px);
+  z-index: 2;
+  transition: 1.5s;
+}
+section span:hover 
+{
+  background: #0f0;
+  transition: 0s;
+}
+section .signin
+{
+  position: relative;
+
+  width: 80%;
+  background: #222;  
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  margin-left:100px;
+  margin-top:100px;
+}
+section .signin .content 
+{
+  position: relative;
+
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+section .signin .content h2 
+{
+  font-size: 2em;
+  color: #0f0;
+  text-transform: uppercase;
+}
+  main {
+      margin: 20px auto;
+      max-width: 800px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      border-radius: 4px;
+  }
+  
+  .contribution strong {
+      font-size: 1.4em;
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+  }
+  
+  .contribution {
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #f0f0f0;
+      border-radius: 4px;
+      background: #f9f9f9;
+  }
+  
+  .pagination {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+  }
+  
+  .pagination a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+  }
+  
+   
     </style>
 </head>
 <body>
+<section>
+        <div class="signin">
+            <div class="content">
+            <main>
     <h2>Total Contributions: <?php echo $total_contributions; ?></h2>
     <div style="width: 20%">
         <canvas id="facultyChart"></canvas>
@@ -127,6 +247,10 @@ $conn->close();
         }
         ?>
     </table>
+    </main>
+            </div>
+        </div>
+    </section>
     
     <script>
         const facultyData = <?php echo json_encode($data); ?>;
