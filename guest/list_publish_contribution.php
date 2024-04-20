@@ -1,105 +1,99 @@
 <?php
 session_start();
 require_once('../config.php');
-require_once('authentication.php');
-include '../header.php';
 
+// Truy vấn để lấy các contributions đã được chọn
+$query = "
+    SELECT c.title, c.content, e.event_name, f.faculty_name, c.created_at
+    FROM contributions c
+    JOIN events e ON c.event_id = e.event_id
+    JOIN faculties f ON e.faculty_name = f.faculty_name
+    WHERE c.is_selected = 1
+    ORDER BY c.created_at DESC
+";
+
+$result = $conn->query($query);
+
+
+// Chuẩn bị dữ liệu cho biểu đồ
+$events = [];
+$colors = [
+    'red',
+    'blue',
+    'green',
+    'purple',
+    'orange',
+    'teal',
+    'pink',
+    'yellow',
+];
+
+while ($row = $result->fetch_assoc()) {
+    $event_name = $row['event_name'];
+    
+    // Nếu sự kiện chưa tồn tại trong mảng, thêm vào và khởi tạo số lượng
+    if (!array_key_exists($event_name, $events)) {
+        $events[$event_name] = [
+            'count' => 0,
+            'color' => $colors[count($events) % count($colors)]
+        ];
+    }
+    // Tăng số lượng cho sự kiện
+    $events[$event_name]['count']++;
+}
+
+// Chuyển đổi dữ liệu sang định dạng JSON để sử dụng trong JavaScript
+$eventNamesJson = json_encode(array_keys($events));
+$datasetsJson = json_encode(array_values($events));
+
+// Đóng kết nối
+$conn->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List contributions</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <style>
-        section .signin {            
-            width: 1000px;           
-        }
-        h2{
-            text-align: center;
-            color: white;
-        }
-    </style>
+    <title>Biểu đồ thống kê báo cáo</title>
+    <!-- Thêm thư viện Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span>
-        <div class="signin"> 
-            <div class="container"> 
-                <h2>LIST CONTRIBUTIONS</h2>
-                <br>
-                <?php
-                    if(isset($_SESSION['faculty_name'])) {
-                        $faculty_name = $_SESSION['faculty_name'];
-                        
-                        $sql = "SELECT c.title, c.content, c.file_path, c.created_at, u.username 
-                                FROM contributions c 
-                                INNER JOIN users u ON c.user_id = u.user_id 
-                                INNER JOIN events e ON c.event_id = e.event_id 
-                                WHERE e.faculty_name = '$faculty_name' AND c.status = 'published'";
-                        
-                        $result = mysqli_query($conn, $sql);
-                        
-                        if(mysqli_num_rows($result) > 0) {
-                            
-                            echo "<table border='1'>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Content</th>
-                                    <th>Image/File</th>
-                                    <th>Publication date</th>
-                                    <th>Student</th>
-                                </tr>";
-                            
-                            while($row = mysqli_fetch_assoc($result)) {
-                                echo "<tr>";
-                                echo "<td>" . $row['title'] . "</td>";
-                                echo "<td>" . $row['content'] . "</td>";
-                                echo "<td>";
-                                if (!empty($row['file_path'])) {
-                                    
-                    
-                    
-                                    $file_paths = explode(',', $row['file_path']);
-                                    $imageDisplayed = false; 
-                                    foreach ($file_paths as $file_path) {
-                                        if (in_array(pathinfo($file_path, PATHINFO_EXTENSION), array("jpg", "jpeg", "png", "gif"))) {
-                                            if (!$imageDisplayed) {
-                                                echo "Image:<br>"; 
-                                                $imageDisplayed = true;
-                                            }
-                                            echo "<img src='../student/" . $file_path . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
-                                        } else {
-                                            echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";
-                                        }
-                                    }
-                    
-                    
-                                } else {
-                                    echo "Không có hình ảnh hoặc file";
-                                }
-                                echo "</td>";
-                                echo "<td>" . $row['created_at'] . "</td>";
-                                echo "<td>" . $row['username'] . "</td>";
-                                echo "</tr>";
-                            }
-                            
-                            echo "</table>";
-                        } else {
-                            echo "Không có đóng góp nào được xuất bản.";
-                        }
-                    } else {
-                        echo "Vui lòng đăng nhập để truy cập trang này.";
-                    }
-                    mysqli_close($conn);
-                    ?>
-                
+    <h1>Biểu đồ thống kê báo cáo đã được published theo sự kiện</h1>
+    <canvas id="myChart" width="400" height="200"></canvas>
+    
+    <script>
+    // Lấy dữ liệu JSON từ PHP
+    const eventNames = <?php echo $eventNamesJson; ?>;
+    const datasetsData = <?php echo $datasetsJson; ?>;
 
-                    
-                
-            </div> 
-        </div> 
-    </section>
+    // Chuẩn bị datasets cho biểu đồ
+    const datasets = datasetsData.map((event, index) => ({
+        label: eventNames[index],
+        data: [event.count],
+        backgroundColor: event.color,
+        borderColor: event.color,
+        borderWidth: 1
+    }));
+
+    // Vẽ biểu đồ bằng Chart.js
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Contribution'],
+            datasets: datasets
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+    </script>
 </body>
 </html>

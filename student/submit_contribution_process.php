@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             continue; 
         }
 
-        $imageFileExtensions = array("jpg", "jpeg", "png", "gif");
+        $imageFileExtensions = array("jpg", "jpeg", "png", "gif", "doc", "docx", "pdf", "xls", "xlsx");
         if (!in_array($imageFileType, $imageFileExtensions) && $imageFileType != "zip") {
             
             $uploadOk = 0;

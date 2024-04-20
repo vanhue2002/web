@@ -181,13 +181,28 @@ include '../header.php';
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<strong>Title:</strong> " . $row['title'] . "<br>";
-                echo "<strong>Content:</strong> " . $row['content'] . "<br>";
-                $file_path = $row['file_path'];
-                if (pathinfo($file_path, PATHINFO_EXTENSION) === 'zip') {
-                    echo "<strong>File:</strong> <a href='$file_path' download>" . basename($file_path) . "</a><br>";
-                } else {
-                    echo "<strong>Image:</strong> <img src='../student/" . $row['file_path'] . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
-                }
+                
+                $file_paths = explode(',', $row['file_path']);
+$imageDisplayed = false; 
+foreach ($file_paths as $file_path) {
+    $extension = pathinfo($file_path, PATHINFO_EXTENSION);
+
+    if (in_array($extension, array("jpg", "jpeg", "png", "gif"))) {
+        if (!$imageDisplayed) {
+            echo "Image:<br>"; 
+            $imageDisplayed = true;
+        }
+        echo "<img src='../student/" . $file_path . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
+    } else {
+        // Xử lý file Word, PDF, Excel và ZIP
+        if (in_array($extension, array("doc", "docx", "pdf", "xls", "xlsx", "zip"))) {
+            echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";;
+        } else {
+            // Xử lý các định dạng tệp khác
+            echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";
+        }
+    }
+}
                 echo "<strong>Status:</strong> " . $row['status'] . "<br>";
                 echo "<strong>Created At:</strong> " . $row['created_at'] . "<br>";
                 echo "<strong>Updated At:</strong> " . $row['updated_at'] . "<br>";

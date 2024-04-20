@@ -212,7 +212,7 @@ section .signin .content h2
             <div class="content">
             <main>
     <h2>Total Contributions: <?php echo $total_contributions; ?></h2>
-    <div style="width: 20%">
+    <div style="width: 40%">
         <canvas id="facultyChart"></canvas>
     </div>
 

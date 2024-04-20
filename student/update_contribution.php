@@ -37,50 +37,62 @@ if ($_SESSION['user_id'] != $row['user_id']) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $new_title = $_POST['title'];
-    $new_content = $_POST['content'];
-    $file_changed = false;
+  $new_title = $_POST['title'];
+  $new_content = $_POST['content'];
+  $file_changed = false;
+  $new_file_paths = [];
 
-    if (!empty($_FILES['file']['name'][0])) {
-        $file_paths = [];
-        $target_dir = "uploads/";
-        foreach ($_FILES['file']['name'] as $key => $filename) {
-            $target_file = $target_dir . basename($filename);
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            if ($_FILES["file"]["size"][$key] > 5000000) {
-                echo "Tệp quá lớn.";
-                $uploadOk = 0;
-            } elseif (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif", "zip"])) {
-                echo "Chỉ chấp nhận các tệp JPG, JPEG, PNG, GIF và ZIP.";
-                $uploadOk = 0;
-            }
-            if ($uploadOk == 1) {
-                if (move_uploaded_file($_FILES["file"]["tmp_name"][$key], $target_file)) {
-                    $file_paths[] = $target_file;
-                    $file_changed = true;
-                    echo "Tệp " . htmlspecialchars(basename($target_file)) . " đã được tải lên thành công.<br>";
-                } else {
-                    echo "Có lỗi xảy ra khi tải lên.";
-                }
-            }
-        }
-        $file_path = implode(',', $file_paths);
-    }
+  // Danh sách các định dạng tệp được chấp nhận
+  $allowed_file_types = ["jpg", "jpeg", "png", "gif", "zip", "doc", "docx", "pdf", "xls", "xlsx"];
 
-    $update_sql = "UPDATE contributions SET title = '$new_title', content = '$new_content'";
-    if ($file_changed) {
-        $update_sql .= ", file_path = '$file_path'";
-    }
-    $update_sql .= ", updated_at = NOW() WHERE contribution_id = '$contribution_id'";
-    if (mysqli_query($conn, $update_sql)) {
+  if (!empty($_FILES['file']['name'][0])) {
+      $target_dir = "uploads/";
+      foreach ($_FILES['file']['name'] as $key => $filename) {
+          $target_file = $target_dir . basename($filename);
+          $uploadOk = 1;
+          $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+          
+          // Kiểm tra kích thước và định dạng tệp
+          if ($_FILES["file"]["size"][$key] > 5000000) {
+              echo "Tệp quá lớn.";
+              $uploadOk = 0;
+          } elseif (!in_array($file_type, $allowed_file_types)) {
+              echo "Chỉ chấp nhận các tệp JPG, JPEG, PNG, GIF, ZIP, DOC, DOCX, PDF, XLS, và XLSX.";
+              $uploadOk = 0;
+          }
+          
+          // Di chuyển tệp tải lên
+          if ($uploadOk == 1) {
+              if (move_uploaded_file($_FILES["file"]["tmp_name"][$key], $target_file)) {
+                  $new_file_paths[] = $target_file;
+                  $file_changed = true;
+                  echo "Tệp " . htmlspecialchars(basename($target_file)) . " đã được tải lên thành công.<br>";
+              } else {
+                  echo "Có lỗi xảy ra khi tải lên.";
+              }
+          }
+      }
+      
+      // Cập nhật file_path nếu có tệp mới
+      $new_file_paths_string = implode(',', $new_file_paths);
+      $file_path = $new_file_paths_string;
+  }
+
+  // Truy vấn SQL để cập nhật
+  $stmt = $conn->prepare("UPDATE contributions SET title = ?, content = ?, file_path = ?, updated_at = NOW() WHERE contribution_id = ?");
+  $stmt->bind_param("sssi", $new_title, $new_content, $file_path, $contribution_id);
+
+  // Thực hiện truy vấn
+  if ($stmt->execute()) {
       echo "<script type='text/javascript'>alert('Contribution cập nhật thành công!'); window.location.href='./manage_contribution.php';</script>";
-    } else {
-        echo "Lỗi: " . $update_sql . "<br>" . mysqli_error($conn);
-    }
+  } else {
+      echo "Lỗi: " . $stmt->error;
+  }
+
+  // Đóng truy vấn
+  $stmt->close();
 }
 
-mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>

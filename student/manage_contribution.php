@@ -270,13 +270,26 @@ img {
                 echo "<td>{$row['content']}</td>";
                 echo "<td>";
                 $file_paths = explode(',', $row['file_path']);
-                foreach ($file_paths as $file_path) {
-                    if (pathinfo($file_path, PATHINFO_EXTENSION) === 'zip') {
-                        echo "<a href='$file_path' download>" . basename($file_path) . "</a><br>";
-                    } else {
-                        echo "<img src='$file_path' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
-                    }
-                }
+$imageDisplayed = false; 
+foreach ($file_paths as $file_path) {
+    $extension = pathinfo($file_path, PATHINFO_EXTENSION);
+
+    if (in_array($extension, array("jpg", "jpeg", "png", "gif"))) {
+        if (!$imageDisplayed) {
+            echo "Image:<br>"; 
+            $imageDisplayed = true;
+        }
+        echo "<img src='../student/" . $file_path . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
+    } else {
+        // Xử lý file Word, PDF, Excel và ZIP
+        if (in_array($extension, array("doc", "docx", "pdf", "xls", "xlsx", "zip"))) {
+            echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";;
+        } else {
+            // Xử lý các định dạng tệp khác
+            echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";
+        }
+    }
+}
                 echo "</td>";
                 echo "<td>{$row['status']}</td>";
                 echo "<td><a href='update_contribution.php?contribution_id={$row['contribution_id']}'>Edit</a> | <a href='delete_contribution.php?contribution_id={$row['contribution_id']}'>Delete</a></td>";

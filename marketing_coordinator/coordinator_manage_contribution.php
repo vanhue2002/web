@@ -1,5 +1,7 @@
 <?php
-session_start(); 
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+} 
 require_once('../config.php');
 include '../header.php';
 
@@ -162,7 +164,7 @@ if (isset($_SESSION['faculty_name'])) {
     
     $current_time = time();
 
-    $sql = "SELECT c.contribution_id, c.title, c.content, c.file_path, c.status, c.created_at, c.updated_at, 
+    $sql = "SELECT c.contribution_id, c.title, c.content, c.file_path, c.status, c.created_at, c.updated_at, c.is_selected, 
                    u.user_id, u.username, u.email, u.faculty_name
             FROM contributions c
             INNER JOIN users u ON c.user_id = u.user_id
@@ -176,21 +178,30 @@ if (isset($_SESSION['faculty_name'])) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo "Contribution ID: " . $row['contribution_id'] . "<br>";
             echo "Title: " . $row['title'] . "<br>";
-            echo "Content: " . $row['content'] . "<br>";
+            
             
             $file_paths = explode(',', $row['file_path']);
-            $imageDisplayed = false; 
-            foreach ($file_paths as $file_path) {
-                if (in_array(pathinfo($file_path, PATHINFO_EXTENSION), array("jpg", "jpeg", "png", "gif"))) {
-                    if (!$imageDisplayed) {
-                        echo "Image:<br>"; 
-                        $imageDisplayed = true;
-                    }
-                    echo "<img src='../student/" . $file_path . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
-                } else {
-                    echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";
-                }
-            }
+$imageDisplayed = false; 
+foreach ($file_paths as $file_path) {
+    $extension = pathinfo($file_path, PATHINFO_EXTENSION);
+
+    if (in_array($extension, array("jpg", "jpeg", "png", "gif"))) {
+        if (!$imageDisplayed) {
+            echo "Image:<br>"; 
+            $imageDisplayed = true;
+        }
+        echo "<img src='../student/" . $file_path . "' alt='Contribution Image' style='max-width: 200px; max-height: 200px;'><br>";
+    } else {
+        // Xử lý file Word, PDF, Excel và ZIP
+        if (in_array($extension, array("doc", "docx", "pdf", "xls", "xlsx", "zip"))) {
+            echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";;
+        } else {
+            // Xử lý các định dạng tệp khác
+            echo "File: <a href='$file_path' download>" . basename($file_path) . "</a><br>";
+        }
+    }
+}
+
             $status_class = "";
 switch($row['status'])
 {
@@ -233,7 +244,21 @@ echo "Status: <span class='{$status_class}'> " . $row['status'] . "</span><br>";
             echo "<button type='submit' name='publish_contribution'>Publish</button>";
             echo "</form>";
 
+
+            // Nút chọn cho coordinator
+            
+            $is_selected = $row['is_selected'] ? 'checked' : '';
+            echo "<form method='post' action='update_contribution_selection.php'>";
+            echo "<input type='hidden' name='contribution_id' value='{$row['contribution_id']}'>";
+            echo "<input type='checkbox' name='is_selected' value='1' $is_selected>";
+            echo "<label>Select</label><br>";
+            echo "<button type='submit'>Update select</button><br><br>";
+            echo "</form>";
+
             echo "<hr>"; 
+
+            
+
         }
         
         $sql_count = "SELECT COUNT(*) AS total_contributions FROM contributions c INNER JOIN users u ON c.user_id = u.user_id WHERE u.faculty_name = '$faculty_name'";
@@ -252,8 +277,8 @@ echo "Status: <span class='{$status_class}'> " . $row['status'] . "</span><br>";
         echo "Không có đóng góp nào được tìm thấy.";
     }
     
-} else {
-    echo "Phiên đăng nhập chưa được bắt đầu hoặc biến 'faculty_name' không tồn tại trong phiên.";
+  } else {
+    echo "Phiên đăng nhập chưa được bắt đầu hoặc không có khoa.";
 }
 ?>  
            </main>
