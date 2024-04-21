@@ -10,21 +10,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result_check_faculty = mysqli_query($conn, $query_check_faculty);
 
         if (mysqli_num_rows($result_check_faculty) > 0) {
-            echo "<script>alert('Đã có một guest từ khoa này đăng ký rồi. Vui lòng chọn khoa khác.'); window.history.back();</script>";
+            echo "<script>alert('A guest from this department has already registered. Please choose another department.'); window.history.back();</script>";
         } else {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             $sql = "INSERT INTO users (username, password, role, faculty_name) VALUES ('$username', '$hashed_password', 'guest', '$faculty')";
 
             if (mysqli_query($conn, $sql)) {
-                echo "Đăng ký tài khoản thành công!";
-                echo "<a href='../'>Trở lại trang chủ</a>";
+       
+      echo "<script type='text/javascript'>alert('Sucessfully!!'); window.location.href='./index.php';</script>";
+
             } else {
-                echo "Đã xảy ra lỗi: " . mysqli_error($conn);
+                echo "Error: " . mysqli_error($conn);
             }
         }
     } else {
-        echo "Vui lòng điền đầy đủ thông tin đăng ký.";
+        echo "Please fill in all information.";
     }
 } else {
     header("Location: register_guest.php");
