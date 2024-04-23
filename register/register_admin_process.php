@@ -21,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sql = "INSERT INTO users (username, password, email, role, faculty_name) VALUES ('$username', '$hashed_password', '$email', '$role', '$faculty_name')";
 
             if (mysqli_query($conn, $sql)) {
-                echo "Đăng ký tài khoản thành công!";
-                echo "<a href='../'>Trở lại trang chủ</a>";
+                echo "<script type='text/javascript'>alert('Sucessfully!.'); window.location.href='../login/login.php';</script>";
+
             } else {
                 echo "Đã xảy ra lỗi: " . mysqli_error($conn);
             }

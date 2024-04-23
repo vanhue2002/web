@@ -18,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (mysqli_query($conn, $sql)) {
        
-      echo "<script type='text/javascript'>alert('Sucessfully!!'); window.location.href='./index.php';</script>";
+                      echo "<script type='text/javascript'>alert('Sucessfully!.'); window.location.href='../login/login.php';</script>";
+
 
             } else {
                 echo "Error: " . mysqli_error($conn);
