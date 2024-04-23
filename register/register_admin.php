@@ -84,13 +84,13 @@ $result = mysqli_query($conn, $query);
             
             <h2>ADMIN REGISTER</h2>
     <form action="register_admin_process.php" method="POST">
-        <label for="username">Username:</label><br><br>
+        <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label><br><br>
+        <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
-        <label for="email">Email:</label><br><br>
+        <label for="email">Email:</label>
         <input type="text" id="email" name="email" required><br>
-        <label for="role">Role:</label><br><br>
+        <label for="role">Role:</label>
         <select name="role" id="role">
             <?php
             while ($row = mysqli_fetch_assoc($result_roles)) {
@@ -98,7 +98,7 @@ $result = mysqli_query($conn, $query);
             }
             ?>
         </select>
-        <label for="faculty_name">Faculty:</label><br><br>
+        <label for="faculty_name">Faculty:</label>
         <select name="faculty_name" id="faculty_name">
             <?php
             
@@ -109,7 +109,7 @@ $result = mysqli_query($conn, $query);
 
             mysqli_close($conn);
             ?>
-        </select><br><br>
+        </select>
         <button type="submit">Register</button>
     </form>
                 </div>
