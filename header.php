@@ -9,7 +9,7 @@ if($role == 'admin'){
 } elseif ($role == 'student') {
     $_SESSION['header_title'] = 'Student Dashboard';
 } elseif ($role == 'Marketing Manager') {
-    $_SESSION['header_title'] = 'Manager Manager';
+    $_SESSION['header_title'] = 'Marketing Manager';
 } elseif ($role == 'guest') {
     $_SESSION['header_title'] = 'Guest Dashboard';
 }else {
